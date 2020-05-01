@@ -1,0 +1,263 @@
+fileFormatVersion: 2
+guid: 0bd596ecdd9d4f54a83e5a57b99d6b24
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Spikes_0
+    21300002: Spikes_1
+    21300004: Spikes_2
+    21300006: Spikes_3
+    21300008: Spikes_4
+    21300010: Spikes_5
+    21300012: Spikes_6
+    21300014: Spikes_7
+    21300016: Spikes_8
+    21300018: Spikes_9
+    21300020: Spikes_10
+    21300022: Spikes_11
+    21300024: Spikes_12
+    21300026: Spikes_13
+    21300028: Spikes_14
+    21300030: Spikes_15
+    21300032: Spikes_16
+    21300034: Spikes_17
+    21300036: Spikes_18
+    21300038: Spikes_19
+    21300040: Spikes_20
+    21300042: Spikes_21
+    21300044: Spikes_22
+    21300046: Spikes_23
+    21300048: Spikes_24
+    21300050: Spikes_25
+    21300052: Spikes_26
+    21300054: Spikes_27
+    21300056: Spikes_28
+    21300058: Spikes_29
+    21300060: Spikes_30
+    21300062: Spikes_31
+    21300064: Spikes_32
+    21300066: Spikes_33
+    21300068: Spikes_34
+    21300070: Spikes_35
+    21300072: Spikes_36
+    21300074: Spikes_37
+    21300076: Spikes_38
+    21300078: Spikes_39
+    21300080: Spikes_40
+    21300082: Spikes_41
+    21300084: Spikes_42
+    21300086: Spikes_43
+    21300088: Spikes_44
+    21300090: Spikes_45
+    21300092: Spikes_46
+    21300094: Spikes_47
+    21300096: Spikes_48
+    21300098: Spikes_49
+    21300100: Spikes_50
+    21300102: Spikes_51
+    21300104: Spikes_52
+    21300106: Spikes_53
+    21300108: Spikes_54
+    21300110: Spikes_55
+    21300112: Spikes_56
+    21300114: Spikes_57
+    21300116: Spikes_58
+    21300118: Spikes_59
+    21300120: Spikes_60
+    21300122: Spikes_61
+    21300124: Spikes_62
+    21300126: Spikes_63
+    21300128: Spikes_64
+    21300130: Spikes_65
+    21300132: Spikes_66
+    21300134: Spikes_67
+    21300136: Spikes_68
+    21300138: Spikes_69
+    21300140: Spikes_70
+    21300142: Spikes_71
+    21300144: Spikes_72
+    21300146: Spikes_73
+    21300148: Spikes_74
+    21300150: Spikes_75
+    21300152: Spikes_76
+    21300154: Spikes_77
+    21300156: Spikes_78
+    21300158: Spikes_79
+    21300160: spake_0
+    21300162: spake_1
+    21300164: spake_2
+    21300166: spake_3
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spake_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 129
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53aa9050ce48ad94a980b17daea5d69d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spake_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 97
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b6b43b0ba173c841b7c8bd8bde0d308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spake_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 65
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b91c073022e38c45a44c54a325d339b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spake_3
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 32
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a695ee8b15a46c4f9a5640595c88cb5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d7c1391e31aa387488645e2e3866f3c0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

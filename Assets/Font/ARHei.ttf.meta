@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ffa8d02352f246046842ba09d1403172
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 23
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ??_GBK+??+HandelGotDLig
+  fontNames:
+  - ??_GBK+??+HandelGotDLig
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

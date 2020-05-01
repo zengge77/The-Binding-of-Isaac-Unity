@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0817f205279cf41b004ca7870507cf, type: 3}
+  m_Name: S-02
+  m_EditorClassIdentifier: 
+  floor: {fileID: 21300002, guid: aa7142eec3b21db4990fdc492970b1dc, type: 3}
+  RewardPosition: {x: 1, y: 1}
+  isGenerateReward: 0
+  monsterPrefab: []
+  monsterCoordinate: []
+  obstaclesPreafab:
+  - {fileID: 2517520537978298077, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
+  - {fileID: 2517520537978298077, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
+  obstaclesCoordinate:
+  - {x: 3, y: 3}
+  - {x: 23, y: 3}
+  propPreafab:
+  - {fileID: 8892665028506414572, guid: d2f1639a1a8c3ba4e88996c59313ff95, type: 3}
+  - {fileID: 8892665028506414572, guid: d2f1639a1a8c3ba4e88996c59313ff95, type: 3}
+  - {fileID: 8892665028506414572, guid: 71b1f58ba0c0d6c4cb610e50c79b7a5a, type: 3}
+  propCoordinate:
+  - {x: 9, y: 7}
+  - {x: 13, y: 7}
+  - {x: 17, y: 7}
