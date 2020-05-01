@@ -1,0 +1,12 @@
+  两个静态类在Script Execution Order 中调整顺序，使其最前调用
+  其他类获取player, level 可从静态类中获取
+
+
+1.GameManager静态类.start() --- UIManager静态类.start() --- 其他已在场景里的类(尽量避免)
+			|
+			|创建 Player,Level
+			|Pool在Level实例上,Pool.awake()
+			|
+2.Player.start(), Level.start()
+
+3.其他
