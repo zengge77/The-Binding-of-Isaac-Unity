@@ -27,7 +27,7 @@ public class RoomEditorWindow : EditorWindow
         "Assets/Resources/ScriptableObject/RoomLayout/BossRoom/B-01-DukeOfFlies.asset",
         "Assets/Resources/ScriptableObject/RoomLayout/TreasureRoom/T-01-Fireplace.asset",
         "Assets/Resources/ScriptableObject/RoomLayout/ShopRoom/S-01.asset",
-        "Assets/Editor Default Resources/TestRoom/T-Start.asset",
+        "Assets/Resources/ScriptableObject/RoomLayout/TestRoom/T-Start.asset",
     };
 
     bool monsterFoldout = false;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0817f205279cf41b004ca7870507cf, type: 3}
   m_Name: T-Start
   m_EditorClassIdentifier: 
-  floor: {fileID: 21300008, guid: 56767c499be0ac54f99235ba8e2493d3, type: 3}
+  floor: {fileID: 21300002, guid: 56767c499be0ac54f99235ba8e2493d3, type: 3}
   RewardPosition: {x: 1, y: 1}
   isGenerateReward: 0
   monsterPrefab: []
@@ -29,9 +29,5 @@ MonoBehaviour:
   - {x: 17, y: 1}
   - {x: 10, y: 9}
   - {x: 22, y: 7}
-  propPreafab:
-  - {fileID: 8892665028506414572, guid: d2f1639a1a8c3ba4e88996c59313ff95, type: 3}
-  - {fileID: 8892665028506414572, guid: 71b1f58ba0c0d6c4cb610e50c79b7a5a, type: 3}
-  propCoordinate:
-  - {x: 19, y: 7}
-  - {x: 11, y: 6}
+  propPreafab: []
+  propCoordinate: []

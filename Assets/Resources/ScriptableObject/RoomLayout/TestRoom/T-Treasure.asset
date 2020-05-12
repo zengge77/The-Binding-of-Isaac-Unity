@@ -19,5 +19,9 @@ MonoBehaviour:
   monsterCoordinate: []
   obstaclesPreafab: []
   obstaclesCoordinate: []
-  propPreafab: []
-  propCoordinate: []
+  propPreafab:
+  - {fileID: 4220042123601709987, guid: 9b12e554f72720c40863d2eba26cd08d, type: 3}
+  - {fileID: 4220042123601709987, guid: 9b12e554f72720c40863d2eba26cd08d, type: 3}
+  propCoordinate:
+  - {x: 8, y: 7}
+  - {x: 18, y: 7}

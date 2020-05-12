@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0817f205279cf41b004ca7870507cf, type: 3}
   m_Name: T-Shop
   m_EditorClassIdentifier: 
-  floor: {fileID: 21300002, guid: aa7142eec3b21db4990fdc492970b1dc, type: 3}
+  floor: {fileID: 21300000, guid: cf9063be2ff1f4f4a9df1418831ce821, type: 3}
   RewardPosition: {x: 1, y: 1}
   isGenerateReward: 0
   monsterPrefab: []
