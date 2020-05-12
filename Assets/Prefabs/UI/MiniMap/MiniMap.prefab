@@ -228,3 +228,5 @@ MonoBehaviour:
     type: 3}
   miniIconTreasure: {fileID: 1737744557673758, guid: b7828dcb751d8b2458d55ce32aac2f2e,
     type: 3}
+  miniIconShop: {fileID: 1737744557673758, guid: 4ab5f9f5eb4377f40b7ad257d1e69fee,
+    type: 3}

@@ -9,10 +9,11 @@ public class MiniMap : MonoBehaviour
     public Transform miniRoomNode;
 
     [Header("迷你图标")]
-    float width; float height;
     public GameObject miniRoomPrefab;
     public GameObject miniIconBoss;
     public GameObject miniIconTreasure;
+    public GameObject miniIconShop;
+    float width; float height;
 
     GameObject[,] miniRoomArray;
     GameObject currentRoom;
@@ -51,6 +52,9 @@ public class MiniMap : MonoBehaviour
                         break;
                     case Room.RoomType.Treasure:
                         Instantiate(miniIconTreasure, cell.transform);
+                        break;
+                    case Room.RoomType.Shop:
+                        Instantiate(miniIconShop, cell.transform);
                         break;
                     default:
                         break;
