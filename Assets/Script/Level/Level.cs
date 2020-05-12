@@ -34,8 +34,6 @@ public class Level : MonoBehaviour
         UI = UIManager.Instance;
         player = GameManager.Instance.player;
         GenerateRooms();
-        LinkDoors();
-        SetRoomsType();
         UI.miniMap.CreatMiniMap();
         StartCoroutine(MoveToNextRoom(Vector2.zero));
     }
@@ -49,44 +47,77 @@ public class Level : MonoBehaviour
         List<Vector2> alternativeRoomList = new List<Vector2>();
         List<Vector2> hasBeenRemoveRoomList = new List<Vector2>();
 
-        //创建起始房间
-        int outsetX = roomArray.GetLength(0) / 2;
-        int outsetY = roomArray.GetLength(1) / 2;
-        Room lastRoom = roomArray[outsetX, outsetY] = createRoom(new Vector2(outsetX, outsetY));
-        currentRoom = lastRoom;
+        //单门房间列表
+        List<Room> singleDoorRoomList = new List<Room>();
 
-        //创建其他房间
-        for (int i = 1; i < roomNum; i++)
+        while (singleDoorRoomList.Count < 3)
         {
-            int x = (int)lastRoom.coordinate.x; int y = (int)lastRoom.coordinate.y;
+            //清空已生成的房间
+            Array.Clear(roomArray, 0, roomArray.Length);
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+            //清空相关数据
+            alternativeRoomList.Clear();
+            hasBeenRemoveRoomList.Clear();
+            singleDoorRoomList.Clear();
 
+            //创建起始房间
+            int outsetX = roomArray.GetLength(0) / 2;
+            int outsetY = roomArray.GetLength(1) / 2;
+            Room lastRoom = roomArray[outsetX, outsetY] = CreateRoom(new Vector2(outsetX, outsetY));
+            currentRoom = lastRoom;
+
+            //创建其他房间
             Action<int, int> action = (newX, newY) =>
-             {
-                 Vector2 coordinate = new Vector2(newX, newY);
-                 if (roomArray[newX, newY] == null)
-                 {
-                     if (alternativeRoomList.Contains(coordinate))
-                     {
-                         alternativeRoomList.Remove(coordinate);
-                         hasBeenRemoveRoomList.Add(coordinate);
-                     }
-                     else if (!hasBeenRemoveRoomList.Contains(coordinate))
-                     {
-                         alternativeRoomList.Add(coordinate);
-                     }
-                 }
-             };
-            action(x + 1, y);
-            action(x - 1, y);
-            action(x, y - 1);
-            action(x, y + 1);
+            {
+                Vector2 coordinate = new Vector2(newX, newY);
+                if (roomArray[newX, newY] == null)
+                {
+                    if (alternativeRoomList.Contains(coordinate))
+                    {
+                        alternativeRoomList.Remove(coordinate);
+                        hasBeenRemoveRoomList.Add(coordinate);
+                    }
+                    else if (!hasBeenRemoveRoomList.Contains(coordinate))
+                    {
+                        alternativeRoomList.Add(coordinate);
+                    }
+                }
+            };
 
-            Vector2 newRoomCoordinate = alternativeRoomList[UnityEngine.Random.Range(0, alternativeRoomList.Count)];
-            lastRoom = roomArray[(int)newRoomCoordinate.x, (int)newRoomCoordinate.y] = createRoom(newRoomCoordinate);
-            alternativeRoomList.Remove(newRoomCoordinate);
+            for (int i = 1; i < roomNum; i++)
+            {
+                int x = (int)lastRoom.coordinate.x; int y = (int)lastRoom.coordinate.y;
+
+                action(x + 1, y);
+                action(x - 1, y);
+                action(x, y - 1);
+                action(x, y + 1);
+
+                Vector2 newRoomCoordinate = alternativeRoomList[UnityEngine.Random.Range(0, alternativeRoomList.Count)];
+                lastRoom = roomArray[(int)newRoomCoordinate.x, (int)newRoomCoordinate.y] = CreateRoom(newRoomCoordinate);
+                alternativeRoomList.Remove(newRoomCoordinate);
+            }
+
+            //打通门
+            LinkDoors();
+
+            //计算单门房间数量
+            foreach (Room room in roomArray)
+            {
+                if (room != null && room.ActiveDoorCount == 1 && room != currentRoom)
+                {
+                    singleDoorRoomList.Add(room);
+                }
+            }
         }
+
+        //设置房间类型
+        SetRoomsType(singleDoorRoomList);
     }
-    private Room createRoom(Vector2 coordinate)
+    private Room CreateRoom(Vector2 coordinate)
     {
         Room newRoom = Instantiate(roomPrefab, transform);
         newRoom.coordinate = coordinate;
@@ -135,19 +166,8 @@ public class Level : MonoBehaviour
     /// <summary>
     /// 设置各个房间的类型
     /// </summary>
-    private void SetRoomsType()
+    private void SetRoomsType(List<Room> singleDoorRoomList)
     {
-        //设置类型
-        //获取所有单门房间
-        List<Room> singleDoorRoomList = new List<Room>();
-        foreach (Room room in roomArray)
-        {
-            if (room != null && room.ActiveDoorCount == 1 && room != currentRoom)
-            {
-                singleDoorRoomList.Add(room);
-            }
-        }
-
         //先全部设为普通
         foreach (Room room in roomArray)
         {
@@ -156,18 +176,17 @@ public class Level : MonoBehaviour
                 room.roomType = Room.RoomType.Normal;
             }
         }
+
         //宝藏
-        if (singleDoorRoomList.Count > 2)
+        for (int i = 0; i < singleDoorRoomList.Count - 2; i++)
         {
-            for (int i = 0; i < singleDoorRoomList.Count - 2; i++)
-            {
-                singleDoorRoomList[i].roomType = Room.RoomType.Treasure;
-            }
+            singleDoorRoomList[i].roomType = Room.RoomType.Treasure;
         }
+
         //Boss
         singleDoorRoomList[singleDoorRoomList.Count - 1].roomType = Room.RoomType.Boss;
-        ////商店
-        //singleDoorRoomList[singleDoorRoomList.Count - 2].roomType = Room.RoomType.Shop;
+        //商店
+        singleDoorRoomList[singleDoorRoomList.Count - 2].roomType = Room.RoomType.Shop;
         //起始
         currentRoom.roomType = Room.RoomType.Start;
 
