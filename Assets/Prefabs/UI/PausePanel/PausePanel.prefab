@@ -146,7 +146,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 200
+  m_PreferredWidth: 250
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -1467,6 +1467,7 @@ GameObject:
   - component: {fileID: 4251676927813852059}
   - component: {fileID: 2192174126825155587}
   - component: {fileID: 5721324300591545623}
+  - component: {fileID: 5314421649754558436}
   m_Layer: 5
   m_Name: Attributes
   m_TagString: Untagged
@@ -1535,6 +1536,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u5C5E\u6027"
+--- !u!114 &5314421649754558436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143921799017225149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce42901bd4e9448439f0e3b79ce050d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8309049275939903093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1546,6 +1559,7 @@ GameObject:
   - component: {fileID: 9033992965591639241}
   - component: {fileID: 9211096369702485033}
   - component: {fileID: 62952288280513531}
+  - component: {fileID: 6565254999837856350}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -1602,7 +1616,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: ffa8d02352f246046842ba09d1403172, type: 3}
-    m_FontSize: 16
+    m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1614,3 +1628,15 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u63CF\u8FF0"
+--- !u!114 &6565254999837856350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309049275939903093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce42901bd4e9448439f0e3b79ce050d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
