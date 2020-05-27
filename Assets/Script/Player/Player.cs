@@ -85,7 +85,7 @@ public class Player : MonoBehaviour, IAttackable
     }
 
     //击退
-    public int Knockback { get; set; }
+    public float Knockback { get; set; }
 
     //伤害  
     public float Damage
@@ -494,15 +494,23 @@ public class Player : MonoBehaviour, IAttackable
         itemInformationList.Add(newItemInfo);
         UI.pausePanel.backPack.AddBackpackCell(newItemInfo);
     }
+
     /// <summary>
     /// 查询玩家身上是否已拥有该道具
     /// </summary>
-    /// <param name="item"></param>
+    /// <param name="itemIDList"></param>
     /// <returns></returns>
-    public bool IsThisItemExist(Item item)
+    public bool IsThisItemExist(params int[] itemIDList)
     {
-        int num = itemInformationList.FindIndex((ItemInformation newItem) => { return newItem.ID == item.ID; });
-        return num != -1;
+        for (int i = 0; i < itemIDList.Length; i++)
+        {
+            int num = itemInformationList.FindIndex((ItemInformation go) => { return go.ID == itemIDList[i]; });
+            if (num != -1)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>
