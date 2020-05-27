@@ -876,16 +876,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5915985544259882328, guid: 19e0fdb0e9621ec40a22cbbff28884de,
-        type: 3}
-      propertyPath: m_ChildControlWidth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5915985544259882328, guid: 19e0fdb0e9621ec40a22cbbff28884de,
-        type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19e0fdb0e9621ec40a22cbbff28884de, type: 3}
 --- !u!1001 &3914287978739308158
@@ -1004,11 +994,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3914287980261817610, guid: 91a2a03db26d18a438155dee075cc40d,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91a2a03db26d18a438155dee075cc40d, type: 3}

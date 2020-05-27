@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Breakfast : PassiveItem
+public class ItemTheBelt : PassiveItem
 {
     protected override void SetID()
     {
-        ID = 25;
+        ID = 28;
     }
 
     protected override void Effect()
     {
-        player.AddHealth(2, Player.HealthType.Normal, 2);
+        player.Speed += 0.3f;
     }
 }

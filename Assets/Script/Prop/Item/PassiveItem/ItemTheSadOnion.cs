@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TheBelt : PassiveItem
+public class ItemTheSadOnion : PassiveItem
 {
     protected override void SetID()
     {
-        ID = 28;
+        ID = 1;
     }
 
     protected override void Effect()
     {
-        player.Speed += 0.3f;
+        player.Tears += 0.7f;
     }
 }

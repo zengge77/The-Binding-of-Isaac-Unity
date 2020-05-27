@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Item : Prop
 {
-    public int ID { get; set; }
+    public static int ID { get; set; }
     public ItemInformation itemInformation;
     public Sprite Sprite { get; set; }
 

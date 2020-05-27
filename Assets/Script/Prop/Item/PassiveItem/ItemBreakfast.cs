@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TheSadOnion : PassiveItem
+public class ItemBreakfast : PassiveItem
 {
     protected override void SetID()
     {
-        ID = 1;
+        ID = 25;
     }
 
     protected override void Effect()
     {
-        player.Tears += 0.7f;
+        player.AddHealth(2, Player.HealthType.Normal, 2);
     }
 }
