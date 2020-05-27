@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44dda871c1a88964a888b891856ce9ba, type: 3}
   m_Name: Shop
   m_EditorClassIdentifier: 
-  propList: []
+  propList:
+  - {fileID: 4640837782063432070, guid: 73e334e92ad0c4442a6c44ba1ed3cef6, type: 3}
+  - {fileID: 5390396752230068484, guid: a8f74c7c005f3d447829e03e2982f984, type: 3}
+  - {fileID: 6892999033105319106, guid: 007739dcad05d6249b4abc51f6ca3bf5, type: 3}
+  - {fileID: 7451482349771991875, guid: 14f5a0cae0d16a445a3b511840240b02, type: 3}
+  - {fileID: 1607199317055315526, guid: 0011ddd6f0e23624dab38ea734386b77, type: 3}
+  - {fileID: 274744176753895210, guid: 795f340ce7757544f84ad8e2fa5eefc6, type: 3}

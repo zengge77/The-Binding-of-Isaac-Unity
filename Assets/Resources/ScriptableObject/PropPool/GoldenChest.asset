@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GoldenChest
   m_EditorClassIdentifier: 
   propList:
-  - {fileID: 5390396752230068484, guid: a8f74c7c005f3d447829e03e2982f984, type: 3}
-  - {fileID: 7451482349771991875, guid: 14f5a0cae0d16a445a3b511840240b02, type: 3}
-  - {fileID: 8918854425684102294, guid: fb478f95cb06613418b3b1297d7b6146, type: 3}
+  - {fileID: 6892999033105319106, guid: 007739dcad05d6249b4abc51f6ca3bf5, type: 3}
+  - {fileID: 3651032538282787894, guid: 20e1579dc05edb148a40a512617a5f64, type: 3}
+  - {fileID: 3544284812478526880, guid: 1491d5c7638fbd1479ff82680462e04d, type: 3}

@@ -17,17 +17,9 @@ MonoBehaviour:
   isGenerateReward: 0
   monsterPrefab: []
   monsterCoordinate: []
-  obstaclesPreafab:
-  - {fileID: 5757530139322874943, guid: 62bbd28bbb9ae9f4f83d51cbac3f6bca, type: 3}
-  - {fileID: 6765154401192249117, guid: 675bf3b29c21f2444b9741e71c154787, type: 3}
-  - {fileID: 5757530139322874943, guid: 1666a01e12eb00e4180a10e693bd0d94, type: 3}
-  - {fileID: 5757530139322874943, guid: bf10e895bfcc56f469fe6989cd351708, type: 3}
-  - {fileID: 5757530139322874943, guid: 1666a01e12eb00e4180a10e693bd0d94, type: 3}
-  obstaclesCoordinate:
-  - {x: 8, y: 6}
-  - {x: 13, y: 4}
-  - {x: 17, y: 1}
-  - {x: 10, y: 9}
-  - {x: 22, y: 7}
-  propPreafab: []
-  propCoordinate: []
+  obstaclesPreafab: []
+  obstaclesCoordinate: []
+  propPreafab:
+  - {fileID: 2506539653844963513, guid: 73e334e92ad0c4442a6c44ba1ed3cef6, type: 3}
+  propCoordinate:
+  - {x: 6, y: 1}
