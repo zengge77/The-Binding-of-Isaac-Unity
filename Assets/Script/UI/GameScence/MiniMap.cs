@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MiniMap : MonoBehaviour
 {
+    Level level;
+
     [Header("小房间父节点")]
     public Transform miniRoomNode;
 
@@ -20,12 +22,14 @@ public class MiniMap : MonoBehaviour
     Vector2 currentCoordinate;
     List<Vector2> hasBeenToList = new List<Vector2>();
 
-    Level level;
+    Color white = new Color(1f, 1f, 1f, 1);
+    Color gray = new Color(0.6f, 0.6f, 0.6f, 1);
+    Color black = new Color(0.3f, 0.3f, 0.3f, 1);
 
     private void Start()
     {
         width = miniRoomPrefab.GetComponent<RectTransform>().rect.size.x * transform.localScale.x;
-        height = miniRoomPrefab.GetComponent<RectTransform>().rect.size.y * transform.localScale.y ;
+        height = miniRoomPrefab.GetComponent<RectTransform>().rect.size.y * transform.localScale.y;
         level = UIManager.Instance.level;
     }
 
@@ -69,11 +73,11 @@ public class MiniMap : MonoBehaviour
     {
         hasBeenToList.Add(currentCoordinate);
 
-        currentRoom.GetComponent<Image>().color = new Color(0.6f, 0.6f, 0.6f, 1);
+        currentRoom.GetComponent<Image>().color = gray;
         currentCoordinate.x += MoveDirection.y;
         currentCoordinate.y += MoveDirection.x;
         currentRoom = miniRoomArray[(int)currentCoordinate.x, (int)currentCoordinate.y];
-        currentRoom.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
+        currentRoom.GetComponent<Image>().color = white;
 
         List<Vector2> neighboringCoordinate = new List<Vector2>()
         {
@@ -85,10 +89,26 @@ public class MiniMap : MonoBehaviour
             GameObject cell = miniRoomArray[(int)coordinate.x, (int)coordinate.y];
             if (cell != null && !hasBeenToList.Contains(coordinate))
             {
-                cell.GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f, 1);
+                cell.GetComponent<Image>().color = black;
             }
         }
 
         miniRoomNode.transform.localPosition -= new Vector3(MoveDirection.x * width, MoveDirection.y * height, 0);
+    }
+
+    public void ShowAllMinMap()
+    {
+        for (int i = 0; i < miniRoomArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < miniRoomArray.GetLength(1); j++)
+            {
+                if (miniRoomArray[i, j] != null && !hasBeenToList.Contains(new Vector2(i, j)))
+                {
+                    miniRoomArray[i, j].GetComponent<Image>().color = black;
+                }
+            }
+        }
+
+        UpdateMiniMap(Vector2.zero);
     }
 }

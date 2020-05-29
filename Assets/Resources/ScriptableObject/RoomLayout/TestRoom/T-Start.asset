@@ -20,6 +20,6 @@ MonoBehaviour:
   obstaclesPreafab: []
   obstaclesCoordinate: []
   propPreafab:
-  - {fileID: 2506539653844963513, guid: 73e334e92ad0c4442a6c44ba1ed3cef6, type: 3}
+  - {fileID: 2506539653844963513, guid: d4f0237d04e6a224194603b7836ed012, type: 3}
   propCoordinate:
-  - {x: 6, y: 1}
+  - {x: 12, y: 1}

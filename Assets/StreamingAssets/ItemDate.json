@@ -58,5 +58,11 @@
         "Name": "输血袋",
         "Attributes": "红心上限+1\n红心+5\n移速+0.30",
         "Description": "200cc太少了，至少400cc，抽！"
+    },
+	{
+        "ID": 333,
+        "Name": "思想",
+        "Attributes": "在地图上显示所有房间的位置以及所有特殊房间的标志（包括隐藏房和超级隐藏房）。",
+        "Description": "ISeeDeadPeople\nBlack Sheep Wall"
     }
 ]
