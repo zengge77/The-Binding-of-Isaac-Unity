@@ -366,7 +366,7 @@ public class Player : MonoBehaviour, IAttackable
                 }
                 flashCD -= 0.13f;
             }
-            yield return 0;
+            yield return null;
         }
         isInvincible = false;
     }

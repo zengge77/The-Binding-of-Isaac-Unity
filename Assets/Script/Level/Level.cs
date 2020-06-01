@@ -233,7 +233,7 @@ public class Level : MonoBehaviour
         while (time <= delaySeconds)
         {
             mainCamera.transform.position = Vector3.Lerp(originPos, targetPos, (1 / delaySeconds) * (time += Time.deltaTime));
-            yield return 0;
+            yield return null;
         }
 
         //恢复玩家暂停

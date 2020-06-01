@@ -15,6 +15,9 @@ public class Bullet : MonoBehaviour
     Player player;
     BulletPools bulletPool;
 
+    //回收到对象池的时间
+    WaitForSeconds WaitSeconds = new WaitForSeconds(2f);
+
     void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -73,7 +76,7 @@ public class Bullet : MonoBehaviour
     /// <returns></returns>
     IEnumerator GoBackToPool()
     {
-        yield return new WaitForSeconds(2f);
+        yield return WaitSeconds;
         transform.position = Vector2.zero;
         myCollider.enabled = true;
         animator.Play("Idle");

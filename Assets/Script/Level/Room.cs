@@ -262,7 +262,7 @@ public class Room : MonoBehaviour
         while (time < endTime)
         {
             gameObject.transform.position = Vector3.Lerp(start, end, (1f / endTime) * (time += Time.deltaTime));
-            yield return 0;
+            yield return null;
         }
     }
 
