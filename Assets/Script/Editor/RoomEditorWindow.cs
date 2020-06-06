@@ -62,6 +62,8 @@ public class RoomEditorWindow : EditorWindow
     bool IsDrawRewardPosition = true;
     Sprite rewardSprite;
 
+    //用于没有地板时绘制空白区域
+    Texture2D emptyArea;
 
     [MenuItem("Window/房间布局编辑窗口")]
     static void ShowWindow()
@@ -73,6 +75,7 @@ public class RoomEditorWindow : EditorWindow
     private void OnEnable()
     {
         rewardSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Editor Default Resources/RewardSprite.png");
+        emptyArea = new Texture2D(466, 310);
     }
 
     private void OnGUI()
@@ -213,7 +216,7 @@ public class RoomEditorWindow : EditorWindow
             roomLayout.floor = (Sprite)EditorGUILayout.ObjectField("地板", roomLayout.floor, typeof(Sprite), false);
             GUILayout.BeginHorizontal();
             roomLayout.isGenerateReward = GUILayout.Toggle(roomLayout.isGenerateReward, "生成奖励品:");
-            IsDrawRewardPosition = GUILayout.Toggle(IsDrawRewardPosition, "绘制奖励品:");
+            IsDrawRewardPosition = GUILayout.Toggle(IsDrawRewardPosition, "绘制奖励品:") && roomLayout.isGenerateReward;
             GUILayout.Space(10);
             GUILayout.Label("X");
             int x = EditorGUILayout.IntSlider((int)roomLayout.RewardPosition.x, 1, 25);
@@ -236,7 +239,7 @@ public class RoomEditorWindow : EditorWindow
             }
             GUILayout.Box(floorTexture);
         }
-        else { GUILayout.Box(new Texture2D(466, 310)); }
+        else { GUILayout.Box(emptyArea); }
 
         //绘制房间内的物体
         if (Event.current.type == EventType.Repaint)

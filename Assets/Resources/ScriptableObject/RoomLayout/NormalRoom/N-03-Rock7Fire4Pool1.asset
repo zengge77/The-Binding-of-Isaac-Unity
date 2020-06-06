@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 21300012, guid: 6b28a663d85beb14fb46c9dd0fbd0cde, type: 3}
   RewardPosition: {x: 13, y: 9}
-  isGenerateReward: 1
+  isGenerateReward: 0
   monsterPrefab: []
   monsterCoordinate: []
   obstaclesPreafab:
