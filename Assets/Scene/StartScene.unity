@@ -1072,4 +1072,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 21258532}
-  ExitButton: {fileID: 662311625}
+  exitButton: {fileID: 662311625}

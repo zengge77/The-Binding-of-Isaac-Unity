@@ -11,10 +11,10 @@ public class StartScene : MonoBehaviour
 
     private void OnEnable()
     {
+        FillDate();
         startButton.onClick.AddListener(StartGame);
         exitButton.onClick.AddListener(ExitGame);
     }
-
 
     private void OnDisable()
     {
@@ -29,5 +29,10 @@ public class StartScene : MonoBehaviour
     void ExitGame()
     {
         Application.Quit();
+    }
+
+    void FillDate()
+    {
+        ItemDateFromJson.InitializeItemInfoList();
     }
 }
