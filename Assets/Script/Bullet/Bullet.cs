@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     bool isDestory;
     float damage;
     float playerKnockback;
+    float fallingDistance = -0.06f;//每秒自然下落的距离
 
     Rigidbody2D myRigidbody;
     Collider2D myCollider;
@@ -30,7 +31,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         //模拟子弹自然下落
-        if (!isDestory) { transform.Translate(0, -0.0013f, 0, Space.World); }
+        if (!isDestory) { transform.Translate(0, fallingDistance * Time.deltaTime, 0, Space.World); }
     }
 
     /// <summary>
