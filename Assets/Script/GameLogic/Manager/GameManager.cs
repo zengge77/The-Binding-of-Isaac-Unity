@@ -42,8 +42,19 @@ public class GameManager : Singleton<GameManager>
     }
     public void OverloadScene()
     {
+        QuitPauseGame();
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        Time.fixedDeltaTime = 0;
+    }
+    public void QuitPauseGame()
+    {
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
+    }
 }
