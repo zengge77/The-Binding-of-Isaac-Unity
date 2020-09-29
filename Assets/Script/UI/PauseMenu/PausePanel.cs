@@ -10,7 +10,7 @@ public class PausePanel : MonoBehaviour
     bool isActivation = false;
     bool isControllable = false;
     [HideInInspector]
-    public float ActiveSceond = 0.5f;
+    public float activeSceond = 0.5f;
 
     Player player;
 
@@ -23,35 +23,38 @@ public class PausePanel : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            EnterPanel();
-            ExitPanel();
+            if (!isActivation && !isControllable)
+            {
+                EnterPanel();
+            }
+            else if (isActivation && isControllable)
+            {
+                ExitPanel();
+            }
         }
     }
 
     public void EnterPanel()
     {
-        if (!isActivation && !isControllable)
-        {
-            player.PlayerPause();
-            isActivation = true;
-            pausedPanel.SetActivation(true);
-            backPack.SetActivation(true);
+        GameManager.Instance.PauseGame();
+        player.PlayerPause();
+        isActivation = true;
+        pausedPanel.SetActivation(true);
+        backPack.SetActivation(true);
 
-            StartCoroutine(Negate(isControllable));
-        }
+        StartCoroutine(DelayNegate(isControllable));
     }
 
     public void ExitPanel()
     {
-        if (isActivation && isControllable)
-        {
-            player.PlayerQuitPause();
-            isControllable = false;
-            pausedPanel.SetActivation(false);
-            backPack.SetActivation(false);
 
-            StartCoroutine(Negate(isActivation));
-        }
+        GameManager.Instance.QuitPauseGame();
+        player.PlayerQuitPause();
+        isControllable = false;
+        pausedPanel.SetActivation(false);
+        backPack.SetActivation(false);
+
+        StartCoroutine(DelayNegate(isActivation));
     }
 
     /// <summary>
@@ -59,11 +62,11 @@ public class PausePanel : MonoBehaviour
     /// </summary>
     /// <param name="isExit"></param>
     /// <returns></returns>
-    IEnumerator Negate(bool isExit)
+    IEnumerator DelayNegate(bool isExit)
     {
-        yield return new WaitForSeconds(ActiveSceond);
-
+        yield return new WaitForSecondsRealtime(activeSceond);
         if (isExit) { isActivation = false; }//完成退场
         else { isControllable = true; }      //完成入场
     }
+
 }

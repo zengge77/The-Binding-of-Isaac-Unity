@@ -14,13 +14,24 @@ public class BackPack : MonoBehaviour
     Animator myAnimator;
     CanvasGroup canvasGroup;
     bool IsShowToolTip;
+    float activeSceond;
 
     private void Awake()
     {
         cellList = new List<BackpackCell>();
         myAnimator = GetComponent<Animator>();
         canvasGroup = GetComponent<CanvasGroup>();
+        activeSceond = pausePanel.activeSceond;
         IsShowToolTip = false;
+    }
+
+    private void Update()
+    {
+
+        if (IsShowToolTip)
+        {
+            MoveToolTip();
+        }
     }
 
     public void SetActivation(bool value)
@@ -28,7 +39,7 @@ public class BackPack : MonoBehaviour
         if (value)
         {
             myAnimator.Play("Enter");
-            Invoke("DelayActivation", pausePanel.ActiveSceond);
+            StartCoroutine(DelayActivation(activeSceond));
         }
 
         if (!value)
@@ -37,6 +48,12 @@ public class BackPack : MonoBehaviour
             canvasGroup.interactable = false;
             HideToolTip();
         }
+    }
+
+    IEnumerator DelayActivation(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        canvasGroup.interactable = true;
     }
 
     public void AddBackpackCell(ItemInformation itemInfo)
@@ -59,20 +76,6 @@ public class BackPack : MonoBehaviour
     public void MoveToolTip()
     {
         toolTip.Move(Input.mousePosition);
-    }
-
-    void DelayActivation()
-    {
-        canvasGroup.interactable = true;
-    }
-
-    private void Update()
-    {
-
-        if (IsShowToolTip)
-        {
-            MoveToolTip();
-        }
     }
 
 }

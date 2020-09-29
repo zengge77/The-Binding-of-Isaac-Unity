@@ -13,10 +13,13 @@ public class PauseMenu : MonoBehaviour
     Animator myAnimator;
     CanvasGroup canvasGroup;
 
+    float activeSceond;
+
     void Awake()
     {
         myAnimator = GetComponent<Animator>();
         canvasGroup = GetComponent<CanvasGroup>();
+        activeSceond = pausePanel.activeSceond;
     }
 
     private void Start()
@@ -32,7 +35,7 @@ public class PauseMenu : MonoBehaviour
         {
             myAnimator.Play("Enter");
             newRun.Select();
-            Invoke("DelayActivation", pausePanel.ActiveSceond);
+            StartCoroutine(DelayActivation(activeSceond));
         }
 
         if (!value)
@@ -42,8 +45,9 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void DelayActivation()
+    IEnumerator DelayActivation(float time)
     {
+        yield return new WaitForSecondsRealtime(time);
         canvasGroup.interactable = true;
     }
 }
