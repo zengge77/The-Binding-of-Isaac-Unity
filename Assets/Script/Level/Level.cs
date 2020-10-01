@@ -145,19 +145,19 @@ public class Level : MonoBehaviour
                 {
                     Room neighboringRoom = roomArray[x + 1, y];
                     GameObject neighboringDoor = neighboringRoom.doorList[1];
-                    room.ActivationDoor(Room.Didirection.Up, neighboringRoom, neighboringDoor);
+                    room.ActivationDoor(Didirection.Up, neighboringRoom, neighboringDoor);
                 }
                 if (roomArray[x - 1, y] != null)
                 {
-                    room.ActivationDoor(Room.Didirection.Down, roomArray[x - 1, y], (roomArray[x - 1, y].doorList[0]));
+                    room.ActivationDoor(Didirection.Down, roomArray[x - 1, y], (roomArray[x - 1, y].doorList[0]));
                 }
                 if (roomArray[x, y - 1] != null)
                 {
-                    room.ActivationDoor(Room.Didirection.Left, roomArray[x, y - 1], roomArray[x, y - 1].doorList[3]);
+                    room.ActivationDoor(Didirection.Left, roomArray[x, y - 1], roomArray[x, y - 1].doorList[3]);
                 }
                 if (roomArray[x, y + 1] != null)
                 {
-                    room.ActivationDoor(Room.Didirection.Right, roomArray[x, y + 1], roomArray[x, y + 1].doorList[2]);
+                    room.ActivationDoor(Didirection.Right, roomArray[x, y + 1], roomArray[x, y + 1].doorList[2]);
                 }
             }
         }
@@ -173,22 +173,22 @@ public class Level : MonoBehaviour
         {
             if (room != null)
             {
-                room.roomType = Room.RoomType.Normal;
+                room.roomType = RoomType.Normal;
             }
         }
 
         //宝藏
         for (int i = 0; i < singleDoorRoomList.Count - 2; i++)
         {
-            singleDoorRoomList[i].roomType = Room.RoomType.Treasure;
+            singleDoorRoomList[i].roomType = RoomType.Treasure;
         }
 
         //Boss
-        singleDoorRoomList[singleDoorRoomList.Count - 1].roomType = Room.RoomType.Boss;
+        singleDoorRoomList[singleDoorRoomList.Count - 1].roomType = RoomType.Boss;
         //商店
-        singleDoorRoomList[singleDoorRoomList.Count - 2].roomType = Room.RoomType.Shop;
+        singleDoorRoomList[singleDoorRoomList.Count - 2].roomType = RoomType.Shop;
         //起始
-        currentRoom.roomType = Room.RoomType.Start;
+        currentRoom.roomType = RoomType.Start;
 
         //初始化
         foreach (Room room in roomArray)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomPropFromPool : MonoBehaviour, IRandomObject
 {
-    public Pools.PropPoolType type;
+    public PropPoolType type;
 
     void Start()
     {

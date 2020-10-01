@@ -51,13 +51,13 @@ public class MiniMap : MonoBehaviour
 
                 switch (room.roomType)
                 {
-                    case Room.RoomType.Boss:
+                    case RoomType.Boss:
                         Instantiate(miniIconBoss, cell.transform);
                         break;
-                    case Room.RoomType.Treasure:
+                    case RoomType.Treasure:
                         Instantiate(miniIconTreasure, cell.transform);
                         break;
-                    case Room.RoomType.Shop:
+                    case RoomType.Shop:
                         Instantiate(miniIconShop, cell.transform);
                         break;
                     default:

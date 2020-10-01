@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "新的随机道具表")]
-public class RandomGameObjectScriptable
- : ScriptableObject
+public class RandomGameObjectScriptable : ScriptableObject
 {
     public List<GameObject> gameObjects;
     public List<int> probability;

@@ -43,11 +43,11 @@ public class Room : MonoBehaviour
 
     //房间类型
     [HideInInspector]
-    public enum RoomType { Start, Normal, Boss, Treasure, Shop }
+    //public enum RoomType { Start, Normal, Boss, Treasure, Shop }
     public RoomType roomType;
 
     //方向类型
-    public enum Didirection { Up, Down, Left, Right }
+    //public enum Didirection { Up, Down, Left, Right }
 
     //坐标
     [HideInInspector]

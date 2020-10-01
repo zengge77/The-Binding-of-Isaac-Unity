@@ -22,7 +22,6 @@ public class Pools : MonoBehaviour
     [Header("道具池")]
     [SerializeField]
     private Prop defaultProp;//默认道具，道具池为空时返回该道具
-    public enum PropPoolType { TreasureRoom, GoldenChest, BossRoom, Shop }
 
     [Space(10)]
     [SerializeField]
@@ -67,20 +66,20 @@ public class Pools : MonoBehaviour
     /// 从房间池中获取房间布局文件
     /// </summary>
     /// <returns></returns>
-    public RoomLayout GetRoomLayout(Room.RoomType type)
+    public RoomLayout GetRoomLayout(RoomType type)
     {
         //测试模式，返回测用的布局文件
         if (GameManager.Instance.isUseTestMod)
         {
             switch (type)
             {
-                case Room.RoomType.Start:
+                case RoomType.Start:
                     return GameManager.Instance.startRoomTestSample;
-                case Room.RoomType.Normal:
+                case RoomType.Normal:
                     return GameManager.Instance.normalRoomTestSample;
-                case Room.RoomType.Boss:
+                case RoomType.Boss:
                     return GameManager.Instance.bossRoomTestSample;
-                case Room.RoomType.Treasure:
+                case RoomType.Treasure:
                     return GameManager.Instance.treasureRoomTestSample;
                 default:
                     break;
@@ -90,19 +89,19 @@ public class Pools : MonoBehaviour
         //正常模式，返回指定的布局文件
         switch (type)
         {
-            case Room.RoomType.Start:
+            case RoomType.Start:
                 return GetRandomRoomLayout(startRoom, false);
-            case Room.RoomType.Normal:
+            case RoomType.Normal:
                 if (normalRoom.Count == 0)
                 {
                     normalRoom.AddRange(Resources.LoadAll<RoomLayout>(RoomLayoutFileFolderPath[1]));
                 }
                 return GetRandomRoomLayout(normalRoom, true);
-            case Room.RoomType.Boss:
+            case RoomType.Boss:
                 return GetRandomRoomLayout(bossRoom, false);
-            case Room.RoomType.Treasure:
+            case RoomType.Treasure:
                 return GetRandomRoomLayout(treasureRoom, false);
-            case Room.RoomType.Shop:
+            case RoomType.Shop:
                 return GetRandomRoomLayout(shopRoom, false);
             default:
                 return null;
@@ -168,16 +167,16 @@ public class Pools : MonoBehaviour
     /// </summary>
     /// <param name="type"></param>
     /// <returns></returns>
-    public GameObject GetRoomClearingReward(Room.RoomType type)
+    public GameObject GetRoomClearingReward(RoomType type)
     {
         GameObject reward = null;
         switch (type)
         {
-            case Room.RoomType.Normal:
+            case RoomType.Normal:
                 int luck = GameManager.Instance.player.Luck;
                 reward = clearingReward.GetRandomObject(luck * 5);
                 break;
-            case Room.RoomType.Boss:
+            case RoomType.Boss:
                 reward = bossRoomClearingReward;
                 break;
             default:

@@ -18,7 +18,7 @@ public class Goods : Prop
         switch (goodstype)
         {
             case Goodstype.Item:
-                prototypeProp = pools.GetProp(Pools.PropPoolType.Shop).gameObject;
+                prototypeProp = pools.GetProp(PropPoolType.Shop).gameObject;
                 price = 15;
                 break;
             case Goodstype.Pickup:
