@@ -6,18 +6,25 @@ using UnityEngine.UI;
 
 public class MyButtonEvent : EventTrigger
 {
-     Color normalColor = Color.white;
-     Color highlightedColor = new Color(0.3f, 0.3f, 0.3f, 1);
+    Image image;
+
+    Color normalColor = Color.white;
+    Color highlightedColor = new Color(0.3f, 0.3f, 0.3f, 1);
+
+    private void Awake()
+    {
+        image = transform.GetComponent<Image>();
+    }
 
     public override void OnSelect(BaseEventData eventData)
     {
         base.OnSelect(eventData);
-        transform.GetComponent<Image>().color = highlightedColor;
+        image.color = highlightedColor;
     }
 
     public override void OnDeselect(BaseEventData eventData)
     {
         base.OnDeselect(eventData);
-        transform.GetComponent<Image>().color = normalColor;
+        image.color = normalColor;
     }
 }
