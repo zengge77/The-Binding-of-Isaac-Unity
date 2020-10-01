@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(RandomGameObjectTable))]
 
+[RequireComponent(typeof(RandomGameObjectTable))]
 public class RandomGameObject : MonoBehaviour, IRandomObject
 {
     private void Start()

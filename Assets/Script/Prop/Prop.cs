@@ -5,13 +5,14 @@ using UnityEngine;
 public abstract class Prop : MonoBehaviour
 {
     protected UIManager UI;
-    protected Player player { get { return GameManager.Instance.player; } }
+    protected Player player;
     protected Level level;
     protected Pools pools;
 
     [HideInInspector]
     public bool isCanBeTriggerWithPlayer = false;
     protected float triggerTime = 0.5f;
+
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public abstract class Prop : MonoBehaviour
         //gameObject.layer = 14;
         //GetComponent<SpriteRenderer>().sortingOrder = GameDate.RENDERERORDER_PROP;
         UI = UIManager.Instance;
-        //player = GameManager.Instance.player;
+        player = GameManager.Instance.player;
         level = GameManager.Instance.level;
         pools = level.pools;
         Invoke("TriggerWithPlayer", triggerTime);
@@ -31,11 +32,6 @@ public abstract class Prop : MonoBehaviour
     void TriggerWithPlayer()
     {
         isCanBeTriggerWithPlayer = true;
-    }
-
-    public void GetEffect()
-    {
-        Effect();
     }
 
     protected abstract bool IsTrigger();
