@@ -12,7 +12,7 @@ public class RoomEditorWindow : EditorWindow
     string newFileName = "我是文件名";
 
     bool isExpandCreateButton = false;
-    bool isExpandCLoadButton = false;
+    bool isExpandLoadButton = false;
 
     string[] roomLayoutFilePath = new[]
 {
@@ -30,15 +30,15 @@ public class RoomEditorWindow : EditorWindow
         "Assets/Resources/ScriptableObject/RoomLayout/TestRoom/T-Start.asset",
     };
 
-    bool monsterFoldout = false;
+    int toolBarNum;
+    Vector2 scrollViewVector2;
+
     string[] monsterPrefabPath = new[]
     {
         "Assets/Prefabs/Monster/Minions/Dip.prefab",
         "Assets/Prefabs/Monster/Elite",
         "Assets/Prefabs/Monster/Boss/The Duke Of Flies.prefab",
     };
-
-    bool obstaclesFoldout = false;
     string[] obstaclesPrefabPath = new[]
     {
         "Assets/Prefabs/Obstacles/Rock/Rock.prefab",
@@ -46,8 +46,6 @@ public class RoomEditorWindow : EditorWindow
         "Assets/Prefabs/Obstacles/FirePlace/FirePlace.prefab",
         "Assets/Prefabs/Obstacles/Poop/Poop.prefab",
     };
-
-    bool propFoldout = false;
     string[] propPrefabPath = new[]
     {
         "Assets/Prefabs/Prop/Pickup/Chest/BrownChest.prefab",
@@ -56,14 +54,14 @@ public class RoomEditorWindow : EditorWindow
         "Assets/Prefabs/Prop/Goods/ItemGoods.prefab",
     };
 
-    bool elseFoldout = false;
     //用于缓存地板精灵和贴图，因为绘制地板需要读写新文件，开销过大
-    Sprite floorSprite; Texture2D floorTexture;
-    bool IsDrawRewardPosition = true;
-    Sprite rewardSprite;
-
+    Sprite floorSprite;
+    Texture2D floorTexture;
     //用于没有地板时绘制空白区域
     Texture2D emptyArea;
+
+    bool IsDrawRewardPosition = true;
+    Sprite rewardSprite;
 
     [MenuItem("Window/房间布局编辑窗口")]
     static void ShowWindow()
@@ -80,13 +78,13 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        //文件操作
+        //文件操作区域
         FileOperation();
 
         //文件选择区域
         GUILayout.BeginVertical("box");
         roomLayout = (RoomLayout)EditorGUILayout.ObjectField("文件", roomLayout, typeof(RoomLayout), false);
-        if (roomLayout != null) { GUILayout.Label(AssetDatabase.GetAssetPath(roomLayout)); }
+        //if (roomLayout != null) { GUILayout.Label(AssetDatabase.GetAssetPath(roomLayout)); }
 
         //文件不为空时绘制编辑区域
         if (roomLayout != null) { DrawEditArea(); }
@@ -102,12 +100,12 @@ public class RoomEditorWindow : EditorWindow
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("打开文件"))
         {
-            isExpandCLoadButton = !isExpandCLoadButton; isExpandCreateButton = false;
+            isExpandLoadButton = !isExpandLoadButton; isExpandCreateButton = false;
         }
         GUILayout.Space(10);
         if (GUILayout.Button("创建文件"))
         {
-            isExpandCreateButton = !isExpandCreateButton; isExpandCLoadButton = false;
+            isExpandCreateButton = !isExpandCreateButton; isExpandLoadButton = false;
         }
         GUILayout.Space(10);
         if (GUILayout.Button("保存修改"))
@@ -120,14 +118,14 @@ public class RoomEditorWindow : EditorWindow
         }
         GUILayout.EndHorizontal();
 
-        if (isExpandCLoadButton)
+        if (isExpandLoadButton)
         {
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("普通")) { SelectObject(roomLayoutAssetPath[0]); isExpandCLoadButton = false; }
-            if (GUILayout.Button("BOSS")) { SelectObject(roomLayoutAssetPath[1]); isExpandCLoadButton = false; }
-            if (GUILayout.Button("宝藏")) { SelectObject(roomLayoutAssetPath[2]); isExpandCLoadButton = false; }
-            if (GUILayout.Button("商店")) { SelectObject(roomLayoutAssetPath[3]); isExpandCLoadButton = false; }
-            if (GUILayout.Button("测试")) { SelectObject(roomLayoutAssetPath[4]); isExpandCLoadButton = false; }
+            if (GUILayout.Button("普通")) { SelectObject(roomLayoutAssetPath[0]); isExpandLoadButton = false; }
+            if (GUILayout.Button("BOSS")) { SelectObject(roomLayoutAssetPath[1]); isExpandLoadButton = false; }
+            if (GUILayout.Button("宝藏")) { SelectObject(roomLayoutAssetPath[2]); isExpandLoadButton = false; }
+            if (GUILayout.Button("商店")) { SelectObject(roomLayoutAssetPath[3]); isExpandLoadButton = false; }
+            if (GUILayout.Button("测试")) { SelectObject(roomLayoutAssetPath[4]); isExpandLoadButton = false; }
             GUILayout.EndHorizontal();
         }
         if (isExpandCreateButton)
@@ -139,7 +137,7 @@ public class RoomEditorWindow : EditorWindow
             if (GUILayout.Button("普通")) { CreateRoomLayoutFile(roomLayoutFilePath[0]); isExpandCreateButton = false; }
             if (GUILayout.Button("BOSS")) { CreateRoomLayoutFile(roomLayoutFilePath[1]); isExpandCreateButton = false; }
             if (GUILayout.Button("宝藏")) { CreateRoomLayoutFile(roomLayoutFilePath[2]); isExpandCreateButton = false; }
-            if (GUILayout.Button("宝藏")) { CreateRoomLayoutFile(roomLayoutFilePath[3]); isExpandCreateButton = false; }
+            if (GUILayout.Button("商店")) { CreateRoomLayoutFile(roomLayoutFilePath[3]); isExpandCreateButton = false; }
             GUILayout.EndHorizontal();
         }
         GUILayout.Space(7);
@@ -147,84 +145,85 @@ public class RoomEditorWindow : EditorWindow
 
     void DrawEditArea()
     {
-        GUILayout.Space(10);
+        GUILayout.Space(5);
+        toolBarNum = GUILayout.Toolbar(toolBarNum, new[] { "主要", "障碍物列表", "怪物列表", "道具列表" });
+        GUILayout.Space(5);
+
         GUILayout.BeginVertical("box");
-        EditObstacles();
         GUILayout.Space(5);
-        EditMonster();
-        GUILayout.Space(5);
-        EditorProp();
-        GUILayout.Space(5);
-        EditElse();
+        switch (toolBarNum)
+        {
+            case 0:
+                EditMain();
+                break;
+            case 1:
+                EditObstacles();
+                break;
+            case 2:
+                EditMonster();
+                break;
+            case 3:
+                EditorProp();
+                break;
+            default:
+                break;
+        }
+
         GUILayout.EndVertical();
+    }
+    void EditMain()
+    {
+        roomLayout.floor = (Sprite)EditorGUILayout.ObjectField("地板", roomLayout.floor, typeof(Sprite), false);
+        GUILayout.Space(10);
+
+        GUILayout.BeginHorizontal();
+        roomLayout.isGenerateReward = GUILayout.Toggle(roomLayout.isGenerateReward, "生成奖励品");
+        IsDrawRewardPosition = GUILayout.Toggle(IsDrawRewardPosition, "绘制") && roomLayout.isGenerateReward;
+        GUILayout.Space(10);
+        GUILayout.Label("X");
+        int x = EditorGUILayout.IntSlider((int)roomLayout.RewardPosition.x, 1, 25);
+        GUILayout.Space(10);
+        GUILayout.Label("Y");
+        int y = EditorGUILayout.IntSlider((int)roomLayout.RewardPosition.y, 1, 13);
+        roomLayout.RewardPosition = new Vector2(x, y);
+        GUILayout.EndHorizontal();
     }
     void EditObstacles()
     {
-        //折叠开关
-        obstaclesFoldout = EditorGUILayout.Foldout(obstaclesFoldout, "障碍物列表");
-        if (obstaclesFoldout)
-        {
-            //快速选择文件夹
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("岩石")) { SelectObject(obstaclesPrefabPath[0]); }
-            if (GUILayout.Button("尖刺")) { SelectObject(obstaclesPrefabPath[1]); }
-            if (GUILayout.Button("火堆")) { SelectObject(obstaclesPrefabPath[2]); }
-            if (GUILayout.Button("屎堆")) { SelectObject(obstaclesPrefabPath[3]); }
-            GUILayout.EndHorizontal();
-            GUILayout.Space(5);
+        //快速选择文件夹
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("岩石")) { SelectObject(obstaclesPrefabPath[0]); }
+        if (GUILayout.Button("尖刺")) { SelectObject(obstaclesPrefabPath[1]); }
+        if (GUILayout.Button("火堆")) { SelectObject(obstaclesPrefabPath[2]); }
+        if (GUILayout.Button("屎堆")) { SelectObject(obstaclesPrefabPath[3]); }
+        GUILayout.EndHorizontal();
+        GUILayout.Space(5);
 
-            //根据文件绘制怪物和怪物坐标的编辑区域
-            EditObjectList(roomLayout.obstaclesPreafab, roomLayout.obstaclesCoordinate, roomLayout.RemoveObstacles, roomLayout.AddObstacles);
-        }
+        //根据文件绘制怪物和怪物坐标的编辑区域
+        EditObjectList(roomLayout.obstaclesPreafab, roomLayout.obstaclesCoordinate, roomLayout.RemoveObstacles, roomLayout.AddObstacles);
     }
     void EditMonster()
     {
-        monsterFoldout = EditorGUILayout.Foldout(monsterFoldout, "怪物列表");
-        if (monsterFoldout)
-        {
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("普通")) { SelectObject(monsterPrefabPath[0]); }
-            if (GUILayout.Button("精英")) { SelectObject(monsterPrefabPath[1]); }
-            if (GUILayout.Button("Boss")) { SelectObject(monsterPrefabPath[2]); }
-            GUILayout.EndHorizontal();
-            GUILayout.Space(5);
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("普通")) { SelectObject(monsterPrefabPath[0]); }
+        if (GUILayout.Button("精英")) { SelectObject(monsterPrefabPath[1]); }
+        if (GUILayout.Button("Boss")) { SelectObject(monsterPrefabPath[2]); }
+        GUILayout.EndHorizontal();
+        GUILayout.Space(5);
 
-            EditObjectList(roomLayout.monsterPrefab, roomLayout.monsterCoordinate, roomLayout.RemoveMonster, roomLayout.AddMonster);
-        }
+        EditObjectList(roomLayout.monsterPrefab, roomLayout.monsterCoordinate, roomLayout.RemoveMonster, roomLayout.AddMonster);
     }
     void EditorProp()
     {
-        propFoldout = EditorGUILayout.Foldout(propFoldout, "道具列表");
-        if (propFoldout)
-        {
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("箱子")) { SelectObject(propPrefabPath[0]); }
-            if (GUILayout.Button("随机拾取物")) { SelectObject(propPrefabPath[1]); }
-            if (GUILayout.Button("随机道具")) { SelectObject(propPrefabPath[2]); }
-            if (GUILayout.Button("随机商品")) { SelectObject(propPrefabPath[3]); }
-            GUILayout.EndHorizontal();
-            GUILayout.Space(5);
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("箱子")) { SelectObject(propPrefabPath[0]); }
+        if (GUILayout.Button("随机拾取物")) { SelectObject(propPrefabPath[1]); }
+        if (GUILayout.Button("随机道具")) { SelectObject(propPrefabPath[2]); }
+        if (GUILayout.Button("随机商品")) { SelectObject(propPrefabPath[3]); }
+        GUILayout.EndHorizontal();
+        GUILayout.Space(5);
 
-            EditObjectList(roomLayout.propPreafab, roomLayout.propCoordinate, roomLayout.RemoveProp, roomLayout.AddProp);
-        }
-    }
-    void EditElse()
-    {
-        elseFoldout = EditorGUILayout.Foldout(elseFoldout, "其他");
-        if (elseFoldout)
-        {
-            roomLayout.floor = (Sprite)EditorGUILayout.ObjectField("地板", roomLayout.floor, typeof(Sprite), false);
-            GUILayout.BeginHorizontal();
-            roomLayout.isGenerateReward = GUILayout.Toggle(roomLayout.isGenerateReward, "生成奖励品:");
-            IsDrawRewardPosition = GUILayout.Toggle(IsDrawRewardPosition, "绘制奖励品:") && roomLayout.isGenerateReward;
-            GUILayout.Space(10);
-            GUILayout.Label("X");
-            int x = EditorGUILayout.IntSlider((int)roomLayout.RewardPosition.x, 1, 25);
-            GUILayout.Label("Y");
-            int y = EditorGUILayout.IntSlider((int)roomLayout.RewardPosition.y, 1, 13);
-            roomLayout.RewardPosition = new Vector2(x, y);
-            GUILayout.EndHorizontal();
-        }
+        EditObjectList(roomLayout.propPreafab, roomLayout.propCoordinate, roomLayout.RemoveProp, roomLayout.AddProp);
     }
 
     void DrawPreviewArea()
@@ -282,10 +281,11 @@ public class RoomEditorWindow : EditorWindow
         string newPath = Path.Combine(path, newFileName + ".asset");
         AssetDatabase.CreateAsset(go, newPath);
         roomLayout = SelectObject(newPath) as RoomLayout;
+        toolBarNum = 0;
     }
 
     /// <summary>
-    /// 根据预制体和坐标绘制编辑行列
+    /// 根据预制体和坐标绘制编辑行列，有高度限制(185)
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="prefabs"></param>
@@ -294,6 +294,7 @@ public class RoomEditorWindow : EditorWindow
     /// <param name="add"></param>
     void EditObjectList<T>(List<T> prefabs, List<Vector2> coordinates, Action<int> remove, Action add) where T : UnityEngine.Object
     {
+        scrollViewVector2 = GUILayout.BeginScrollView(scrollViewVector2, GUILayout.Height(185));
         for (int i = 0; i < prefabs.Count; i++)
         {
             GUILayout.BeginHorizontal();
@@ -310,6 +311,7 @@ public class RoomEditorWindow : EditorWindow
             GUILayout.EndHorizontal();
         }
         if (GUILayout.Button("添加", GUILayout.MaxWidth(75))) { add(); }
+        GUILayout.EndScrollView();
     }
 
     /// <summary>
