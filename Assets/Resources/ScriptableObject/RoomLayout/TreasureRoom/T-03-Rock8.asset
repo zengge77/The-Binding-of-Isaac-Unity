@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af0817f205279cf41b004ca7870507cf, type: 3}
-  m_Name: T-02-Rock8
+  m_Name: T-03-Rock8
   m_EditorClassIdentifier: 
   floor: {fileID: 21300006, guid: aa7142eec3b21db4990fdc492970b1dc, type: 3}
   RewardPosition: {x: 1, y: 1}
+  isGenerateReward: 0
   monsterPrefab: []
   monsterCoordinate: []
   obstaclesPreafab:
