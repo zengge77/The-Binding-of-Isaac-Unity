@@ -33,6 +33,8 @@ public class RoomEditorWindow : EditorWindow
     int toolBarNum;
     Vector2 scrollViewVector2;
 
+    Vector2 centerCoordinate = new Vector2(13, 7);
+
     string[] monsterPrefabPath = new[]
     {
         "Assets/Prefabs/Monster/Minions/Dip.prefab",
@@ -49,8 +51,8 @@ public class RoomEditorWindow : EditorWindow
     string[] propPrefabPath = new[]
     {
         "Assets/Prefabs/Prop/Pickup/Chest/BrownChest.prefab",
-        "Assets/Prefabs/Prop/RandomPickup/RandomCoin.prefab",
-        "Assets/Prefabs/Prop/RandomItem/TreasureRoom Item.prefab",
+        "Assets/Prefabs/Prop/Pickup/RandomPickup/RandomCoin.prefab",
+        "Assets/Prefabs/Prop/Item/RandomItem/TreasureRoom Item.prefab",
         "Assets/Prefabs/Prop/Goods/ItemGoods.prefab",
     };
 
@@ -60,8 +62,10 @@ public class RoomEditorWindow : EditorWindow
     //用于没有地板时绘制空白区域
     Texture2D emptyArea;
 
-    bool IsDrawRewardPosition = true;
+    bool IsDrawRewardPosition;
     Sprite rewardSprite;
+    bool isDrawAuxiliaryLine;
+    Sprite auxiliaryLineSprite;
 
     [MenuItem("Window/房间布局编辑窗口")]
     static void ShowWindow()
@@ -73,6 +77,7 @@ public class RoomEditorWindow : EditorWindow
     private void OnEnable()
     {
         rewardSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Editor Default Resources/RewardSprite.png");
+        auxiliaryLineSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Editor Default Resources/Auxiliary Line.png");
         emptyArea = new Texture2D(466, 310);
     }
 
@@ -83,7 +88,9 @@ public class RoomEditorWindow : EditorWindow
 
         //文件选择区域
         GUILayout.BeginVertical("box");
+        RoomLayout temp = roomLayout;
         roomLayout = (RoomLayout)EditorGUILayout.ObjectField("文件", roomLayout, typeof(RoomLayout), false);
+        if (temp != roomLayout) { ResetEditInstallWhenChange(); }//监控roomLayout文件是否被替换
         //if (roomLayout != null) { GUILayout.Label(AssetDatabase.GetAssetPath(roomLayout)); }
 
         //文件不为空时绘制编辑区域
@@ -173,7 +180,10 @@ public class RoomEditorWindow : EditorWindow
     }
     void EditMain()
     {
+        GUILayout.BeginHorizontal();
         roomLayout.floor = (Sprite)EditorGUILayout.ObjectField("地板", roomLayout.floor, typeof(Sprite), false);
+        isDrawAuxiliaryLine = GUILayout.Toggle(isDrawAuxiliaryLine, "辅助线");
+        GUILayout.EndHorizontal();
         GUILayout.Space(10);
 
         GUILayout.BeginHorizontal();
@@ -255,6 +265,11 @@ public class RoomEditorWindow : EditorWindow
                 Vector2 coordinate = roomLayout.RewardPosition;
                 DrawSprite(rewardSprite, coordinate);
             }
+            //绘制辅助线
+            if (isDrawAuxiliaryLine)
+            {
+                DrawSprite(auxiliaryLineSprite, centerCoordinate);
+            }
         }
     }
 
@@ -268,7 +283,29 @@ public class RoomEditorWindow : EditorWindow
         UnityEngine.Object obj = AssetDatabase.LoadMainAssetAtPath(path);
         if (obj == null) { Debug.Log("文件不存在： " + path); return null; }
         Selection.activeObject = obj;
+        
         return obj;
+    }
+
+    /// <summary>
+    /// 更换RoomLayout时重置相关设置
+    /// </summary>
+    private void ResetEditInstallWhenChange()
+    {
+        toolBarNum = 0;
+        isDrawAuxiliaryLine = false;
+        IsDrawRewardPosition = true;
+    }
+
+    /// <summary>
+    /// 新建RoomLayout时重置相关设置
+    /// </summary>
+    /// <param name="file"></param>
+    private void ResetEditInstallWhenCreat()
+    {
+        toolBarNum = 0;
+        isDrawAuxiliaryLine = true;
+        IsDrawRewardPosition = true;
     }
 
     /// <summary>
@@ -281,7 +318,9 @@ public class RoomEditorWindow : EditorWindow
         string newPath = Path.Combine(path, newFileName + ".asset");
         AssetDatabase.CreateAsset(go, newPath);
         roomLayout = SelectObject(newPath) as RoomLayout;
-        toolBarNum = 0;
+        roomLayout.isGenerateReward = true;
+        roomLayout.RewardPosition = centerCoordinate;
+        ResetEditInstallWhenCreat();
     }
 
     /// <summary>
