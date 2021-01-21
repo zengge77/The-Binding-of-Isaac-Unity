@@ -30,7 +30,7 @@ public class Goods : Prop
         }
 
         //生成道具
-        Transform propContainer = level.currentRoom.PropContainer;
+        Transform propContainer = level.currentRoom.propContainer;
         newProp = Instantiate(prototypeProp, propContainer);
         newProp.transform.position = transform.position;
         newProp.GetComponent<Collider2D>().enabled = false;

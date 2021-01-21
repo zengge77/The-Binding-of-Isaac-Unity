@@ -39,7 +39,7 @@ public abstract class Chest : Pickup
     [ContextMenu("打开")]
     protected override void Effect()
     {
-        Transform propContainer = level.currentRoom.PropContainer;
+        Transform propContainer = level.currentRoom.propContainer;
         int num = UnityEngine.Random.Range(mixNum, maxNum + 1);
 
         for (int i = 0; i < num; i++)

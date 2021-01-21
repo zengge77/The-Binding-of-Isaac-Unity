@@ -18,7 +18,7 @@ public class RandomGameObject : MonoBehaviour, IRandomObject
         if (newGameObject != null)
         {
             go = Instantiate(newGameObject);
-            go.transform.SetParent(GameManager.Instance.level.currentRoom.PropContainer);
+            go.transform.SetParent(GameManager.Instance.level.currentRoom.propContainer);
             go.transform.position = transform.position;
         }
         Destroy(gameObject);

@@ -124,8 +124,8 @@ public class Level : MonoBehaviour
 
         int x = (int)coordinate.x - roomArray.GetLength(0) / 2;
         int y = (int)coordinate.y - roomArray.GetLength(1) / 2;
-        float roomHeight = 2 * newRoom.roomSize.x;
-        float roomWidth = 2 * newRoom.roomSize.y;
+        float roomHeight = 2 * newRoom.roomHeight;
+        float roomWidth = 2 * newRoom.roomWidth;
         newRoom.transform.position = new Vector2(y * roomWidth, x * roomHeight);
 
         return newRoom;
@@ -195,7 +195,7 @@ public class Level : MonoBehaviour
         {
             if (room != null)
             {
-                room.InitializeRoom();
+                room.Initialize();
             }
         }
     }

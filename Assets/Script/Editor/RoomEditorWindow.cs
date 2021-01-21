@@ -283,7 +283,6 @@ public class RoomEditorWindow : EditorWindow
         UnityEngine.Object obj = AssetDatabase.LoadMainAssetAtPath(path);
         if (obj == null) { Debug.Log("文件不存在： " + path); return null; }
         Selection.activeObject = obj;
-        
         return obj;
     }
 

@@ -24,7 +24,7 @@ public class Rock : Obstacles, IDestructible
 
     public void DestorySelf()
     {
-        currentRoom.GenerateFragment(fragment, 3, transform.position, 0.5f);
+        currentRoom.GenerateTraces(fragment, 3, transform.position, 0.5f);
         GenerateReward();
 
         if (rockGroup != null)

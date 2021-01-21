@@ -842,9 +842,9 @@ MonoBehaviour:
   bossDoorFrame: {fileID: 21300000, guid: 02f70da13ddd50f4b8280f34255a4a94, type: 3}
   treasureDoorFrame: {fileID: 21300000, guid: ef19d3b3094441642b3267d45170733e, type: 3}
   monsterContainer: {fileID: 4666541476721168}
-  ObstaclesContainer: {fileID: 7213168884713711788}
-  PropContainer: {fileID: 7527059234057616980}
-  fragmentContainer: {fileID: 7125361052443001313}
+  obstaclesContainer: {fileID: 7213168884713711788}
+  propContainer: {fileID: 7527059234057616980}
+  traceContainer: {fileID: 7125361052443001313}
   roomType: 0
   coordinate: {x: 0, y: 0}
   roomSize: {x: 0, y: 0}
@@ -3059,7 +3059,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7125361052443001313}
   m_Layer: 0
-  m_Name: RelicContainer
+  m_Name: TraceContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
