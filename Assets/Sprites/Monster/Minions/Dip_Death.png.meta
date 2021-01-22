@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: e443581a97dfb2949b979dc8d350bb30
-timeCreated: 1495697627
-licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: enemy_death_0
@@ -15,14 +13,17 @@ TextureImporter:
     21300016: enemy_death_8
     21300018: enemy_death_9
     21300020: enemy_death_10
-  serializedVersion: 2
+  externalObjects: {}
+  serializedVersion: 7
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
@@ -31,37 +32,59 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    serializedVersion: 2
+    filterMode: 0
     aniso: 16
-    mipBias: -1
-    wrapMode: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: enemy_death_0
+    - serializedVersion: 2
+      name: enemy_death_0
       rect:
         serializedVersion: 2
         x: 0
@@ -71,15 +94,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -10, y: 14}
-        - {x: -10, y: -10}
-        - {x: -3, y: -12}
-        - {x: 10, y: -12}
-        - {x: 13, y: -7}
-        - {x: 13, y: 6}
-        - {x: 8, y: 14}
-    - name: enemy_death_1
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f735cde395ecda47b39bba15b62970f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_1
       rect:
         serializedVersion: 2
         x: 64
@@ -89,19 +114,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 18, y: -4}
-        - {x: 19, y: -2}
-        - {x: 19, y: 3}
-        - {x: 11, y: 22}
-        - {x: -16, y: 22}
-        - {x: -16, y: -16}
-        - {x: -8, y: -18}
-        - {x: 11, y: -18}
-        - {x: 13, y: -16}
-        - {x: 13, y: -14}
-        - {x: 9, y: -9}
-    - name: enemy_death_2
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c39b101694a0234c983a7c2ad4218be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_2
       rect:
         serializedVersion: 2
         x: 128
@@ -111,44 +134,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 13, y: 17}
-        - {x: 9, y: 17}
-        - {x: 6, y: 14}
-        - {x: 5, y: 15}
-        - {x: -5, y: 16}
-        - {x: -11, y: 8}
-        - {x: -22, y: 0}
-        - {x: -22, y: -14}
-        - {x: -21, y: -21}
-        - {x: -14, y: -25}
-        - {x: 4, y: -25}
-        - {x: 15, y: -7}
-        - {x: 16, y: -3}
-        - {x: 16, y: 12}
-      - - {x: 6, y: -16}
-        - {x: 11, y: -24}
-        - {x: 17, y: -24}
-        - {x: 17, y: -20}
-        - {x: 11, y: -11}
-        - {x: 7, y: -11}
-        - {x: 6, y: -13}
-      - - {x: -17, y: 19}
-        - {x: -10, y: 13}
-        - {x: -8, y: 13}
-        - {x: -6, y: 15}
-        - {x: -8, y: 20}
-        - {x: -11, y: 24}
-        - {x: -16, y: 24}
-        - {x: -17, y: 23}
-      - - {x: 1, y: 24}
-        - {x: 1, y: 22}
-        - {x: 5, y: 18}
-        - {x: 8, y: 19}
-        - {x: 8, y: 23}
-        - {x: 5, y: 26}
-        - {x: 3, y: 26}
-    - name: enemy_death_3
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 007024dc7c1c02c4286060cff16becd7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_3
       rect:
         serializedVersion: 2
         x: 192
@@ -158,63 +154,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -4, y: -15}
-        - {x: -6, y: -19}
-        - {x: -6, y: -26}
-        - {x: -3, y: -29}
-        - {x: 0, y: -28}
-        - {x: 0, y: -15}
-      - - {x: 12, y: -16}
-        - {x: 11, y: -19}
-        - {x: 14, y: -26}
-        - {x: 17, y: -26}
-        - {x: 19, y: -24}
-        - {x: 19, y: -22}
-        - {x: 15, y: -16}
-      - - {x: -15, y: -6}
-        - {x: -22, y: -14}
-        - {x: -22, y: -20}
-        - {x: -20, y: -23}
-        - {x: -18, y: -23}
-        - {x: -13, y: -21}
-        - {x: -11, y: -10}
-        - {x: -11, y: -7}
-        - {x: -13, y: -6}
-      - - {x: 9, y: 12}
-        - {x: -1, y: 22}
-        - {x: -18, y: 30}
-        - {x: -25, y: 30}
-        - {x: -25, y: 25}
-        - {x: -24, y: 23}
-        - {x: -13, y: -12}
-        - {x: -10, y: -13}
-        - {x: 17, y: -13}
-        - {x: 23, y: -8}
-        - {x: 23, y: 6}
-      - - {x: -30, y: -1}
-        - {x: -32, y: -5}
-        - {x: -31, y: -8}
-        - {x: -25, y: -8}
-        - {x: -21, y: -5}
-        - {x: -21, y: -3}
-        - {x: -22, y: -1}
-      - - {x: 11, y: 22}
-        - {x: 8, y: 15}
-        - {x: 8, y: 11}
-        - {x: 12, y: 11}
-        - {x: 17, y: 15}
-        - {x: 17, y: 20}
-        - {x: 15, y: 22}
-      - - {x: 2, y: 28}
-        - {x: -1, y: 27}
-        - {x: -1, y: 22}
-        - {x: 1, y: 21}
-        - {x: 6, y: 21}
-        - {x: 7, y: 24}
-        - {x: 7, y: 25}
-        - {x: 6, y: 28}
-    - name: enemy_death_4
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb743680d81aed0438e109f204e2e85c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_4
       rect:
         serializedVersion: 2
         x: 0
@@ -224,106 +174,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -5, y: -30}
-        - {x: -3, y: -32}
-        - {x: 1, y: -32}
-        - {x: 1, y: -27}
-        - {x: -2, y: -22}
-        - {x: -5, y: -23}
-      - - {x: 14, y: -19}
-        - {x: 13, y: -22}
-        - {x: 15, y: -27}
-        - {x: 18, y: -27}
-        - {x: 20, y: -25}
-        - {x: 20, y: -23}
-        - {x: 16, y: -19}
-      - - {x: -25, y: -15}
-        - {x: -25, y: -18}
-        - {x: -21, y: -24}
-        - {x: -16, y: -24}
-        - {x: -14, y: -23}
-        - {x: -14, y: -20}
-        - {x: -18, y: -11}
-        - {x: -20, y: -11}
-      - - {x: 5, y: -10}
-        - {x: 9, y: -14}
-        - {x: 12, y: -13}
-        - {x: 12, y: -11}
-        - {x: 8, y: -7}
-        - {x: 6, y: -7}
-      - - {x: 22, y: -4}
-        - {x: 20, y: -7}
-        - {x: 25, y: -13}
-        - {x: 28, y: -13}
-        - {x: 29, y: -11}
-        - {x: 29, y: -7}
-        - {x: 26, y: -5}
-      - - {x: -32, y: -3}
-        - {x: -32, y: -9}
-        - {x: -27, y: -9}
-        - {x: -23, y: -7}
-        - {x: -22, y: -4}
-        - {x: -23, y: -1}
-        - {x: -28, y: -1}
-      - - {x: -16, y: 0}
-        - {x: -18, y: -2}
-        - {x: -18, y: -4}
-        - {x: -16, y: -6}
-        - {x: -14, y: -6}
-        - {x: -12, y: -4}
-        - {x: -12, y: -2}
-        - {x: -14, y: 0}
-      - - {x: -4, y: 13}
-        - {x: -10, y: 6}
-        - {x: -10, y: 0}
-        - {x: -4, y: -5}
-        - {x: 7, y: -5}
-        - {x: 9, y: 0}
-        - {x: 9, y: 5}
-        - {x: 2, y: 13}
-      - - {x: 10, y: 4}
-        - {x: 13, y: 5}
-        - {x: 13, y: 8}
-        - {x: 10, y: 9}
-        - {x: 8, y: 7}
-      - - {x: -15, y: 15}
-        - {x: -13, y: 14}
-        - {x: -10, y: 15}
-        - {x: -10, y: 20}
-        - {x: -11, y: 23}
-        - {x: -14, y: 23}
-        - {x: -15, y: 21}
-      - - {x: -7, y: 23}
-        - {x: -4, y: 18}
-        - {x: -1, y: 19}
-        - {x: -1, y: 25}
-        - {x: -4, y: 28}
-        - {x: -7, y: 27}
-      - - {x: 17, y: 27}
-        - {x: 14, y: 25}
-        - {x: 14, y: 20}
-        - {x: 16, y: 18}
-        - {x: 21, y: 18}
-        - {x: 23, y: 22}
-        - {x: 23, y: 26}
-        - {x: 22, y: 27}
-      - - {x: -26, y: 32}
-        - {x: -27, y: 30}
-        - {x: -27, y: 26}
-        - {x: -19, y: 22}
-        - {x: -16, y: 23}
-        - {x: -16, y: 25}
-        - {x: -23, y: 32}
-      - - {x: 2, y: 30}
-        - {x: 0, y: 28}
-        - {x: 0, y: 26}
-        - {x: 2, y: 24}
-        - {x: 4, y: 24}
-        - {x: 6, y: 26}
-        - {x: 6, y: 28}
-        - {x: 4, y: 30}
-    - name: enemy_death_5
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce083cddbc7421e409f30fe92b5c8b5a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_5
       rect:
         serializedVersion: 2
         x: 64
@@ -333,99 +194,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -4, y: -32}
-        - {x: 3, y: -32}
-        - {x: 3, y: -29}
-        - {x: 1, y: -25}
-        - {x: -3, y: -25}
-        - {x: -4, y: -27}
-      - - {x: 17, y: -21}
-        - {x: 15, y: -24}
-        - {x: 19, y: -29}
-        - {x: 21, y: -29}
-        - {x: 23, y: -27}
-        - {x: 23, y: -25}
-        - {x: 22, y: -23}
-      - - {x: -19, y: -17}
-        - {x: -21, y: -18}
-        - {x: -21, y: -22}
-        - {x: -19, y: -26}
-        - {x: -14, y: -26}
-        - {x: -13, y: -25}
-        - {x: -13, y: -21}
-        - {x: -17, y: -17}
-      - - {x: -27, y: -19}
-        - {x: -27, y: -21}
-        - {x: -25, y: -22}
-        - {x: -23, y: -22}
-        - {x: -21, y: -19}
-        - {x: -21, y: -17}
-        - {x: -24, y: -16}
-      - - {x: 25, y: -8}
-        - {x: 23, y: -10}
-        - {x: 25, y: -15}
-        - {x: 28, y: -15}
-        - {x: 30, y: -14}
-        - {x: 30, y: -11}
-        - {x: 29, y: -8}
-      - - {x: -32, y: -4}
-        - {x: -32, y: -10}
-        - {x: -30, y: -10}
-        - {x: -26, y: -6}
-        - {x: -26, y: -4}
-        - {x: -29, y: -3}
-      - - {x: -17, y: -8}
-        - {x: -14, y: -7}
-        - {x: -14, y: -4}
-        - {x: -17, y: -3}
-        - {x: -19, y: -5}
-      - - {x: -4, y: 14}
-        - {x: -7, y: 10}
-        - {x: -7, y: 6}
-        - {x: -4, y: 5}
-        - {x: -1, y: 3}
-        - {x: 0, y: 0}
-        - {x: 1, y: 1}
-        - {x: -2, y: 3}
-        - {x: -7, y: 7}
-        - {x: -10, y: 8}
-        - {x: -12, y: 8}
-        - {x: -12, y: 2}
-        - {x: -10, y: -5}
-        - {x: -5, y: -6}
-        - {x: 5, y: -6}
-        - {x: 10, y: -1}
-        - {x: 10, y: 4}
-        - {x: 4, y: 14}
-      - - {x: -9, y: 28}
-        - {x: -9, y: 26}
-        - {x: -5, y: 22}
-        - {x: -2, y: 24}
-        - {x: -3, y: 28}
-        - {x: -5, y: 30}
-        - {x: -7, y: 30}
-      - - {x: 20, y: 29}
-        - {x: 18, y: 27}
-        - {x: 18, y: 25}
-        - {x: 20, y: 23}
-        - {x: 22, y: 23}
-        - {x: 24, y: 25}
-        - {x: 24, y: 27}
-        - {x: 22, y: 29}
-      - - {x: -30, y: 32}
-        - {x: -30, y: 29}
-        - {x: -25, y: 25}
-        - {x: -23, y: 25}
-        - {x: -21, y: 26}
-        - {x: -21, y: 28}
-        - {x: -24, y: 32}
-      - - {x: 1, y: 27}
-        - {x: 4, y: 28}
-        - {x: 4, y: 31}
-        - {x: 1, y: 32}
-        - {x: -1, y: 30}
-    - name: enemy_death_6
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 734b8c2c53cd25b4ebc281ba28122707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_6
       rect:
         serializedVersion: 2
         x: 128
@@ -435,70 +214,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 2, y: -32}
-        - {x: 2, y: -30}
-        - {x: -1, y: -29}
-        - {x: -3, y: -32}
-      - - {x: 21, y: -30}
-        - {x: 24, y: -29}
-        - {x: 24, y: -26}
-        - {x: 21, y: -25}
-        - {x: 19, y: -27}
-      - - {x: -16, y: -21}
-        - {x: -18, y: -22}
-        - {x: -18, y: -25}
-        - {x: -16, y: -27}
-        - {x: -14, y: -27}
-        - {x: -12, y: -25}
-        - {x: -12, y: -24}
-        - {x: -14, y: -21}
-      - - {x: 26, y: -15}
-        - {x: 28, y: -17}
-        - {x: 31, y: -16}
-        - {x: 31, y: -13}
-        - {x: 29, y: -11}
-        - {x: 26, y: -12}
-      - - {x: -29, y: -9}
-        - {x: -29, y: -6}
-        - {x: -32, y: -5}
-        - {x: -32, y: -10}
-      - - {x: -13, y: 7}
-        - {x: -13, y: -2}
-        - {x: -8, y: -5}
-        - {x: -5, y: -7}
-        - {x: 3, y: -7}
-        - {x: 6, y: -5}
-        - {x: 6, y: 4}
-        - {x: -1, y: 7}
-      - - {x: 9, y: 0}
-        - {x: 12, y: 1}
-        - {x: 12, y: 4}
-        - {x: 9, y: 5}
-        - {x: 7, y: 3}
-      - - {x: -7, y: 6}
-        - {x: -2, y: 3}
-        - {x: 7, y: 3}
-        - {x: 7, y: 10}
-        - {x: 6, y: 16}
-        - {x: -4, y: 16}
-        - {x: -7, y: 12}
-      - - {x: 23, y: 26}
-        - {x: 26, y: 27}
-        - {x: 26, y: 30}
-        - {x: 23, y: 31}
-        - {x: 21, y: 29}
-      - - {x: -8, y: 27}
-        - {x: -5, y: 28}
-        - {x: -5, y: 31}
-        - {x: -8, y: 32}
-        - {x: -10, y: 30}
-      - - {x: -28, y: 28}
-        - {x: -25, y: 29}
-        - {x: -25, y: 32}
-        - {x: -31, y: 32}
-        - {x: -31, y: 31}
-    - name: enemy_death_7
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cfe51193d7146a4ea214d64797d1364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_7
       rect:
         serializedVersion: 2
         x: 192
@@ -508,44 +234,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -15, y: -29}
-        - {x: -12, y: -28}
-        - {x: -12, y: -25}
-        - {x: -15, y: -24}
-        - {x: -17, y: -26}
-      - - {x: 28, y: -16}
-        - {x: 30, y: -19}
-        - {x: 32, y: -18}
-        - {x: 32, y: -15}
-        - {x: 30, y: -14}
-      - - {x: -12, y: 4}
-        - {x: -14, y: 2}
-        - {x: -14, y: 0}
-        - {x: -11, y: -6}
-        - {x: -8, y: -7}
-        - {x: -4, y: -7}
-        - {x: -2, y: -6}
-        - {x: -2, y: -3}
-        - {x: -8, y: 4}
-      - - {x: -2, y: -4}
-        - {x: -1, y: -7}
-        - {x: 3, y: -7}
-        - {x: 7, y: -3}
-        - {x: 7, y: -1}
-        - {x: 4, y: 0}
-      - - {x: 4, y: 19}
-        - {x: -3, y: 19}
-        - {x: -8, y: 17}
-        - {x: -8, y: 10}
-        - {x: 5, y: 10}
-        - {x: 7, y: 12}
-        - {x: 7, y: 15}
-      - - {x: -27, y: 30}
-        - {x: -27, y: 32}
-        - {x: -32, y: 32}
-        - {x: -30, y: 29}
-    - name: enemy_death_8
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f814d3fe349f4a47a49af7be2f273ee
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_8
       rect:
         serializedVersion: 2
         x: 0
@@ -555,30 +254,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13, y: 0}
-        - {x: -14, y: -2}
-        - {x: -14, y: -5}
-        - {x: -11, y: -8}
-        - {x: -7, y: -8}
-        - {x: -6, y: -6}
-        - {x: -6, y: -3}
-        - {x: -11, y: 0}
-      - - {x: 1, y: -4}
-        - {x: 2, y: -7}
-        - {x: 5, y: -7}
-        - {x: 7, y: -5}
-        - {x: 6, y: -2}
-        - {x: 3, y: -2}
-      - - {x: -6, y: 21}
-        - {x: -8, y: 18}
-        - {x: -8, y: 16}
-        - {x: -7, y: 14}
-        - {x: 1, y: 14}
-        - {x: 3, y: 15}
-        - {x: 4, y: 18}
-        - {x: 3, y: 21}
-    - name: enemy_death_9
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5d10a40701f4e459c04961739c88d1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_9
       rect:
         serializedVersion: 2
         x: 64
@@ -588,21 +274,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -15, y: -6}
-        - {x: -12, y: -9}
-        - {x: -9, y: -8}
-        - {x: -9, y: -6}
-        - {x: -12, y: -3}
-        - {x: -14, y: -3}
-      - - {x: -4, y: 21}
-        - {x: -5, y: 19}
-        - {x: -5, y: 16}
-        - {x: -4, y: 15}
-        - {x: 1, y: 15}
-        - {x: 1, y: 20}
-        - {x: -1, y: 21}
-    - name: enemy_death_10
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2118872fe91b8645acbe793a6c28e5e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_death_10
       rect:
         serializedVersion: 2
         x: 128
@@ -612,14 +294,26 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -3, y: 18}
-        - {x: 0, y: 19}
-        - {x: 0, y: 22}
-        - {x: -3, y: 23}
-        - {x: -5, y: 21}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ca5b94b62e8d6d4eb35970a91885880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
