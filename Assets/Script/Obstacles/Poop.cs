@@ -31,8 +31,8 @@ public class Poop : Obstacles, IAttackable, IDestructible
 
     public void DestorySelf()
     {
-        currentRoom.GenerateTraces(fragment, 3, transform.position, 0.3f);
-        currentRoom.GenerateTrace(shapes[shapes.Count - 1], transform.position);
+        generateGameObject.GenerateTracesInCurrentRoom(fragment, 3, transform.position, 0.3f);
+        generateGameObject.GenerateTraceInCurrentRoom(shapes[shapes.Count - 1], transform.position);
         GenerateReward();
         Destroy(gameObject);
     }

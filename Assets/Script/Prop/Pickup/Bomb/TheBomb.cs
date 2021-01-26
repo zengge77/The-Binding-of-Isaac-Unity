@@ -73,8 +73,7 @@ public class TheBomb : MonoBehaviour
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Animator>().Play("Explosion");
-        Room room = GameManager.Instance.level.currentRoom;
-        room.GenerateTrace(traces, transform.position);
+        GameManager.Instance.level.generateGameObject.GenerateTraceInCurrentRoom(traces, transform.position);
         Invoke("Destroy", 0.5f);
     }
     void Destroy()

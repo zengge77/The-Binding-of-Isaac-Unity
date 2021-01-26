@@ -222,13 +222,13 @@ public class Room : MonoBehaviour
     /// <summary>
     /// 在房间里生成多个痕迹并移动位置
     /// </summary>
-    public void GenerateTraces(List<Sprite> fragmentSprites, int num, Vector2 position, float maxDirection)
+    public void GenerateTraces(List<Sprite> traceSprites, int num, Vector2 position, float maxDirection)
     {
         for (int i = 0; i < num; i++)
         {
-            Sprite sprite = fragmentSprites[UnityEngine.Random.Range(0, fragmentSprites.Count)];
-            GameObject fragment = GenerateTrace(sprite, position);
-            StartCoroutine(Flop(fragment, maxDirection));
+            Sprite sprite = traceSprites[UnityEngine.Random.Range(0, traceSprites.Count)];
+            GameObject trace = GenerateTrace(sprite, position);
+            StartCoroutine(Flop(trace, maxDirection));
         }
     }
     IEnumerator Flop(GameObject gameObject, float maxDirection)
@@ -247,24 +247,38 @@ public class Room : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 使用具体位置在房间里生成单个物体
+    /// </summary>
+    /// <param name="prefab"></param>
+    /// <param name="position"></param>
+    /// <param name="container"></param>
+    /// <returns></returns>
+    public GameObject GenerateGameObjectWithPosition(GameObject prefab, Vector2 position, Transform container)
+    {
+        if (prefab == null) { return null; }
 
+        GameObject go = Instantiate(prefab, container);
+        go.transform.position = position;
+        return go;
+    }
 
     /// <summary>
     /// 使用坐标在房间里生成单个物体
     /// </summary>
-    private void GenerateGameObjectWithCoordinate(GameObject prefab, Vector2 coordinate, Transform container)
+    private GameObject GenerateGameObjectWithCoordinate(GameObject prefab, Vector2 coordinate, Transform container)
     {
-        if (prefab != null)
-        {
-            int middleX = 13;
-            int middleY = 7;
-            float width = 0.1385f;
-            float heigt = 0.1475f;
+        if (prefab == null) { return null; }
 
-            GameObject go = Instantiate(prefab, container);
-            Vector2 postiton = new Vector2(-(middleX - coordinate.x) * width, (middleY - coordinate.y) * heigt);
-            go.transform.localPosition = postiton;
-        }
+        int middleX = 13;
+        int middleY = 7;
+        float width = 0.1385f;
+        float heigt = 0.1475f;
+
+        GameObject go = Instantiate(prefab, container);
+        Vector2 postiton = new Vector2(-(middleX - coordinate.x) * width, (middleY - coordinate.y) * heigt);
+        go.transform.localPosition = postiton;
+        return go;
     }
 
 }

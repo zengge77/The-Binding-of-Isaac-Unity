@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
-    [Header("房间")]
+    #region 房间相关
+    [Header("房间相关")]
     [SerializeField]
     private Room roomPrefab;
     [SerializeField]
@@ -16,24 +17,31 @@ public class Level : MonoBehaviour
     private List<Room> haveBeenToRoomList = new List<Room>();
     [HideInInspector]
     public Room currentRoom;
+    #endregion
 
-    [Header("道具房间池")]
+    #region 功能类
     [HideInInspector]
     public Pools pools;
+    [HideInInspector]
+    public GenerateGameObject generateGameObject;
+    #endregion
 
-    Player player;
-    UIManager UI;
+    #region 其他
+    private Player player;
+    private UIManager UI;
+    #endregion
 
     private void Awake()
     {
         pools = GetComponent<Pools>();
+        generateGameObject = GetComponent<GenerateGameObject>();
     }
 
     private void Start()
     {
         UI = UIManager.Instance;
         player = GameManager.Instance.player;
-        GenerateRooms();
+        CreateRooms();
         UI.miniMap.CreatMiniMap();
         StartCoroutine(MoveToNextRoom(Vector2.zero));
     }
@@ -41,7 +49,7 @@ public class Level : MonoBehaviour
     /// <summary>
     /// 创建所有的房间
     /// </summary>
-    private void GenerateRooms()
+    private void CreateRooms()
     {
         //储存备选生成房间的位置列表
         List<Vector2> alternativeRoomList = new List<Vector2>();

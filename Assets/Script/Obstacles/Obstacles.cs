@@ -1,29 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(RandomGameObjectTable))]
 
+[RequireComponent(typeof(RandomGameObjectTable))]
 public class Obstacles : MonoBehaviour
 {
     protected Player player;
+    protected Level level;
     protected Room currentRoom;
+    protected GenerateGameObject generateGameObject;
 
     private void Awake()
     {
         player = GameManager.Instance.player;
-        currentRoom = GameManager.Instance.level.currentRoom;
+        level = GameManager.Instance.level;
+        currentRoom = level.currentRoom;
+        generateGameObject = level.generateGameObject;
     }
 
     protected virtual GameObject GenerateReward()
     {
-        GameObject go = null;
-        GameObject newGameObject = GetComponent<RandomGameObjectTable>().GetRandomObject();
-        if (newGameObject != null)
-        {
-            go = Instantiate(newGameObject);
-            go.transform.SetParent(GameManager.Instance.level.currentRoom.propContainer);
-            go.transform.position = transform.position;
-        }
-        return go;
+        GameObject randomObject = GetComponent<RandomGameObjectTable>().GetRandomObject();
+        if (randomObject == null) { return null; }
+
+        return generateGameObject.GeneratePropInCurrentRoom(randomObject, transform.position);
     }
 }
