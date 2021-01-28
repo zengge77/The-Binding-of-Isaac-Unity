@@ -1,20 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RandomGameObjectTable))]
-public class Obstacles : MonoBehaviour
+public class Obstacles : GameItem
 {
-    protected Player player;
-    protected Level level;
-    protected Room currentRoom;
+    public override GameItemType GameItemType { get { return GameItemType.Obstacles; } }
+
     protected GenerateGameObject generateGameObject;
 
-    private void Awake()
+    protected override void Awake()
     {
-        player = GameManager.Instance.player;
-        level = GameManager.Instance.level;
-        currentRoom = level.currentRoom;
+        base.Awake();
         generateGameObject = level.generateGameObject;
     }
 

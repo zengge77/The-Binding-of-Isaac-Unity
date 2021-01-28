@@ -10,3 +10,6 @@ public enum Didirection { Up, Down, Left, Right };
 
 //道具池类型
 public enum PropPoolType { TreasureRoom, GoldenChest, BossRoom, Shop };
+
+//游戏物体类型
+public enum GameItemType { Prop, Monster, Obstacles };

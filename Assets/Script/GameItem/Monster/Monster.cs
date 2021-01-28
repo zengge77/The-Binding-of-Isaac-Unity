@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Monster : MonoBehaviour, IAttackable
+public abstract class Monster : GameItem, IAttackable
 {
-    protected Player player;
-    protected Level level;
-    protected Room room;
+    public override GameItemType GameItemType { get { return GameItemType.Monster; } }
 
     //需要初始化的数据
     [HideInInspector]
@@ -29,11 +27,14 @@ public abstract class Monster : MonoBehaviour, IAttackable
     protected Rigidbody2D myRigidbody;
     protected SpriteRenderer spriteRenderer;
 
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         Initialize();
     }
 
@@ -41,11 +42,9 @@ public abstract class Monster : MonoBehaviour, IAttackable
 
     protected virtual void Start()
     {
-        player = GameManager.Instance.player;
-        level = GameManager.Instance.level;
-        room = level.currentRoom;
         Invoke("DelayActivate", ativateTime);
     }
+
     void DelayActivate()
     {
         isActivate = true;
@@ -92,7 +91,7 @@ public abstract class Monster : MonoBehaviour, IAttackable
     protected virtual void Destroy()
     {
         Destroy(gameObject);
-        room.CheckOpenDoor();
+        currentRoom.CheckOpenDoor();
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
