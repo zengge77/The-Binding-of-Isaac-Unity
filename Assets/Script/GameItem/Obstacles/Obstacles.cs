@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(RandomGameObjectTable))]
 public class Obstacles : GameItem
 {
-    public override GameItemType GameItemType { get { return GameItemType.Obstacles; } }
+    public override GameItemType gameItemType { get { return GameItemType.Obstacles; } }
 
     protected GenerateGameObject generateGameObject;
 

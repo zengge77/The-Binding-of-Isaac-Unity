@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Prop : GameItem
 {
-    public override GameItemType GameItemType { get { return GameItemType.Prop; } }
+    public override GameItemType gameItemType { get { return GameItemType.Prop; } }
 
     protected UIManager UI;
     protected Pools pools;

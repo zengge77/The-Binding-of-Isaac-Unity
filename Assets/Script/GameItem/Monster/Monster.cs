@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class Monster : GameItem, IAttackable
 {
-    public override GameItemType GameItemType { get { return GameItemType.Monster; } }
+    public override GameItemType gameItemType { get { return GameItemType.Monster; } }
 
     //需要初始化的数据
     [HideInInspector]
