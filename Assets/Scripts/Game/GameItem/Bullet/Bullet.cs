@@ -88,12 +88,12 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //接触后消除眼泪，不触发其他方法
-        if (Tool.IsItOfThisType(player.TagThatDefaultByBullet, collision.gameObject) || Tool.IsItOfThisType(player.TypeThatDefaultByBullet, collision.gameObject))
+        if (CommonUnit.IsItOfThisType(player.TagThatDefaultByBullet, collision.gameObject) || CommonUnit.IsItOfThisType(player.TypeThatDefaultByBullet, collision.gameObject))
         {
             Destroy();
         }
         //接触后消除眼泪并触发对象的受击方法
-        else if (Tool.IsItOfThisType(player.TypeThatCanBeAttackedByBullet, collision.gameObject))
+        else if (CommonUnit.IsItOfThisType(player.TypeThatCanBeAttackedByBullet, collision.gameObject))
         {
             Vector3 force = Vector3.Normalize(collision.transform.position - transform.position) * playerKnockback;
             IAttackable iAttackable = collision.GetComponent<IAttackable>();
@@ -104,7 +104,7 @@ public class Bullet : MonoBehaviour
             }
         }
         //接触后消除眼泪并触发对象的销毁方法
-        else if (Tool.IsItOfThisType(player.TypeThatCanBeDestroyedByBullet, collision.gameObject))
+        else if (CommonUnit.IsItOfThisType(player.TypeThatCanBeDestroyedByBullet, collision.gameObject))
         {
             IDestructible destructible = collision.GetComponent<IDestructible>();
             destructible.DestorySelf();

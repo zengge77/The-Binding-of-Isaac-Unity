@@ -37,23 +37,23 @@ public class RoomEditorWindow : EditorWindow
 
     string[] monsterPrefabPath = new[]
     {
-        "Assets/Prefabs/Monster/Minions/Dip.prefab",
-        "Assets/Prefabs/Monster/Elite",
-        "Assets/Prefabs/Monster/Boss/The Duke Of Flies.prefab",
+        "Assets/AssetsPackge/Prefabs/Monster/Minions/Dip.prefab",
+        "Assets/AssetsPackge/Prefabs/Monster/Elite",
+        "Assets/AssetsPackge/Prefabs/Monster/Boss/The Duke Of Flies.prefab",
     };
     string[] obstaclesPrefabPath = new[]
     {
-        "Assets/Prefabs/Obstacles/Rock/Rock.prefab",
-        "Assets/Prefabs/Obstacles/Spikes/Spikes.prefab",
-        "Assets/Prefabs/Obstacles/FirePlace/FirePlace.prefab",
-        "Assets/Prefabs/Obstacles/Poop/Poop.prefab",
+        "Assets/AssetsPackge/Prefabs/Obstacles/Rock/Rock.prefab",
+        "Assets/AssetsPackge/Prefabs/Obstacles/Spikes/Spikes.prefab",
+        "Assets/AssetsPackge/Prefabs/Obstacles/FirePlace/FirePlace.prefab",
+        "Assets/AssetsPackge/Prefabs/Obstacles/Poop/Poop.prefab",
     };
     string[] propPrefabPath = new[]
     {
-        "Assets/Prefabs/Prop/Pickup/Chest/BrownChest.prefab",
-        "Assets/Prefabs/Prop/Pickup/RandomPickup/RandomCoin.prefab",
-        "Assets/Prefabs/Prop/Item/RandomItem/TreasureRoom Item.prefab",
-        "Assets/Prefabs/Prop/Goods/ItemGoods.prefab",
+        "Assets/AssetsPackge/Prefabs/Prop/Pickup/Chest/BrownChest.prefab",
+        "Assets/AssetsPackge/Prefabs/Prop/Pickup/RandomPickup/RandomCoin.prefab",
+        "Assets/AssetsPackge/Prefabs/Prop/Item/RandomItem/TreasureRoom Item.prefab",
+        "Assets/AssetsPackge/Prefabs/Prop/Goods/ItemGoods.prefab",
     };
 
     //用于缓存地板精灵和贴图，因为绘制地板需要读写新文件，开销过大
@@ -66,6 +66,12 @@ public class RoomEditorWindow : EditorWindow
     Sprite rewardSprite;
     bool isDrawAuxiliaryLine;
     Sprite auxiliaryLineSprite;
+    string[] editorDefaultResourcesAssetPath = new[]
+    {
+        "Assets/Editor Default Resources/RewardSprite.png",
+        "Assets/Editor Default Resources/Auxiliary Line.png",
+    };
+
 
     [MenuItem("Window/房间布局编辑窗口")]
     static void ShowWindow()
@@ -76,8 +82,8 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnEnable()
     {
-        rewardSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Editor Default Resources/RewardSprite.png");
-        auxiliaryLineSprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Editor Default Resources/Auxiliary Line.png");
+        rewardSprite = AssetDatabase.LoadAssetAtPath<Sprite>(editorDefaultResourcesAssetPath[0]);
+        auxiliaryLineSprite = AssetDatabase.LoadAssetAtPath<Sprite>(editorDefaultResourcesAssetPath[1]);
         emptyArea = new Texture2D(466, 310);
     }
 

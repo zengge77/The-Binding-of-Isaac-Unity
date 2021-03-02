@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public static class Tool
+public static class CommonUnit
 {
     public static void SelectNewDestination(Collision2D collision)
     {

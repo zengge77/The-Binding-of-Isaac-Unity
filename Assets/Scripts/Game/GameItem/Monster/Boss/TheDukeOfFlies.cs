@@ -56,7 +56,7 @@ public class TheDukeOfFlies : Boss
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (Tool.IsItOfThisType(new List<Type>() { typeof(Obstacles) }, collision.gameObject) || Tool.IsItOfThisType(new List<String>() { "Walls" }, collision.gameObject))
+        if (CommonUnit.IsItOfThisType(new List<Type>() { typeof(Obstacles) }, collision.gameObject) || CommonUnit.IsItOfThisType(new List<String>() { "Walls" }, collision.gameObject))
         {
             float x = collision.contacts[0].normal.x;
 
