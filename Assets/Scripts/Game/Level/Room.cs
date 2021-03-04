@@ -50,9 +50,6 @@ public class Room : MonoBehaviour
     [Header("房间外观")]
 
     [SerializeField]
-    private Sprite tip;//初始房间tip
-
-    [SerializeField]
     private Sprite bossDoorHole;
     [SerializeField]
     private Sprite bossDoorFrame;
@@ -115,10 +112,6 @@ public class Room : MonoBehaviour
         {
             fllor.GetChild(i).GetComponent<SpriteRenderer>().sprite = roomLayout.floor;
         }
-        if (roomType == RoomType.Start)
-        {
-            GenerateTrace(tip, Vector2.zero);
-        }
 
         ChangeDoorOutWard();
     }
@@ -157,6 +150,8 @@ public class Room : MonoBehaviour
     /// </summary>
     public void GenerateRoomContent(float delaySeconds)
     {
+        GenerateTrace(roomLayout.tip, Vector2.zero);
+
         for (int i = 0; i < roomLayout.obstaclesPreafab.Count; i++)
         {
             GenerateGameObjectWithCoordinate(roomLayout.obstaclesPreafab[i].gameObject, roomLayout.obstaclesCoordinate[i], obstaclesContainer);

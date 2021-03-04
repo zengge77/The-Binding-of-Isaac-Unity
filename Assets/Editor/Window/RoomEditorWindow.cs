@@ -89,27 +89,23 @@ public class RoomEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        //文件操作区域
-        FileOperation();
+        DrawFileOperationArea();
 
-        //文件选择区域
         GUILayout.BeginVertical("box");
-        RoomLayout temp = roomLayout;
-        roomLayout = (RoomLayout)EditorGUILayout.ObjectField("文件", roomLayout, typeof(RoomLayout), false);
-        if (temp != roomLayout) { ResetEditInstallWhenChange(); }//监控roomLayout文件是否被替换
-        //if (roomLayout != null) { GUILayout.Label(AssetDatabase.GetAssetPath(roomLayout)); }
+        DrawFileSelectArea();
 
-        //文件不为空时绘制编辑区域
         if (roomLayout != null) { DrawEditArea(); }
         GUILayout.EndVertical();
 
-        //文件不为空时绘制预览区域
         if (roomLayout != null) { DrawPreviewArea(); }
     }
 
-    void FileOperation()
+    /// <summary>
+    /// 绘制文件操作区域
+    /// </summary>
+    void DrawFileOperationArea()
     {
-        GUILayout.Space(10);
+        GUILayout.BeginVertical("box");
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("打开文件"))
         {
@@ -153,14 +149,32 @@ public class RoomEditorWindow : EditorWindow
             if (GUILayout.Button("商店")) { CreateRoomLayoutFile(roomLayoutFilePath[3]); isExpandCreateButton = false; }
             GUILayout.EndHorizontal();
         }
-        GUILayout.Space(7);
+        GUILayout.EndVertical();
+
     }
 
+    /// <summary>
+    /// 绘制文件选择区域
+    /// </summary>
+    void DrawFileSelectArea()
+    {
+        GUILayout.BeginHorizontal("box");
+        RoomLayout temp = roomLayout;
+        roomLayout = (RoomLayout)EditorGUILayout.ObjectField("文件", roomLayout, typeof(RoomLayout), false);
+        GUILayout.Space(50);
+        isDrawAuxiliaryLine = GUILayout.Toggle(isDrawAuxiliaryLine, "辅助线");
+        //监控roomLayout文件是否被替换
+        if (temp != roomLayout) { ResetEditInstallWhenChange(); }
+        GUILayout.EndHorizontal();
+    }
+
+    /// <summary>
+    /// 绘制编辑区域
+    /// </summary>
     void DrawEditArea()
     {
         GUILayout.Space(5);
         toolBarNum = GUILayout.Toolbar(toolBarNum, new[] { "主要", "障碍物列表", "怪物列表", "道具列表" });
-        GUILayout.Space(5);
 
         GUILayout.BeginVertical("box");
         GUILayout.Space(5);
@@ -181,14 +195,13 @@ public class RoomEditorWindow : EditorWindow
             default:
                 break;
         }
-
         GUILayout.EndVertical();
     }
     void EditMain()
     {
         GUILayout.BeginHorizontal();
         roomLayout.floor = (Sprite)EditorGUILayout.ObjectField("地板", roomLayout.floor, typeof(Sprite), false);
-        isDrawAuxiliaryLine = GUILayout.Toggle(isDrawAuxiliaryLine, "辅助线");
+        roomLayout.tip = (Sprite)EditorGUILayout.ObjectField("Tip", roomLayout.tip, typeof(Sprite), false);
         GUILayout.EndHorizontal();
         GUILayout.Space(10);
 
@@ -242,6 +255,9 @@ public class RoomEditorWindow : EditorWindow
         EditObjectList(roomLayout.propPreafab, roomLayout.propCoordinate, roomLayout.RemoveProp, roomLayout.AddProp);
     }
 
+    /// <summary>
+    /// 绘制预览区域
+    /// </summary>
     void DrawPreviewArea()
     {
         //绘制地板，当地板精灵不一样或为空时制作新的地板贴图，为空时创建空白贴图
@@ -259,6 +275,8 @@ public class RoomEditorWindow : EditorWindow
         //绘制房间内的物体
         if (Event.current.type == EventType.Repaint)
         {
+            //绘制tip
+            if (roomLayout.tip != null) { DrawSprite(roomLayout.tip, centerCoordinate); }
             //绘制障碍物
             DrawObjectList(roomLayout.obstaclesPreafab, roomLayout.obstaclesCoordinate);
             //绘制怪物
@@ -278,6 +296,7 @@ public class RoomEditorWindow : EditorWindow
             }
         }
     }
+
 
     /// <summary>
     /// 根据路径选择Asset下的文件或文件夹
@@ -329,7 +348,7 @@ public class RoomEditorWindow : EditorWindow
     }
 
     /// <summary>
-    /// 根据预制体和坐标绘制编辑行列，有高度限制(185)
+    /// 根据预制体和坐标绘制编辑行列，有高度限制(170)
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="prefabs"></param>
@@ -338,7 +357,7 @@ public class RoomEditorWindow : EditorWindow
     /// <param name="add"></param>
     void EditObjectList<T>(List<T> prefabs, List<Vector2> coordinates, Action<int> remove, Action add) where T : UnityEngine.Object
     {
-        scrollViewVector2 = GUILayout.BeginScrollView(scrollViewVector2, GUILayout.Height(185));
+        scrollViewVector2 = GUILayout.BeginScrollView(scrollViewVector2, GUILayout.Height(170));
         for (int i = 0; i < prefabs.Count; i++)
         {
             GUILayout.BeginHorizontal();

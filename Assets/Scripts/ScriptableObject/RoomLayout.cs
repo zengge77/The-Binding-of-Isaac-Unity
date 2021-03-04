@@ -7,6 +7,7 @@ using System;
 public class RoomLayout : ScriptableObject
 {
     public Sprite floor;
+    public Sprite tip;
     public Vector2 RewardPosition;
     public bool isGenerateReward;
 
