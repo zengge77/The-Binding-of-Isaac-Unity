@@ -11,7 +11,7 @@ public class RandomGameObjectTable : MonoBehaviour
     /// 根据概率获取物品，该算法简单但有效
     /// </summary>
     /// <returns></returns>
-    public GameObject GetRandomObject(int revised = 0)
+    public GameObject GetGameObject(int revised = 0)
     {
         if (gameObjects.Count != probability.Count)
         { Debug.Log("物体和概率数组长度不一致"); return null; }

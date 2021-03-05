@@ -37,15 +37,15 @@ public class Pools : MonoBehaviour
     private PropPool ShopPropPool;
     private List<Prop> ShopPropList = new List<Prop>();
 
-    [Header("Boss房清空奖励")]
+    [Header("房间清空奖励")]
     [SerializeField]
     private GameObject bossRoomClearingReward;
-    [Header("普通房清空奖励")]
     [SerializeField]
-    private RandomGameObjectScriptable clearingReward;
-    [Header("拾取物货物")]
+    private GameObject normalRoomClearingReward;
+
+    [Header("拾取物商品列表")]
     [SerializeField]
-    private RandomGameObjectScriptable pickupGoods;
+    private RandomGameObjectTable pickupGoodsTable;
 
     void Awake()
     {
@@ -173,8 +173,7 @@ public class Pools : MonoBehaviour
         switch (type)
         {
             case RoomType.Normal:
-                int luck = GameManager.Instance.player.Luck;
-                reward = clearingReward.GetRandomObject(luck * 5);
+                reward = normalRoomClearingReward;
                 break;
             case RoomType.Boss:
                 reward = bossRoomClearingReward;
@@ -191,6 +190,6 @@ public class Pools : MonoBehaviour
     /// <returns></returns>
     public GameObject GetPickupGoods()
     {
-        return pickupGoods.GetRandomObject();
+        return pickupGoodsTable.GetGameObject();
     }
 }

@@ -151,7 +151,7 @@ public class Room : MonoBehaviour
     /// </summary>
     public void GenerateRoomContent(float delaySeconds)
     {
-        GenerateTrace(roomLayout.tip, Vector2.zero);
+        if (roomLayout.tip != null) { GenerateTrace(roomLayout.tip, Vector2.zero); }
 
         for (int i = 0; i < roomLayout.obstaclesPreafab.Count; i++)
         {

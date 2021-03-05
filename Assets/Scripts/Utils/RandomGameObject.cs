@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RandomGameObjectTable))]
-public class RandomGameObject : MonoBehaviour, IRandomObject
+public class RandomGameObject : MonoBehaviour, IRandomGameObject
 {
     private void Start()
     {
@@ -14,7 +14,7 @@ public class RandomGameObject : MonoBehaviour, IRandomObject
     public GameObject Generate()
     {
         GameObject go = null;
-        GameObject newGameObject = GetComponent<RandomGameObjectTable>().GetRandomObject();
+        GameObject newGameObject = GetComponent<RandomGameObjectTable>().GetGameObject();
         if (newGameObject != null)
         {
             go = GameManager.Instance.level.generate.GenerateGameObjectInCurrentRoom(newGameObject, transform.position);

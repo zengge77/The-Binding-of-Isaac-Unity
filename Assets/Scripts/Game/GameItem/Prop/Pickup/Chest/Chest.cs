@@ -44,7 +44,7 @@ public abstract class Chest : Pickup
 
         for (int i = 0; i < num; i++)
         {
-            var newProp = Instantiate(Table.GetRandomObject(), propContainer);
+            var newProp = Instantiate(Table.GetGameObject(), propContainer);
             newProp.transform.position = transform.position;
 
             Vector2 force = UnityEngine.Random.insideUnitCircle * 7;
@@ -52,9 +52,9 @@ public abstract class Chest : Pickup
             {
                 newProp.GetComponent<Rigidbody2D>().AddForce(force);
             }
-            else if (newProp.GetComponent<IRandomObject>() != null)
+            else if (newProp.GetComponent<IRandomGameObject>() != null)
             {
-                newProp.GetComponent<IRandomObject>().Generate().GetComponent<Rigidbody2D>().AddForce(force);
+                newProp.GetComponent<IRandomGameObject>().Generate().GetComponent<Rigidbody2D>().AddForce(force);
             }
         }
     }

@@ -18,7 +18,7 @@ public class Obstacles : GameItem
 
     protected virtual GameObject GenerateReward()
     {
-        GameObject randomObject = GetComponent<RandomGameObjectTable>().GetRandomObject();
+        GameObject randomObject = GetComponent<RandomGameObjectTable>().GetGameObject();
         if (randomObject == null) { return null; }
 
         return generate.GenerateGameObjectInCurrentRoom(randomObject, transform.position);

@@ -50,7 +50,7 @@ MonoBehaviour:
   roomNum: 10
   currentRoom: {fileID: 0}
   pools: {fileID: 6970755198662484133, guid: 43161ebb3a9067449895b89017803477, type: 3}
-  generateGameObject: {fileID: 0}
+  generate: {fileID: 0}
 --- !u!114 &6970755198662484133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,8 +73,10 @@ MonoBehaviour:
   ShopPropPool: {fileID: 11400000, guid: cabe1cc574ff0a042b14cf4308a89610, type: 2}
   bossRoomClearingReward: {fileID: 4220042123601709987, guid: ac6247d00193ddc44a59e2609a749f47,
     type: 3}
-  clearingReward: {fileID: 11400000, guid: dd3f220ee92583042939781db8c2cd28, type: 2}
-  pickupGoods: {fileID: 11400000, guid: 1d877b6823b92674886bf5c636b8c16a, type: 2}
+  normalRoomClearingReward: {fileID: 8892665028506414572, guid: c23a6b6b5982cdc499bdcee6842af493,
+    type: 3}
+  pickupGoodsTable: {fileID: 2773476061788829921, guid: a611857ebc1128e4c805a65549a1e82e,
+    type: 3}
 --- !u!114 &8750165752066703133
 MonoBehaviour:
   m_ObjectHideFlags: 0
