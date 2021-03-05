@@ -17,7 +17,7 @@ public class RandomGameObject : MonoBehaviour, IRandomObject
         GameObject newGameObject = GetComponent<RandomGameObjectTable>().GetRandomObject();
         if (newGameObject != null)
         {
-            go = GameManager.Instance.level.generateGameObject.GeneratePropInCurrentRoom(newGameObject, transform.position);
+            go = GameManager.Instance.level.generate.GenerateGameObjectInCurrentRoom(newGameObject, transform.position);
         }
         Destroy(gameObject);
         return go;

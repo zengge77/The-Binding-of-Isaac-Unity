@@ -23,7 +23,7 @@ public class Level : MonoBehaviour
     [HideInInspector]
     public Pools pools;
     [HideInInspector]
-    public GenerateGameObject generateGameObject;
+    public Generate generate;
     #endregion
 
     #region 其他
@@ -34,7 +34,7 @@ public class Level : MonoBehaviour
     private void Awake()
     {
         pools = GetComponent<Pools>();
-        generateGameObject = GetComponent<GenerateGameObject>();
+        generate = GetComponent<Generate>();
     }
 
     private void Start()

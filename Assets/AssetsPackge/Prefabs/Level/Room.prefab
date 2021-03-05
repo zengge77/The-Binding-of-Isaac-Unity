@@ -815,6 +815,7 @@ Transform:
   - {fileID: 7213168884713711788}
   - {fileID: 7527059234057616980}
   - {fileID: 7125361052443001313}
+  - {fileID: 5410893759576836628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -830,24 +831,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898e5d34e871b3b4d8bc8574bb84ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomType: 0
+  coordinate: {x: 0, y: 0}
+  roomWidth: 0
+  roomHeight: 0
   fllor: {fileID: 4087730191971052}
-  tip: {fileID: 21300000, guid: 7127980575fa14746a4019a5d3591a5d, type: 3}
-  door: {fileID: 4938308504108332}
   doorList:
   - {fileID: 1787117487737306}
   - {fileID: 1458454320867712}
   - {fileID: 1814809775275176}
   - {fileID: 1149211777372816}
-  bossDoorHole: {fileID: 21300002, guid: 02f70da13ddd50f4b8280f34255a4a94, type: 3}
-  bossDoorFrame: {fileID: 21300000, guid: 02f70da13ddd50f4b8280f34255a4a94, type: 3}
-  treasureDoorFrame: {fileID: 21300000, guid: ef19d3b3094441642b3267d45170733e, type: 3}
   monsterContainer: {fileID: 4666541476721168}
   obstaclesContainer: {fileID: 7213168884713711788}
   propContainer: {fileID: 7527059234057616980}
   traceContainer: {fileID: 7125361052443001313}
-  roomType: 0
-  coordinate: {x: 0, y: 0}
-  roomSize: {x: 0, y: 0}
+  defaultContainer: {fileID: 5410893759576836628}
+  bossDoorHole: {fileID: 21300002, guid: 02f70da13ddd50f4b8280f34255a4a94, type: 3}
+  bossDoorFrame: {fileID: 21300000, guid: 02f70da13ddd50f4b8280f34255a4a94, type: 3}
+  treasureDoorFrame: {fileID: 21300000, guid: ef19d3b3094441642b3267d45170733e, type: 3}
 --- !u!1 &1253096195899490
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,4 +3109,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4873050180085168}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9138029912796653391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5410893759576836628}
+  m_Layer: 0
+  m_Name: DefaultContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5410893759576836628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138029912796653391}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4873050180085168}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

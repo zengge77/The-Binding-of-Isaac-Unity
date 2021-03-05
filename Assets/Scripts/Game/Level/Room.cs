@@ -44,6 +44,7 @@ public class Room : MonoBehaviour
     public Transform obstaclesContainer;
     public Transform propContainer;
     public Transform traceContainer;
+    public Transform defaultContainer;
     #endregion
 
     #region 房间外观

@@ -15,7 +15,7 @@ public class RandomPropFromPool : MonoBehaviour, IRandomObject
     {
         Level level = GameManager.Instance.level;
         Prop prop = level.pools.GetProp(type);
-        GameObject go = level.generateGameObject.GeneratePropInCurrentRoom(prop.gameObject, transform.position);
+        GameObject go = level.generate.GenerateGameObjectInCurrentRoom(prop.gameObject, transform.position);
         Destroy(gameObject);
         return go.gameObject;
     }
