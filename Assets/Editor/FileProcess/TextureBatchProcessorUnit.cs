@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-public class TextureAssetProcessor : AssetPostprocessor
+public class TextureBatchProcessorUnit : AssetPostprocessor
 {
-    [MenuItem("Assets/将文件夹下图片的过滤模式改为Point")]
+    //[MenuItem("Assets/文件操作/将Texture过滤模式改为Point")]
     public static void SetAllTextureType()
     {
         //获取鼠标点击图片目录
