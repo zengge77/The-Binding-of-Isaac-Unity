@@ -116,6 +116,6 @@ public class FilesBatchProcessUnit
     [MenuItem("Assets/文件操作/保存")]
     public static void Save()
     {
-        AssetFilesProcess((RandomGameObjectTable file) => { });
+        PrefabFilesProcess((RandomGameObjectTable file) => { });
     }
 }

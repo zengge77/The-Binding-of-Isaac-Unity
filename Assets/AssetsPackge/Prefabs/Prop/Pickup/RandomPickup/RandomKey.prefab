@@ -112,7 +112,3 @@ MonoBehaviour:
   - value1: {fileID: 1793258575544040045, guid: 7a063399a85f3394ba78b46eb0b51d76,
       type: 3}
     value2: 10
-  gameObjects:
-  - {fileID: 1793258575544040045, guid: 2961e26871545024db39ab6eac879da7, type: 3}
-  - {fileID: 1793258575544040045, guid: 7a063399a85f3394ba78b46eb0b51d76, type: 3}
-  probability: 5a0000000a000000

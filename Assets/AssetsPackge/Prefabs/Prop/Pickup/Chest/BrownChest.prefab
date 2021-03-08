@@ -25,12 +25,6 @@ MonoBehaviour:
   - value1: {fileID: 8892665028506414572, guid: f7f6afdc360d6d04cac92126b6ff3464,
       type: 3}
     value2: 25
-  gameObjects:
-  - {fileID: 8892665028506414572, guid: 2da713d9e21825341853802882ce0275, type: 3}
-  - {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed, type: 3}
-  - {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed, type: 3}
-  - {fileID: 8892665028506414572, guid: f7f6afdc360d6d04cac92126b6ff3464, type: 3}
-  probability: 19000000190000001900000019000000
 --- !u!114 &6098791914245835435
 MonoBehaviour:
   m_ObjectHideFlags: 0
