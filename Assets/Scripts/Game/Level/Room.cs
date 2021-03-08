@@ -155,7 +155,7 @@ public class Room : MonoBehaviour
 
         for (int i = 0; i < roomLayout.obstaclesPreafab.Count; i++)
         {
-            GenerateGameObjectWithCoordinate(roomLayout.obstaclesPreafab[i].gameObject, roomLayout.obstaclesCoordinate[i], obstaclesContainer);
+            GenerateGameObjectWithCoordinate(roomLayout.obstaclesPreafab[i], roomLayout.obstaclesCoordinate[i], obstaclesContainer);
         }
 
         for (int i = 0; i < roomLayout.monsterPrefab.Count; i++)

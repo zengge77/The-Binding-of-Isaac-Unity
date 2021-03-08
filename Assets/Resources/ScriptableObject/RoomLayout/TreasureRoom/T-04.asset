@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: T-04
   m_EditorClassIdentifier: 
   floor: {fileID: 21300000, guid: aa7142eec3b21db4990fdc492970b1dc, type: 3}
+  tip: {fileID: 0}
   RewardPosition: {x: 13, y: 7}
   isGenerateReward: 0
   monsterPrefab: []
   monsterCoordinate: []
   obstaclesPreafab:
-  - {fileID: 7338218034223009022, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
-  - {fileID: 7338218034223009022, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
-  - {fileID: 7338218034223009022, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
-  - {fileID: 7338218034223009022, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
-  - {fileID: 7338218034223009022, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
-  - {fileID: 7338218034223009022, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
+  - {fileID: 3002210260766645066, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
+  - {fileID: 3002210260766645066, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
+  - {fileID: 3002210260766645066, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
+  - {fileID: 3002210260766645066, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
+  - {fileID: 3002210260766645066, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
+  - {fileID: 3002210260766645066, guid: ceb596ca8f6d6b047aff687c6f406c36, type: 3}
   obstaclesCoordinate:
   - {x: 1, y: 1}
   - {x: 25, y: 1}

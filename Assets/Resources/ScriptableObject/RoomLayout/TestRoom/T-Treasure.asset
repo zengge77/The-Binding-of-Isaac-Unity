@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: T-Treasure
   m_EditorClassIdentifier: 
   floor: {fileID: 21300002, guid: aa7142eec3b21db4990fdc492970b1dc, type: 3}
+  tip: {fileID: 0}
   RewardPosition: {x: 1, y: 1}
   isGenerateReward: 0
   monsterPrefab: []

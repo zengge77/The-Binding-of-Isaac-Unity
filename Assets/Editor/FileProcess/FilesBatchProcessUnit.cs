@@ -85,15 +85,27 @@ public class FilesBatchProcessUnit
 
     }
 
-    //[MenuItem("Assets/文件操作/")]
-    public static void CreatDateCopy()
+    [MenuItem("Assets/文件操作/复制数据")]
+    public static void Copy()
     {
+        AssetFilesProcess((RoomLayout file) =>
+        {
 
+        });
     }
 
-    //[MenuItem("Assets/文件操作/")]
+    [MenuItem("Assets/文件操作/回赋数据")]
     public static void GetGameItem()
     {
+        AssetFilesProcess((RoomLayout file) =>
+        {
 
+        });
+    }
+
+    [MenuItem("Assets/文件操作/保存")]
+    public static void Save()
+    {
+        AssetFilesProcess((RoomLayout file) => { });
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: N-02-Fly4
   m_EditorClassIdentifier: 
   floor: {fileID: 21300014, guid: 6b28a663d85beb14fb46c9dd0fbd0cde, type: 3}
+  tip: {fileID: 0}
   RewardPosition: {x: 13, y: 7}
   isGenerateReward: 1
   monsterPrefab:

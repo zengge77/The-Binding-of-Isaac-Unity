@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: T-01-Fireplace
   m_EditorClassIdentifier: 
   floor: {fileID: 21300002, guid: aa7142eec3b21db4990fdc492970b1dc, type: 3}
+  tip: {fileID: 0}
   RewardPosition: {x: 1, y: 1}
+  isGenerateReward: 0
   monsterPrefab: []
   monsterCoordinate: []
   obstaclesPreafab:
-  - {fileID: 2517520537978298077, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
-  - {fileID: 2517520537978298077, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
+  - {fileID: 3002210260766645066, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
+  - {fileID: 3002210260766645066, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
   obstaclesCoordinate:
   - {x: 9, y: 7}
   - {x: 17, y: 7}

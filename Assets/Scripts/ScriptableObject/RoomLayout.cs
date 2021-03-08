@@ -14,7 +14,7 @@ public class RoomLayout : ScriptableObject
     public List<GameObject> monsterPrefab = new List<GameObject>();
     public List<Vector2> monsterCoordinate = new List<Vector2>();
 
-    public List<Obstacles> obstaclesPreafab = new List<Obstacles>();
+    public List<GameObject> obstaclesPreafab = new List<GameObject>();
     public List<Vector2> obstaclesCoordinate = new List<Vector2>();
 
     public List<GameObject> propPreafab = new List<GameObject>();

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: T-Shop
   m_EditorClassIdentifier: 
   floor: {fileID: 21300000, guid: cf9063be2ff1f4f4a9df1418831ce821, type: 3}
+  tip: {fileID: 0}
   RewardPosition: {x: 1, y: 1}
   isGenerateReward: 0
   monsterPrefab: []

@@ -394,18 +394,6 @@ public class RoomEditorWindow : EditorWindow
             }
         }
     }
-    void DrawObjectList<T>(List<T> prefabs, List<Vector2> coordinates) where T : MonoBehaviour
-    {
-        for (int i = 0; i < prefabs.Count; i++)
-        {
-            if (prefabs[i] != null)
-            {
-                Sprite sprite = prefabs[i].GetComponent<SpriteRenderer>().sprite;
-                Vector2 coordinate = coordinates[i];
-                DrawSprite(sprite, coordinate);
-            }
-        }
-    }
 
     /// <summary>
     /// 绘制单个精灵；需获取精灵的贴图，再根据精灵的Rect在贴图里截取区域绘制

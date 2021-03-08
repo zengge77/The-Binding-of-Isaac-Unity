@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: S-02
   m_EditorClassIdentifier: 
   floor: {fileID: 21300008, guid: cf9063be2ff1f4f4a9df1418831ce821, type: 3}
+  tip: {fileID: 0}
   RewardPosition: {x: 1, y: 1}
   isGenerateReward: 0
   monsterPrefab: []
   monsterCoordinate: []
   obstaclesPreafab:
-  - {fileID: 2517520537978298077, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
-  - {fileID: 2517520537978298077, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
+  - {fileID: 3002210260766645066, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
+  - {fileID: 3002210260766645066, guid: 9857bc61527132f4cbb8926fa3e9c020, type: 3}
   obstaclesCoordinate:
   - {x: 3, y: 3}
   - {x: 23, y: 3}
