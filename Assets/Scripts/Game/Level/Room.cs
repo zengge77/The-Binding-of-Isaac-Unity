@@ -153,19 +153,19 @@ public class Room : MonoBehaviour
     {
         if (roomLayout.tip != null) { GenerateTrace(roomLayout.tip, Vector2.zero); }
 
-        for (int i = 0; i < roomLayout.obstaclesPreafab.Count; i++)
+        for (int i = 0; i < roomLayout.obstacleList.Count; i++)
         {
-            GenerateGameObjectWithCoordinate(roomLayout.obstaclesPreafab[i], roomLayout.obstaclesCoordinate[i], obstaclesContainer);
+            GenerateGameObjectWithCoordinate(roomLayout.obstacleList[i].value1, roomLayout.obstacleList[i].value2, obstaclesContainer);
         }
 
-        for (int i = 0; i < roomLayout.monsterPrefab.Count; i++)
+        for (int i = 0; i < roomLayout.monsterList.Count; i++)
         {
-            GenerateGameObjectWithCoordinate(roomLayout.monsterPrefab[i], roomLayout.monsterCoordinate[i], monsterContainer);
+            GenerateGameObjectWithCoordinate(roomLayout.monsterList[i].value1, roomLayout.monsterList[i].value2, monsterContainer);
         }
 
-        for (int i = 0; i < roomLayout.propPreafab.Count; i++)
+        for (int i = 0; i < roomLayout.propList.Count; i++)
         {
-            GenerateGameObjectWithCoordinate(roomLayout.propPreafab[i], roomLayout.propCoordinate[i], propContainer);
+            GenerateGameObjectWithCoordinate(roomLayout.propList[i].value1, roomLayout.propList[i].value2, propContainer);
         }
 
         CheckOpenDoor();

@@ -30,3 +30,14 @@ MonoBehaviour:
   obstaclesCoordinate: []
   propPreafab: []
   propCoordinate: []
+  monsterList:
+  - value1: {fileID: 181072, guid: d11107a1f7267b34f8d69ebd15b0aae2, type: 3}
+    value2: {x: 1, y: 1}
+  - value1: {fileID: 181072, guid: d11107a1f7267b34f8d69ebd15b0aae2, type: 3}
+    value2: {x: 1, y: 13}
+  - value1: {fileID: 181072, guid: d11107a1f7267b34f8d69ebd15b0aae2, type: 3}
+    value2: {x: 25, y: 13}
+  - value1: {fileID: 181072, guid: d11107a1f7267b34f8d69ebd15b0aae2, type: 3}
+    value2: {x: 25, y: 1}
+  obstacleList: []
+  propList: []

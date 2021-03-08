@@ -88,15 +88,25 @@ public class FilesBatchProcessUnit
     [MenuItem("Assets/文件操作/复制数据")]
     public static void Copy()
     {
-        //PrefabFilesProcess((RandomGameObjectTable file) =>
-        //{
-        //    file.table.Clear();
-        //    int count = file.gameObjects.Count;
-        //    for (int i = 0; i < count; i++)
-        //    {
-        //        file.table.Add(new SimplePairWithGameObjectInt(file.gameObjects[i], file.probability[i]));
-        //    }
-        //});
+        AssetFilesProcess((RoomLayout file) =>
+        {
+            //file.monsterList.Clear();
+            //file.obstacleList.Clear();
+            //file.propList.Clear();
+
+            //for (int i = 0; i < file.monsterPrefab.Count; i++)
+            //{
+            //    file.monsterList.Add(new SimplePairWithGameObjectVector2(file.monsterPrefab[i], file.monsterCoordinate[i]));
+            //}
+            //for (int i = 0; i < file.obstaclesPreafab.Count; i++)
+            //{
+            //    file.obstacleList.Add(new SimplePairWithGameObjectVector2(file.obstaclesPreafab[i], file.obstaclesCoordinate[i]));
+            //}
+            //for (int i = 0; i < file.propPreafab.Count; i++)
+            //{
+            //    file.propList.Add(new SimplePairWithGameObjectVector2(file.propPreafab[i], file.propCoordinate[i]));
+            //}
+        });
     }
 
     [MenuItem("Assets/文件操作/回赋数据")]
@@ -116,6 +126,6 @@ public class FilesBatchProcessUnit
     [MenuItem("Assets/文件操作/保存")]
     public static void Save()
     {
-        PrefabFilesProcess((RandomGameObjectTable file) => { });
+        AssetFilesProcess((RoomLayout file) => { });
     }
 }

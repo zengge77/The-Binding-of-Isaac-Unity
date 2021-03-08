@@ -22,3 +22,6 @@ MonoBehaviour:
   obstaclesCoordinate: []
   propPreafab: []
   propCoordinate: []
+  monsterList: []
+  obstacleList: []
+  propList: []

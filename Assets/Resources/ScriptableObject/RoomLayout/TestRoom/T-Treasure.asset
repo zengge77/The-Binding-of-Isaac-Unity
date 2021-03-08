@@ -26,3 +26,12 @@ MonoBehaviour:
   propCoordinate:
   - {x: 8, y: 7}
   - {x: 18, y: 7}
+  monsterList: []
+  obstacleList: []
+  propList:
+  - value1: {fileID: 4220042123601709987, guid: 9b12e554f72720c40863d2eba26cd08d,
+      type: 3}
+    value2: {x: 8, y: 7}
+  - value1: {fileID: 4220042123601709987, guid: 9b12e554f72720c40863d2eba26cd08d,
+      type: 3}
+    value2: {x: 18, y: 7}

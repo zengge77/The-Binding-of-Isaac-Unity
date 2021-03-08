@@ -32,3 +32,21 @@ MonoBehaviour:
   - {x: 8, y: 7}
   - {x: 13, y: 7}
   - {x: 18, y: 7}
+  monsterList: []
+  obstacleList:
+  - value1: {fileID: 3002210260766645066, guid: 9857bc61527132f4cbb8926fa3e9c020,
+      type: 3}
+    value2: {x: 3, y: 3}
+  - value1: {fileID: 3002210260766645066, guid: 9857bc61527132f4cbb8926fa3e9c020,
+      type: 3}
+    value2: {x: 23, y: 3}
+  propList:
+  - value1: {fileID: 8892665028506414572, guid: d2f1639a1a8c3ba4e88996c59313ff95,
+      type: 3}
+    value2: {x: 8, y: 7}
+  - value1: {fileID: 8892665028506414572, guid: 71b1f58ba0c0d6c4cb610e50c79b7a5a,
+      type: 3}
+    value2: {x: 13, y: 7}
+  - value1: {fileID: 8892665028506414572, guid: d2f1639a1a8c3ba4e88996c59313ff95,
+      type: 3}
+    value2: {x: 18, y: 7}

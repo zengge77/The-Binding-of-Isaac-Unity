@@ -229,7 +229,7 @@ public class RoomEditorWindow : EditorWindow
         GUILayout.Space(5);
 
         //根据文件绘制怪物和怪物坐标的编辑区域
-        EditObjectList(roomLayout.obstaclesPreafab, roomLayout.obstaclesCoordinate, roomLayout.RemoveObstacles, roomLayout.AddObstacles);
+        EditObjectList(roomLayout.obstacleList);
     }
     void EditMonster()
     {
@@ -240,7 +240,7 @@ public class RoomEditorWindow : EditorWindow
         GUILayout.EndHorizontal();
         GUILayout.Space(5);
 
-        EditObjectList(roomLayout.monsterPrefab, roomLayout.monsterCoordinate, roomLayout.RemoveMonster, roomLayout.AddMonster);
+        EditObjectList(roomLayout.monsterList);
     }
     void EditorProp()
     {
@@ -252,7 +252,7 @@ public class RoomEditorWindow : EditorWindow
         GUILayout.EndHorizontal();
         GUILayout.Space(5);
 
-        EditObjectList(roomLayout.propPreafab, roomLayout.propCoordinate, roomLayout.RemoveProp, roomLayout.AddProp);
+        EditObjectList(roomLayout.propList);
     }
 
     /// <summary>
@@ -278,11 +278,11 @@ public class RoomEditorWindow : EditorWindow
             //绘制tip
             if (roomLayout.tip != null) { DrawSprite(roomLayout.tip, centerCoordinate); }
             //绘制障碍物
-            DrawObjectList(roomLayout.obstaclesPreafab, roomLayout.obstaclesCoordinate);
+            DrawObjectList(roomLayout.obstacleList);
             //绘制怪物
-            DrawObjectList(roomLayout.monsterPrefab, roomLayout.monsterCoordinate);
+            DrawObjectList(roomLayout.monsterList);
             //绘制道具
-            DrawObjectList(roomLayout.propPreafab, roomLayout.propCoordinate);
+            DrawObjectList(roomLayout.propList);
             //绘制奖励位置
             if (IsDrawRewardPosition)
             {
@@ -355,25 +355,25 @@ public class RoomEditorWindow : EditorWindow
     /// <param name="coordinates"></param>
     /// <param name="remove"></param>
     /// <param name="add"></param>
-    void EditObjectList<T>(List<T> prefabs, List<Vector2> coordinates, Action<int> remove, Action add) where T : UnityEngine.Object
+    void EditObjectList(List<SimplePairWithGameObjectVector2> prefabs)
     {
         scrollViewVector2 = GUILayout.BeginScrollView(scrollViewVector2, GUILayout.Height(170));
         for (int i = 0; i < prefabs.Count; i++)
         {
             GUILayout.BeginHorizontal();
-            prefabs[i] = (T)EditorGUILayout.ObjectField(prefabs[i], typeof(T), false);
+            prefabs[i].value1 = (GameObject)EditorGUILayout.ObjectField(prefabs[i].value1, typeof(GameObject), false);
             GUILayout.Space(30);
             GUILayout.Label("X");
-            int x = EditorGUILayout.IntSlider((int)coordinates[i].x, 1, 25);
+            int x = EditorGUILayout.IntSlider((int)prefabs[i].value2.x, 1, 25);
             GUILayout.Space(10);
             GUILayout.Label("Y");
-            int y = EditorGUILayout.IntSlider((int)coordinates[i].y, 1, 13);
-            coordinates[i] = new Vector2(x, y);
+            int y = EditorGUILayout.IntSlider((int)prefabs[i].value2.y, 1, 13);
+            prefabs[i].value2 = new Vector2(x, y);
             GUILayout.Space(10);
-            if (GUILayout.Button("移除")) { remove(i); }
+            if (GUILayout.Button("移除")) { prefabs.RemoveAt(i); }
             GUILayout.EndHorizontal();
         }
-        if (GUILayout.Button("添加", GUILayout.MaxWidth(75))) { add(); }
+        if (GUILayout.Button("添加", GUILayout.MaxWidth(75))) { prefabs.Add(new SimplePairWithGameObjectVector2(null, centerCoordinate)); }
         GUILayout.EndScrollView();
     }
 
@@ -382,14 +382,14 @@ public class RoomEditorWindow : EditorWindow
     /// </summary>
     /// <param name="prefabs"></param>
     /// <param name="coordinates"></param>
-    void DrawObjectList(List<GameObject> prefabs, List<Vector2> coordinates)
+    void DrawObjectList(List<SimplePairWithGameObjectVector2> prefabs)
     {
         for (int i = 0; i < prefabs.Count; i++)
         {
-            if (prefabs[i] != null)
+            if (prefabs[i].value1 != null)
             {
-                Sprite sprite = prefabs[i].GetComponent<SpriteRenderer>().sprite;
-                Vector2 coordinate = coordinates[i];
+                Sprite sprite = prefabs[i].value1.GetComponent<SpriteRenderer>().sprite;
+                Vector2 coordinate = prefabs[i].value2;
                 DrawSprite(sprite, coordinate);
             }
         }

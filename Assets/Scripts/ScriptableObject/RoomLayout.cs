@@ -20,49 +20,7 @@ public class RoomLayout : ScriptableObject
     public List<GameObject> propPreafab = new List<GameObject>();
     public List<Vector2> propCoordinate = new List<Vector2>();
 
-    public void AddMonster()
-    {
-        monsterPrefab.Add(null);
-        monsterCoordinate.Add(Vector2.zero); 
-    }
-    public void RemoveMonster(int index)
-    {
-        monsterPrefab.RemoveAt(index);
-        monsterCoordinate.RemoveAt(index);
-    }
-    public void AddObstacles()
-    {
-        obstaclesPreafab.Add(null);
-        obstaclesCoordinate.Add(Vector2.zero);
-    }
-    public void RemoveObstacles(int index)
-    {
-        obstaclesPreafab.RemoveAt(index);
-        obstaclesCoordinate.RemoveAt(index);
-    }
-    public void AddProp()
-    {
-        propPreafab.Add(null);
-        propCoordinate.Add(Vector2.zero);
-    }
-    public void RemoveProp(int index)
-    {
-        propPreafab.RemoveAt(index);
-        propCoordinate.RemoveAt(index);
-    }
-
-    public void AutoCompletion()
-    {
-        while (monsterPrefab.Count != monsterCoordinate.Count)
-        {
-            if (monsterPrefab.Count > monsterCoordinate.Count)
-            {
-                monsterCoordinate.Add(Vector2.zero);
-            }
-            if (monsterPrefab.Count < monsterCoordinate.Count)
-            {
-                monsterPrefab.Add(null);
-            }
-        }
-    }
+    public List<SimplePairWithGameObjectVector2> monsterList = new List<SimplePairWithGameObjectVector2>();
+    public List<SimplePairWithGameObjectVector2> obstacleList = new List<SimplePairWithGameObjectVector2>();
+    public List<SimplePairWithGameObjectVector2> propList = new List<SimplePairWithGameObjectVector2>();
 }

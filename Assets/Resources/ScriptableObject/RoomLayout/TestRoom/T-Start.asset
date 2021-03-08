@@ -24,3 +24,9 @@ MonoBehaviour:
   - {fileID: 2506539653844963513, guid: d4f0237d04e6a224194603b7836ed012, type: 3}
   propCoordinate:
   - {x: 12, y: 1}
+  monsterList: []
+  obstacleList: []
+  propList:
+  - value1: {fileID: 2506539653844963513, guid: d4f0237d04e6a224194603b7836ed012,
+      type: 3}
+    value2: {x: 12, y: 1}

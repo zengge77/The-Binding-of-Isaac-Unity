@@ -36,3 +36,23 @@ MonoBehaviour:
   - {x: 15, y: 7}
   propPreafab: []
   propCoordinate: []
+  monsterList:
+  - value1: {fileID: 148400, guid: 53c4d921eb5fb9743a495fa7ad41e51e, type: 3}
+    value2: {x: 1, y: 1}
+  - value1: {fileID: 148400, guid: 53c4d921eb5fb9743a495fa7ad41e51e, type: 3}
+    value2: {x: 25, y: 1}
+  - value1: {fileID: 148400, guid: 53c4d921eb5fb9743a495fa7ad41e51e, type: 3}
+    value2: {x: 1, y: 13}
+  - value1: {fileID: 148400, guid: 53c4d921eb5fb9743a495fa7ad41e51e, type: 3}
+    value2: {x: 25, y: 13}
+  obstacleList:
+  - value1: {fileID: 3002210260766645066, guid: 675bf3b29c21f2444b9741e71c154787,
+      type: 3}
+    value2: {x: 11, y: 7}
+  - value1: {fileID: 3002210260766645066, guid: 675bf3b29c21f2444b9741e71c154787,
+      type: 3}
+    value2: {x: 13, y: 7}
+  - value1: {fileID: 3002210260766645066, guid: 675bf3b29c21f2444b9741e71c154787,
+      type: 3}
+    value2: {x: 15, y: 7}
+  propList: []

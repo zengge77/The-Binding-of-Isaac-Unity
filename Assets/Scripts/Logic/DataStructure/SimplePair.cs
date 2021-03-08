@@ -22,7 +22,7 @@ public class SimplePairWithGameObjectInt : SimplePair<GameObject, int>
 }
 
 [System.Serializable]
-public class SimplePairWithGameObjectVector2 : SimplePair<int, int>
+public class SimplePairWithGameObjectVector2 : SimplePair<GameObject, Vector2>
 {
-    public SimplePairWithGameObjectVector2(int value1, int value2) : base(value1, value2) { }
+    public SimplePairWithGameObjectVector2(GameObject value1, Vector2 value2) : base(value1, value2) { }
 }

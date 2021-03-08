@@ -40,3 +40,33 @@ MonoBehaviour:
   - {fileID: 4220042123601709987, guid: 9b12e554f72720c40863d2eba26cd08d, type: 3}
   propCoordinate:
   - {x: 13, y: 7}
+  monsterList: []
+  obstacleList:
+  - value1: {fileID: 3002210260766645066, guid: 4ea0f029140b78e43aa0e571bdff3403,
+      type: 3}
+    value2: {x: 1, y: 1}
+  - value1: {fileID: 3002210260766645066, guid: 4ea0f029140b78e43aa0e571bdff3403,
+      type: 3}
+    value2: {x: 5, y: 1}
+  - value1: {fileID: 3002210260766645066, guid: 4ea0f029140b78e43aa0e571bdff3403,
+      type: 3}
+    value2: {x: 5, y: 13}
+  - value1: {fileID: 3002210260766645066, guid: 4ea0f029140b78e43aa0e571bdff3403,
+      type: 3}
+    value2: {x: 1, y: 13}
+  - value1: {fileID: 3002210260766645066, guid: 4ea0f029140b78e43aa0e571bdff3403,
+      type: 3}
+    value2: {x: 21, y: 1}
+  - value1: {fileID: 3002210260766645066, guid: 4ea0f029140b78e43aa0e571bdff3403,
+      type: 3}
+    value2: {x: 25, y: 1}
+  - value1: {fileID: 3002210260766645066, guid: 4ea0f029140b78e43aa0e571bdff3403,
+      type: 3}
+    value2: {x: 21, y: 13}
+  - value1: {fileID: 3002210260766645066, guid: 4ea0f029140b78e43aa0e571bdff3403,
+      type: 3}
+    value2: {x: 25, y: 13}
+  propList:
+  - value1: {fileID: 4220042123601709987, guid: 9b12e554f72720c40863d2eba26cd08d,
+      type: 3}
+    value2: {x: 13, y: 7}
