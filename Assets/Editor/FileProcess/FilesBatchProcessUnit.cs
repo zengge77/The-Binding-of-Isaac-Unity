@@ -69,7 +69,9 @@ public class FilesBatchProcessUnit
             {
                 EditorUtility.DisplayProgressBar("处理中", prefabs[i].gameObject.name, i / (float)files.Length);
                 action(prefabs[i]);
+                EditorUtility.SetDirty(prefabs[i]);
             }
+            AssetDatabase.SaveAssets();
         }
         catch (Exception e)
         {
@@ -81,8 +83,6 @@ public class FilesBatchProcessUnit
             EditorUtility.ClearProgressBar();
             AssetDatabase.Refresh();
         }
-
-
     }
 
     [MenuItem("Assets/文件操作/复制数据")]
