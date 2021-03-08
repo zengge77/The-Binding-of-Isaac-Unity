@@ -7,69 +7,46 @@ using UnityEditor;
 public class FilesBatchProcessUnit
 {
     /// <summary>
-    /// Asset文件如scriptableobject的批处理
+    /// 文件的批处理
     /// </summary>
-    /// <typeparam name="T">要处理的文件类型</typeparam>
-    /// <param name="action">该文件类型的具体处理方法</param>
-    public static void AssetFilesProcess<T>(Action<T> action)
+    /// <typeparam name="T"></typeparam>
+    /// <param name="action"></param>
+    public static void FilesBatchProcess<T>(Action<T> action) where T : class
     {
-        //获取文件
-        var files = Selection.GetFiltered<T>(SelectionMode.DeepAssets);
-        Debug.Log("已找到文件个数：" + files.Length);
+        var files = new List<T>();
 
-        //处理
-        try
+        //判断T类型并获取文件
+        if (typeof(T).IsSubclassOf(typeof(ScriptableObject)))
         {
-            for (int i = 0; i < files.Length; i++)
+            files.AddRange(Selection.GetFiltered<T>(SelectionMode.DeepAssets));
+        }
+        else if (typeof(T).IsSubclassOf(typeof(Component)))
+        {
+            var allFiles = Selection.GetFiltered<UnityEngine.Object>(SelectionMode.DeepAssets);
+            foreach (var item in allFiles)
             {
-                UnityEngine.Object asset = files[i] as UnityEngine.Object;
-                EditorUtility.DisplayProgressBar("处理中", asset.name, i / (float)files.Length);
-                action(files[i]);
-                EditorUtility.SetDirty(asset);
-            }
-            AssetDatabase.SaveAssets();
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e);
-        }
-        finally
-        {
-            Debug.Log("操作结束");
-            EditorUtility.ClearProgressBar();
-            AssetDatabase.Refresh();
-        }
-    }
-
-    /// <summary>
-    /// prefab上组件的批处理
-    /// </summary>
-    public static void PrefabFilesProcess<T>(Action<T> action) where T : Component
-    {
-        //获取所有文件并筛选
-        var files = Selection.GetFiltered<UnityEngine.Object>(SelectionMode.DeepAssets);
-        List<T> prefabs = new List<T>();
-        foreach (var item in files)
-        {
-            if (item is GameObject)
-            {
-                T component = (item as GameObject).GetComponent(typeof(T)) as T;
-                if (component != null)
+                if (item is GameObject)
                 {
-                    prefabs.Add(component);
+                    T component = (item as GameObject).GetComponent(typeof(T)) as T;
+                    if (component != null)
+                    {
+                        files.Add(component);
+                    }
                 }
             }
         }
-        Debug.Log("已找到文件个数：" + prefabs.Count);
+        else { Debug.Log("未知类型数据!"); }
+        Debug.Log("已找到文件个数：" + files.Count);
 
         //处理
         try
         {
-            for (int i = 0; i < prefabs.Count; i++)
+            for (int i = 0; i < files.Count; i++)
             {
-                EditorUtility.DisplayProgressBar("处理中", prefabs[i].gameObject.name, i / (float)files.Length);
-                action(prefabs[i]);
-                EditorUtility.SetDirty(prefabs[i]);
+                UnityEngine.Object asset = files[i] as UnityEngine.Object;
+                EditorUtility.DisplayProgressBar("处理中", asset.name, i / (float)files.Count);
+                action(files[i]);
+                EditorUtility.SetDirty(asset);
             }
             AssetDatabase.SaveAssets();
         }
@@ -88,24 +65,24 @@ public class FilesBatchProcessUnit
     //[MenuItem("Assets/文件操作/复制数据")]
     public static void Copy()
     {
-        AssetFilesProcess((RoomLayout file) =>
+        FilesBatchProcess((RoomLayout file) =>
         {
 
         });
     }
 
     //[MenuItem("Assets/文件操作/回赋数据")]
-    public static void GetGameItem()
+    public static void Backtrack()
     {
-        AssetFilesProcess((RoomLayout file) =>
+        FilesBatchProcess((RoomLayout file) =>
         {
 
         });
     }
 
-    [MenuItem("Assets/文件操作/保存")]
+    //[MenuItem("Assets/文件操作/保存")]
     public static void Save()
     {
-        AssetFilesProcess((RoomLayout file) => { });
+        FilesBatchProcess((RandomGameObjectTable file) => { });
     }
 }
