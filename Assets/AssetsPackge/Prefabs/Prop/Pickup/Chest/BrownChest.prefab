@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4184401290639461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238655787923399246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955057adaf1ba7f40b1fa6506a3f40db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table:
+  - value1: {fileID: 8892665028506414572, guid: 2da713d9e21825341853802882ce0275,
+      type: 3}
+    value2: 25
+  - value1: {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed,
+      type: 3}
+    value2: 25
+  - value1: {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed,
+      type: 3}
+    value2: 25
+  - value1: {fileID: 8892665028506414572, guid: f7f6afdc360d6d04cac92126b6ff3464,
+      type: 3}
+    value2: 25
+  gameObjects:
+  - {fileID: 8892665028506414572, guid: 2da713d9e21825341853802882ce0275, type: 3}
+  - {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed, type: 3}
+  - {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed, type: 3}
+  - {fileID: 8892665028506414572, guid: f7f6afdc360d6d04cac92126b6ff3464, type: 3}
+  probability: 19000000190000001900000019000000
 --- !u!114 &6098791914245835435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,24 +46,6 @@ MonoBehaviour:
   shapeAfterOpen: {fileID: 21300010, guid: a9388dd7b65e02543be6734508e919f3, type: 3}
   mixNum: 1
   maxNum: 3
---- !u!114 &4184401290639461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5238655787923399246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 955057adaf1ba7f40b1fa6506a3f40db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjects:
-  - {fileID: 8892665028506414572, guid: 2da713d9e21825341853802882ce0275, type: 3}
-  - {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed, type: 3}
-  - {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed, type: 3}
-  - {fileID: 8892665028506414572, guid: f7f6afdc360d6d04cac92126b6ff3464, type: 3}
-  probability: 19000000190000001900000019000000
 --- !u!1001 &5239875625295083830
 PrefabInstance:
   m_ObjectHideFlags: 0

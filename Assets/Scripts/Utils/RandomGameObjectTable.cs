@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class RandomGameObjectTable : MonoBehaviour
 {
-    public List<GameObject> gameObjects;
-    public List<int> probability;
+    public List<SimplePairWithGameObjectInt> table;
 
     /// <summary>
     /// 根据概率获取物品，该算法简单但有效
@@ -13,18 +12,15 @@ public class RandomGameObjectTable : MonoBehaviour
     /// <returns></returns>
     public GameObject GetGameObject(int revised = 0)
     {
-        if (gameObjects.Count != probability.Count)
-        { Debug.Log("物体和概率数组长度不一致"); return null; }
-
         int num = Random.Range(1, 101);
         int total = 0;
-        for (int i = 0; i < probability.Count; i++)
+        for (int i = 0; i < table.Count; i++)
         {
-            total += probability[i];
+            total += table[i].value2;
             total += revised;
             if (total > num)
             {
-                return gameObjects[i];
+                return table[i].value1;
             }
         }
         return null;

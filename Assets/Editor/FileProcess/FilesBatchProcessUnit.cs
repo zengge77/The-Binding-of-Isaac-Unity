@@ -88,24 +88,34 @@ public class FilesBatchProcessUnit
     [MenuItem("Assets/文件操作/复制数据")]
     public static void Copy()
     {
-        AssetFilesProcess((RoomLayout file) =>
-        {
-
-        });
+        //PrefabFilesProcess((RandomGameObjectTable file) =>
+        //{
+        //    file.table.Clear();
+        //    int count = file.gameObjects.Count;
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        file.table.Add(new SimplePairWithGameObjectInt(file.gameObjects[i], file.probability[i]));
+        //    }
+        //});
     }
 
     [MenuItem("Assets/文件操作/回赋数据")]
     public static void GetGameItem()
     {
-        AssetFilesProcess((RoomLayout file) =>
-        {
-
-        });
+        //PrefabFilesProcess((RandomGameObjectTable file) =>
+        //{
+        //    file.goList.Clear();
+        //    int count = file.list.Count;
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        file.goList.Add(file.list[i]);
+        //    }
+        //});
     }
 
     [MenuItem("Assets/文件操作/保存")]
     public static void Save()
     {
-        AssetFilesProcess((RoomLayout file) => { });
+        AssetFilesProcess((RandomGameObjectTable file) => { });
     }
 }

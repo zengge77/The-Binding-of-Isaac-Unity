@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8892665028506414575}
   - component: {fileID: 2773476061788829921}
   m_Layer: 0
-  m_Name: ClearingReward
+  m_Name: NormalRoom ClearingReward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,6 +56,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955057adaf1ba7f40b1fa6506a3f40db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  table:
+  - value1: {fileID: 8892665028506414572, guid: 2da713d9e21825341853802882ce0275,
+      type: 3}
+    value2: 10
+  - value1: {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed,
+      type: 3}
+    value2: 10
+  - value1: {fileID: 8892665028506414572, guid: 317ba8c39406d9d42a55099b3327b048,
+      type: 3}
+    value2: 10
+  - value1: {fileID: 8892665028506414572, guid: f7f6afdc360d6d04cac92126b6ff3464,
+      type: 3}
+    value2: 10
+  - value1: {fileID: 5238655787923399246, guid: a627dd76ebf746f4e95723c7cc7013ba,
+      type: 3}
+    value2: 10
   gameObjects:
   - {fileID: 8892665028506414572, guid: 2da713d9e21825341853802882ce0275, type: 3}
   - {fileID: 8892665028506414572, guid: 74a4dbc7f3182f24198e53ca99e97fed, type: 3}

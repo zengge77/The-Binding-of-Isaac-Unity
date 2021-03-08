@@ -43,6 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955057adaf1ba7f40b1fa6506a3f40db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  table:
+  - value1: {fileID: 1793258575544040045, guid: 729fae2f90de07f4eb7d0cc8bd17e9cf,
+      type: 3}
+    value2: 25
+  - value1: {fileID: 1793258575544040045, guid: 26bf122be0a487746bb01fd6ef36a5f8,
+      type: 3}
+    value2: 25
+  - value1: {fileID: 1793258575544040045, guid: 26aa82ee72663be41a995abd1a3952b2,
+      type: 3}
+    value2: 25
+  - value1: {fileID: 1793258575544040045, guid: 2961e26871545024db39ab6eac879da7,
+      type: 3}
+    value2: 25
   gameObjects:
   - {fileID: 1793258575544040045, guid: 729fae2f90de07f4eb7d0cc8bd17e9cf, type: 3}
   - {fileID: 1793258575544040045, guid: 26bf122be0a487746bb01fd6ef36a5f8, type: 3}
