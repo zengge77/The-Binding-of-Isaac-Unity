@@ -14,16 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 21300002, guid: 56767c499be0ac54f99235ba8e2493d3, type: 3}
   tip: {fileID: 21300000, guid: 7127980575fa14746a4019a5d3591a5d, type: 3}
-  RewardPosition: {x: 1, y: 1}
   isGenerateReward: 0
-  monsterPrefab: []
-  monsterCoordinate: []
-  obstaclesPreafab: []
-  obstaclesCoordinate: []
-  propPreafab:
-  - {fileID: 2506539653844963513, guid: d4f0237d04e6a224194603b7836ed012, type: 3}
-  propCoordinate:
-  - {x: 12, y: 1}
+  RewardPosition: {x: 1, y: 1}
   monsterList: []
   obstacleList: []
   propList:
