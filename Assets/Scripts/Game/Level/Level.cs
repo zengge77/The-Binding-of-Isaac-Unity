@@ -228,6 +228,7 @@ public class Level : MonoBehaviour
             haveBeenToRoomList.Add(currentRoom);
         }
         UI.miniMap.UpdateMiniMap(MoveDirection);
+        UpdateGridGraph();
 
         //暂停并移动玩家
         player.PlayerPause();
@@ -246,5 +247,11 @@ public class Level : MonoBehaviour
 
         //恢复玩家暂停
         player.PlayerQuitPause();
+    }
+
+    public void UpdateGridGraph()
+    {
+        AstarPath.active.data.gridGraph.center = currentRoom.transform.position;
+        AstarPath.active.Scan();
     }
 }

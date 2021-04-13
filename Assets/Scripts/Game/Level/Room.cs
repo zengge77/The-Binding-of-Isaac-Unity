@@ -158,14 +158,14 @@ public class Room : MonoBehaviour
             GenerateGameObjectWithCoordinate(roomLayout.obstacleList[i].value1, roomLayout.obstacleList[i].value2, obstaclesContainer);
         }
 
-        for (int i = 0; i < roomLayout.monsterList.Count; i++)
-        {
-            GenerateGameObjectWithCoordinate(roomLayout.monsterList[i].value1, roomLayout.monsterList[i].value2, monsterContainer);
-        }
-
         for (int i = 0; i < roomLayout.propList.Count; i++)
         {
             GenerateGameObjectWithCoordinate(roomLayout.propList[i].value1, roomLayout.propList[i].value2, propContainer);
+        }
+
+        for (int i = 0; i < roomLayout.monsterList.Count; i++)
+        {
+            GenerateGameObjectWithCoordinate(roomLayout.monsterList[i].value1, roomLayout.monsterList[i].value2, monsterContainer);
         }
 
         CheckOpenDoor();
