@@ -8,12 +8,12 @@ public class Obstacles : GameItem
 {
     public override GameItemType gameItemType { get { return GameItemType.Obstacles; } }
 
-    protected Generate generate;
+    protected GameItemManager manager;
 
     protected override void Awake()
     {
         base.Awake();
-        generate = level.generate;
+        manager = level.manager;
     }
 
     protected virtual GameObject GenerateReward()
@@ -21,7 +21,7 @@ public class Obstacles : GameItem
         GameObject randomObject = GetComponent<RandomGameObjectTable>().GetGameObject();
         if (randomObject == null) { return null; }
 
-        return generate.GenerateGameObjectInCurrentRoom(randomObject, transform.position);
+        return manager.GenerateGameObjectInCurrentRoom(randomObject, transform.position);
         
     }
 }

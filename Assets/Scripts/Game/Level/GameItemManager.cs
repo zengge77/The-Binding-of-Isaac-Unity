@@ -5,10 +5,12 @@ using UnityEngine;
 /// <summary>
 /// 游戏过程中生成物体的统一入口
 /// </summary>
-public class Generate : MonoBehaviour
+public class GameItemManager : MonoBehaviour
 {
     private Level level;
     private Room currentRoom { get { return level.currentRoom; } }
+
+    private bool isScanningGridGraph = false;
 
     private void Awake()
     {
@@ -40,6 +42,12 @@ public class Generate : MonoBehaviour
                     break;
                 case GameItemType.Obstacles:
                     container = currentRoom.obstaclesContainer;
+                    //配合延迟更新形成消息等待机制
+                    if (!isScanningGridGraph && this.gameObject.activeSelf)
+                    {
+                        isScanningGridGraph = true;
+                        StartCoroutine(DeleyScanGridGraph());
+                    }
                     break;
                 default:
                     break;
@@ -63,5 +71,38 @@ public class Generate : MonoBehaviour
     public void GenerateTracesInCurrentRoom(List<Sprite> traceSprites, int num, Vector2 position, float maxDirection)
     {
         currentRoom.GenerateTraces(traceSprites, num, position, maxDirection);
+    }
+
+    public void DestroyGameObject(GameObject gameObject)
+    {
+        GameItem gameItem = gameObject.GetComponent<GameItem>();
+        if (gameItem != null)
+        {
+            switch (gameItem.gameItemType)
+            {
+                case GameItemType.Monster:
+                    currentRoom.CheckOpenDoor();
+                    break;
+                case GameItemType.Obstacles:
+                    //配合延迟机制避免同帧数触发大量更新
+                    if (!isScanningGridGraph && this.gameObject.activeSelf)
+                    {
+                        isScanningGridGraph = true;
+                        StartCoroutine(DeleyScanGridGraph());
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    //延迟一帧更新网格
+    private IEnumerator DeleyScanGridGraph()
+    {
+        yield return null;
+        AstarPath.active.Scan();
+        while (AstarPath.active.isScanning) { yield return null; }
+        isScanningGridGraph = false;
     }
 }

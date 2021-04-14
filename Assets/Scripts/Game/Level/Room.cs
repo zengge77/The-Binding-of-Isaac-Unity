@@ -184,7 +184,7 @@ public class Room : MonoBehaviour
     /// <returns></returns>
     private IEnumerator DelayCheck()
     {
-        yield return new WaitForEndOfFrame();
+        yield return null;
         if (monsterContainer.childCount == 0 && !isCleared)
         {
             OpenActivatedDoor();
@@ -268,8 +268,8 @@ public class Room : MonoBehaviour
 
         int middleX = 13;
         int middleY = 7;
-        float width = 0.1385f;
-        float heigt = 0.1475f;
+        float width = 0.14f;
+        float heigt = 0.14f;
 
         GameObject go = Instantiate(prefab, container);
         Vector2 postiton = new Vector2(-(middleX - coordinate.x) * width, (middleY - coordinate.y) * heigt);

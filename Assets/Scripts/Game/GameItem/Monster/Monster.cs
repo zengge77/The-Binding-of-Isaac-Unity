@@ -91,7 +91,6 @@ public abstract class Monster : GameItem, IAttackable
     protected virtual void Destroy()
     {
         Destroy(gameObject);
-        currentRoom.CheckOpenDoor();
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)

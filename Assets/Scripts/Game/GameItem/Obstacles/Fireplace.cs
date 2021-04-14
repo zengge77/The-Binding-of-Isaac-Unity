@@ -36,7 +36,7 @@ public class Fireplace : Obstacles, IAttackable, IDestructible
 
     public void DestorySelf()
     {
-        generate.GenerateTraceInCurrentRoom(ExtinguishWoodShapes[type], transform.position);
+        manager.GenerateTraceInCurrentRoom(ExtinguishWoodShapes[type], transform.position);
         Destroy(gameObject);
     }
 

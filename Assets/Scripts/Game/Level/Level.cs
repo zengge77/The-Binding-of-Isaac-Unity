@@ -23,7 +23,7 @@ public class Level : MonoBehaviour
     [HideInInspector]
     public Pools pools;
     [HideInInspector]
-    public Generate generate;
+    public GameItemManager manager;
     #endregion
 
     #region 其他
@@ -34,7 +34,7 @@ public class Level : MonoBehaviour
     private void Awake()
     {
         pools = GetComponent<Pools>();
-        generate = GetComponent<Generate>();
+        manager = GetComponent<GameItemManager>();
     }
 
     private void Start()
@@ -227,6 +227,7 @@ public class Level : MonoBehaviour
             currentRoom.GenerateRoomContent(delaySeconds);
             haveBeenToRoomList.Add(currentRoom);
         }
+        //更新小地图和寻路网格
         UI.miniMap.UpdateMiniMap(MoveDirection);
         UpdateGridGraph();
 

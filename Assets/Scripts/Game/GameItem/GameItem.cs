@@ -16,4 +16,9 @@ public abstract class GameItem : MonoBehaviour
         level = GameManager.Instance.level;
         currentRoom = level.currentRoom;
     }
+
+    protected virtual void OnDestroy()
+    {
+        level.manager.DestroyGameObject(this.gameObject);
+    }
 }

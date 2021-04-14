@@ -2250,7 +2250,7 @@ GameObject:
   - component: {fileID: 4938308504108332}
   m_Layer: 12
   m_Name: Door
-  m_TagString: Walls
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2608,7 +2608,7 @@ GameObject:
   - component: {fileID: 4624852736428868}
   m_Layer: 12
   m_Name: Wall
-  m_TagString: Walls
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2995,9 +2995,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866145822478854997}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Collider
-  m_TagString: MoveCollider
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

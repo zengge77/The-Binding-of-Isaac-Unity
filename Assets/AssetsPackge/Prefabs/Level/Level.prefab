@@ -117,7 +117,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 2
+  logPathResults: 3
   maxNearestNodeDistance: 100
   scanOnStartup: 0
   fullGetNearestSearch: 0
