@@ -14,14 +14,21 @@ public class Room : MonoBehaviour
     [HideInInspector]
     public Vector2 coordinate;//坐标
 
-    [HideInInspector]
-    public float roomWidth;//宽度
-    [HideInInspector]
-    public float roomHeight;//高度
-
     private RoomLayout roomLayout;//布局文件
 
     private bool isCleared = false;//是否已清理过
+
+    //房间宽高，像素值/100
+    public static float RoomWidth { get { return 4.68f; } }
+    public static float RoomHeight { get { return 3.12f; } }
+    public static int RoomWidePixels { get { return 468; } }
+    public static int RoomHighPixels { get { return 312; } }
+
+    //单位数量和大小
+    public static int HorizomtalUnit { get { return 13; } }
+    public static int VerticalUnit { get { return 7; } }
+    public static float UnitSize { get { return 0.28f; } }
+
     #endregion
 
     #region 房间组成
@@ -65,10 +72,6 @@ public class Room : MonoBehaviour
     private void Awake()
     {
         level = GameManager.Instance.level;
-
-        Sprite fllorSprite = fllor.GetChild(0).GetComponent<SpriteRenderer>().sprite;
-        roomHeight = fllorSprite.bounds.size.y * transform.localScale.y;
-        roomWidth = fllorSprite.bounds.size.x * transform.localScale.x;
     }
 
     /// <summary>
@@ -266,14 +269,13 @@ public class Room : MonoBehaviour
     {
         if (prefab == null) { return null; }
 
-        int middleX = 13;
-        int middleY = 7;
-        float width = 0.14f;
-        float heigt = 0.14f;
-
         GameObject go = Instantiate(prefab, container);
-        Vector2 postiton = new Vector2(-(middleX - coordinate.x) * width, (middleY - coordinate.y) * heigt);
+        //Unit数量为 x:13，y:7,每单位大小为UnitSize
+        //coordinate范围为 x:1-25，y:1-13,每单位大小为UnitSize / 2
+        //以房间中心为原点，左上角为coordinate起始点，进行位置计算
+        Vector2 postiton = new Vector2(-(HorizomtalUnit - coordinate.x) * UnitSize / 2, (VerticalUnit - coordinate.y) * UnitSize / 2);
         go.transform.localPosition = postiton;
+
         return go;
     }
 

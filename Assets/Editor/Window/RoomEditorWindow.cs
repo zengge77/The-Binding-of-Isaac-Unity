@@ -60,7 +60,7 @@ public class RoomEditorWindow : EditorWindow
     Sprite floorSprite;
     Texture2D floorTexture;
     //用于没有地板时绘制空白区域
-    Texture2D emptyArea;
+    Texture2D emptyTexture;
 
     bool IsDrawRewardPosition;
     Sprite rewardSprite;
@@ -84,7 +84,7 @@ public class RoomEditorWindow : EditorWindow
     {
         rewardSprite = AssetDatabase.LoadAssetAtPath<Sprite>(editorDefaultResourcesAssetPath[0]);
         auxiliaryLineSprite = AssetDatabase.LoadAssetAtPath<Sprite>(editorDefaultResourcesAssetPath[1]);
-        emptyArea = new Texture2D(466, 310);
+        emptyTexture = new Texture2D(Room.RoomWidePixels, Room.RoomHighPixels);
     }
 
     private void OnGUI()
@@ -103,7 +103,7 @@ public class RoomEditorWindow : EditorWindow
     /// <summary>
     /// 绘制文件操作区域
     /// </summary>
-    void DrawFileOperationArea()
+    private void DrawFileOperationArea()
     {
         GUILayout.BeginVertical("box");
         GUILayout.BeginHorizontal();
@@ -156,7 +156,7 @@ public class RoomEditorWindow : EditorWindow
     /// <summary>
     /// 绘制文件选择区域
     /// </summary>
-    void DrawFileSelectArea()
+    private void DrawFileSelectArea()
     {
         GUILayout.BeginHorizontal("box");
         RoomLayout temp = roomLayout;
@@ -171,7 +171,7 @@ public class RoomEditorWindow : EditorWindow
     /// <summary>
     /// 绘制编辑区域
     /// </summary>
-    void DrawEditArea()
+    private void DrawEditArea()
     {
         GUILayout.Space(5);
         toolBarNum = GUILayout.Toolbar(toolBarNum, new[] { "主要", "障碍物列表", "怪物列表", "道具列表" });
@@ -197,7 +197,7 @@ public class RoomEditorWindow : EditorWindow
         }
         GUILayout.EndVertical();
     }
-    void EditMain()
+    private void EditMain()
     {
         GUILayout.BeginHorizontal();
         roomLayout.floor = (Sprite)EditorGUILayout.ObjectField("地板", roomLayout.floor, typeof(Sprite), false);
@@ -217,7 +217,7 @@ public class RoomEditorWindow : EditorWindow
         roomLayout.RewardPosition = new Vector2(x, y);
         GUILayout.EndHorizontal();
     }
-    void EditObstacles()
+    private void EditObstacles()
     {
         //快速选择文件夹
         GUILayout.BeginHorizontal();
@@ -231,7 +231,7 @@ public class RoomEditorWindow : EditorWindow
         //根据文件绘制怪物和怪物坐标的编辑区域
         EditObjectList(roomLayout.obstacleList);
     }
-    void EditMonster()
+    private void EditMonster()
     {
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("普通")) { SelectObject(monsterPrefabPath[0]); }
@@ -242,7 +242,7 @@ public class RoomEditorWindow : EditorWindow
 
         EditObjectList(roomLayout.monsterList);
     }
-    void EditorProp()
+    private void EditorProp()
     {
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("箱子")) { SelectObject(propPrefabPath[0]); }
@@ -258,7 +258,7 @@ public class RoomEditorWindow : EditorWindow
     /// <summary>
     /// 绘制预览区域
     /// </summary>
-    void DrawPreviewArea()
+    private void DrawPreviewArea()
     {
         //绘制地板，当地板精灵不一样或为空时制作新的地板贴图，为空时创建空白贴图
         if (roomLayout.floor != null)
@@ -270,7 +270,7 @@ public class RoomEditorWindow : EditorWindow
             }
             GUILayout.Box(floorTexture);
         }
-        else { GUILayout.Box(emptyArea); }
+        else { GUILayout.Box(emptyTexture); }
 
         //绘制房间内的物体
         if (Event.current.type == EventType.Repaint)
@@ -355,9 +355,9 @@ public class RoomEditorWindow : EditorWindow
     /// <param name="coordinates"></param>
     /// <param name="remove"></param>
     /// <param name="add"></param>
-    void EditObjectList(List<SimplePairWithGameObjectVector2> prefabs)
+    private void EditObjectList(List<SimplePairWithGameObjectVector2> prefabs)
     {
-        scrollViewVector2 = GUILayout.BeginScrollView(scrollViewVector2, GUILayout.Height(170));
+        scrollViewVector2 = GUILayout.BeginScrollView(scrollViewVector2, GUILayout.Height(160));
         for (int i = 0; i < prefabs.Count; i++)
         {
             GUILayout.BeginHorizontal();
@@ -382,7 +382,7 @@ public class RoomEditorWindow : EditorWindow
     /// </summary>
     /// <param name="prefabs"></param>
     /// <param name="coordinates"></param>
-    void DrawObjectList(List<SimplePairWithGameObjectVector2> prefabs)
+    private void DrawObjectList(List<SimplePairWithGameObjectVector2> prefabs)
     {
         for (int i = 0; i < prefabs.Count; i++)
         {
@@ -400,17 +400,18 @@ public class RoomEditorWindow : EditorWindow
     /// </summary>
     /// <param name="sprite"></param>
     /// <param name="coordinate"></param>
-    void DrawSprite(Sprite sprite, Vector2 coordinate)
+    private void DrawSprite(Sprite sprite, Vector2 coordinate)
     {
         if (sprite == null) { Debug.Log("图片为空"); return; }
-        //计算绘制的起点
-        Vector2 outset = GUILayoutUtility.GetLastRect().position;
-        Vector2 offset = new Vector2(55, 55);
-        float widthPixels = 13.85f;
-        float heightPixels = 14.57f;
-        //绘制的位置=起点+偏移量+坐标-精灵的一半大小
-        //起点(地板左上角,即该box的起点); 偏移量(去掉墙壁区域); 坐标(坐标*像素大小); 精灵的一半大小(精灵绘制起点位于左上角，减去精灵大小的一半使得显示时：精灵的中心等于前面计算的位置)
-        Vector2 pos = outset + offset + new Vector2(widthPixels * coordinate.x, heightPixels * coordinate.y) - new Vector2(sprite.rect.width / 2, sprite.rect.height / 2);
+
+        //计算绘制位置
+        //起点=当前Box的Rect(左上角,该Box的起点)+边缘留白
+        Vector2 outset = GUILayoutUtility.GetLastRect().position + new Vector2(3, 3);
+        //中心点=起点+地板贴图大小/2
+        Vector2 center = outset + new Vector2(emptyTexture.width / 2, emptyTexture.height / 2);
+        //绘制位置=中心点+偏移(坐标*像素大小)-精灵的一半大小(精灵绘制起点位于左上角，减去精灵大小的一半使得显示时：精灵的中心等于前面计算的位置)
+        int UnitPixels = (int)(Room.UnitSize * 100 / 2);
+        Vector2 pos = center + new Vector2(-(Room.HorizomtalUnit - coordinate.x), (Room.VerticalUnit - coordinate.y)) * UnitPixels - new Vector2(sprite.rect.width / 2, sprite.rect.height / 2);
 
         //设置绘制的位置和大小
         Rect displayArea = sprite.rect;
@@ -434,7 +435,7 @@ public class RoomEditorWindow : EditorWindow
     /// </summary>
     /// <param name="sprite"></param>
     /// <returns></returns>
-    Texture2D GetFloorTexture(Sprite sprite)
+    private Texture2D GetFloorTexture(Sprite sprite)
     {
         //将传入的精灵制作为贴图，注意：需要精灵原贴图设置 高级：可读写
         var rect = sprite.rect;

@@ -43,7 +43,7 @@ public class Level : MonoBehaviour
         player = GameManager.Instance.player;
         CreateRooms();
         UI.miniMap.CreatMiniMap();
-        StartCoroutine(MoveToNextRoom(Vector2.zero));
+        MoveToNextRoom(Vector2.zero);
     }
 
     /// <summary>
@@ -132,9 +132,7 @@ public class Level : MonoBehaviour
 
         int x = (int)coordinate.x - roomArray.GetLength(0) / 2;
         int y = (int)coordinate.y - roomArray.GetLength(1) / 2;
-        float roomHeight = 2 * newRoom.roomHeight;
-        float roomWidth = 2 * newRoom.roomWidth;
-        newRoom.transform.position = new Vector2(y * roomWidth, x * roomHeight);
+        newRoom.transform.position = new Vector2(y * Room.RoomWidth, x * Room.RoomHeight);
 
         return newRoom;
     }
@@ -209,10 +207,14 @@ public class Level : MonoBehaviour
     }
 
     /// <summary>
-    /// 更新玩家所在房间
+    /// 移动到下一个房间
     /// </summary>
-    /// <param name="MoveDirection">移动方向，使用Vector2默认的几个类型</param>
-    public IEnumerator MoveToNextRoom(Vector2 MoveDirection)
+    /// <param name="MoveDirection"></param>
+    public void MoveToNextRoom(Vector2 MoveDirection)
+    {
+        StartCoroutine(MoveToDesignativetRoom(MoveDirection));
+    }
+    private IEnumerator MoveToDesignativetRoom(Vector2 MoveDirection)
     {
         Camera mainCamera = GameManager.Instance.myCamera;
         float delaySeconds = 0.3f;

@@ -524,19 +524,19 @@ public class Player : MonoBehaviour, IAttackable
         {
             if (collision.transform.name == "Up")
             {
-                level.StartCoroutine(level.MoveToNextRoom(Vector2.up));
+                level.MoveToNextRoom(Vector2.up);
             }
             else if (collision.transform.name == "Down")
             {
-                level.StartCoroutine(level.MoveToNextRoom(Vector2.down));
+                level.MoveToNextRoom(Vector2.down);
             }
             else if (collision.transform.name == "Left")
             {
-                level.StartCoroutine(level.MoveToNextRoom(Vector2.left));
+                level.MoveToNextRoom(Vector2.left);
             }
             else if (collision.transform.name == "Right")
             {
-                level.StartCoroutine(level.MoveToNextRoom(Vector2.right));
+                level.MoveToNextRoom(Vector2.right);
             }
         }
     }
