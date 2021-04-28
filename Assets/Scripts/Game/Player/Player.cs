@@ -453,7 +453,7 @@ public class Player : MonoBehaviour, IAttackable
         //接触后触发眼泪的自我消除，不触发其他方法的：岩石，铁块
         TypeThatDefaultByBullet = new List<Type>() { typeof(Rock), typeof(MetalBlock) };
         //同上，因为没有类所以使用tag来判断：墙壁等
-        TagThatDefaultByBullet = new List<string>() { "Walls", "MoveCollider" };
+        TagThatDefaultByBullet = new List<string>() { "Wall", "MoveCollider" };
         //接触后触发碰撞物的被击方法：怪物，火堆，屎堆
         TypeThatCanBeAttackedByBullet = new List<Type>() { typeof(Monster), typeof(Poop), typeof(Fireplace) };
         //接触后触发碰撞物的被毁方法：默认为空

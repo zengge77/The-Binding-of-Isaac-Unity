@@ -81,10 +81,14 @@ public class GameItemManager : MonoBehaviour
             switch (gameItem.gameItemType)
             {
                 case GameItemType.Monster:
-                    currentRoom.CheckOpenDoor();
+                    if (currentRoom.gameObject.activeSelf)
+                    {
+                        //该检测机制本来是为了避免关闭游戏时调用非激活状态的currentRoom，但是实际上该检测无效，目前没找到更好的检测方法。
+                        currentRoom.CheckOpenDoor();
+                    }
                     break;
                 case GameItemType.Obstacles:
-                    //配合延迟机制避免同帧数触发大量更新
+                    //配合延迟机制避免同一帧内触发大量更新
                     if (!isScanningGridGraph && this.gameObject.activeSelf)
                     {
                         isScanningGridGraph = true;
@@ -102,7 +106,7 @@ public class GameItemManager : MonoBehaviour
     {
         yield return null;
         AstarPath.active.Scan();
-        while (AstarPath.active.isScanning) { yield return null; }
+        //while (AstarPath.active.isScanning) { yield return null; }
         isScanningGridGraph = false;
     }
 }

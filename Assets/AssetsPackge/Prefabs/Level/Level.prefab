@@ -51,7 +51,7 @@ MonoBehaviour:
   roomNum: 10
   currentRoom: {fileID: 0}
   pools: {fileID: 0}
-  generate: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!114 &6970755198662484133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 3
+  logPathResults: 4
   maxNearestNodeDistance: 100
   scanOnStartup: 0
   fullGetNearestSearch: 0
@@ -144,4 +144,4 @@ MonoBehaviour:
     seed: 0
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
-  showGraphs: 1
+  showGraphs: 0

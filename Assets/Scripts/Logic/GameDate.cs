@@ -31,6 +31,10 @@ public static class GameDate
     public const int RENDERERORDER_PLAYER_HEAD = 12;
     public const int RENDERERORDER_BULLET_ON = 13;
 
-    //各个脚本的加载顺序
-    //
+    //游戏内的对应的layer
+    public static Dictionary<string, int> layer = new Dictionary<string, int>
+    {
+        {"Wall",12},
+        {"Obstacle",15}
+    };
 }

@@ -11,30 +11,47 @@ public abstract class Boss : Monster
     protected override void Awake()
     {
         base.Awake();
+        ActiveHPSlider();
+    }
+
+    protected virtual void Update()
+    {
+        UpdateHPSlider();
+    }
+
+    private void ActiveHPSlider()
+    {
         hpSlider = UIManager.Instance.bossHp;
         hpSlider.gameObject.SetActive(true);
         hpSlider.value = 1;
     }
-
-    protected override void Update()
+    private void UpdateHPSlider()
     {
-        base.Update();
-        UpdateHPSlider();
+        hpSlider.value = Mathf.Lerp(hpSlider.value, HP / maxHP, Time.deltaTime * 3);
     }
 
-    protected void UpdateHPSlider()
+    //Boss类统一变量，子类视需要可重写
+    protected override void InitializeCateGoryField()
     {
-        hpSlider.value = Mathf.Lerp(hpSlider.value, HP / MaxHP, Time.deltaTime * 3);
+        activateSeconds = 1f;
+        collisionDamage = 1;
+        collisionFroce = 1f;
+        knockBackDistance = 0;
+        knockBackSeconds = 0;
     }
 
-    protected override void Death()
+    protected override IEnumerator Death()
     {
-        base.Death();
         hpSlider.gameObject.SetActive(false);
+
+        isLive = false;
+        if (ai != null) { ai.isStopped = true; }
+        behaviorTree?.DisableBehavior();
+        collid.enabled = false;
+        rigid.velocity = Vector2.zero;
+        animator.Play("Death");
+        yield return null;
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { yield return null; }
+        Destroy(gameObject);
     }
-
-    protected abstract override void Initialize();
-    protected abstract override void Attack();
-    protected abstract override void Moving();
-
 }

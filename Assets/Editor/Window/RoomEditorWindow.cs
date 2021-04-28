@@ -411,7 +411,7 @@ public class RoomEditorWindow : EditorWindow
         Vector2 center = outset + new Vector2(emptyTexture.width / 2, emptyTexture.height / 2);
         //绘制位置=中心点+偏移(坐标*像素大小)-精灵的一半大小(精灵绘制起点位于左上角，减去精灵大小的一半使得显示时：精灵的中心等于前面计算的位置)
         int UnitPixels = (int)(Room.UnitSize * 100 / 2);
-        Vector2 pos = center + new Vector2(-(Room.HorizomtalUnit - coordinate.x), (Room.VerticalUnit - coordinate.y)) * UnitPixels - new Vector2(sprite.rect.width / 2, sprite.rect.height / 2);
+        Vector2 pos = center + new Vector2(-(Room.HorizomtalUnit - coordinate.x), -(Room.VerticalUnit - coordinate.y)) * UnitPixels - new Vector2(sprite.rect.width / 2, sprite.rect.height / 2);
 
         //设置绘制的位置和大小
         Rect displayArea = sprite.rect;
