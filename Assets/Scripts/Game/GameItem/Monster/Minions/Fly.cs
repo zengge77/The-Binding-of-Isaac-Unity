@@ -14,4 +14,5 @@ public class Fly : Minion
             behaviorTree.SetVariableValue("movementSpeed", movementSpeed);
         }
     }
+    protected override void InitializeSkills() { }
 }

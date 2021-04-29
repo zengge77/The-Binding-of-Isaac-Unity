@@ -9,4 +9,5 @@ public class Dip : Minion
 {
     protected override void InitializeBehaviorTree() { }
     protected override void InitializeCustomField() { }
+    protected override void InitializeSkills() { }
 }

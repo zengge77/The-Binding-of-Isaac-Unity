@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,23 +7,23 @@ public class TheDukeOfFlies : Boss
 {
     public Monster fly;
 
-    float attackCD = 5f;
-    float timing = 0;
-    Vector2 movementDirection;
-
     protected override void InitializeCustomField() { }
     protected override void InitializeBehaviorTree()
     {
         behaviorTree.SetVariableValue("movementSpeed", movementSpeed);
     }
-
-
-    public void Attack()
+    protected override void InitializeSkills()
     {
-        animator.Play("Attack");
+        skills.Add(SummonFlies);
     }
 
-    private void SummonFlies()
+    public IEnumerator SummonFlies()
+    {
+        animator.Play("Attack");
+        animator.Update(0);
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { yield return null; }
+    }
+    private void AnimationEventSummonFlies()
     {
         int count = UnityEngine.Random.Range(3, 5);
         for (int i = 0; i < count; i++)
