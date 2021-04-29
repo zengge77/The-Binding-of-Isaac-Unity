@@ -35,10 +35,14 @@ public abstract class Monster : GameItem, IAttackable
     //其他字段
     protected bool isLive = true;
 
+    //技能列表，由行为树启动
+    protected List<SkillDelegate> skills = new List<SkillDelegate>();
+
     //抽象方法，当子类需要更改字段时在InitalizeField方法里修改
     protected abstract void InitializeCateGoryField();
     protected abstract void InitializeCustomField();
     protected abstract void InitializeBehaviorTree();
+    protected abstract void InitializeSkills();
 
     //初始化内容
     protected override void Awake()
@@ -55,6 +59,7 @@ public abstract class Monster : GameItem, IAttackable
         InitializeCateGoryField();
         InitializeCustomField();
         HP = maxHP;
+        InitializeSkills();
         InitializeBehaviorTree();
     }
 
@@ -117,6 +122,25 @@ public abstract class Monster : GameItem, IAttackable
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// 使用技能，由行为树调用
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="info"></param>
+    public void UseSkill(int index, SkillStateInfo info)
+    {
+        if (index < skills.Count)
+        {
+            if (skills[index] != null) { StartCoroutine(SpellSkill(index, info)); }
+            else { Debug.Log("技能为空"); info.isDone = true; }
+        }
+        else { Debug.Log("技能下标越界"); info.isDone = true; }
+    }
+    private IEnumerator SpellSkill(int index, SkillStateInfo info)
+    {
+        yield return skills[index]();
+        info.isDone = true;
+    }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
