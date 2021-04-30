@@ -16,7 +16,8 @@ public class Room : MonoBehaviour
 
     private RoomLayout roomLayout;//布局文件
 
-    private bool isCleared = false;//是否已清理过
+    public bool isArrived = false;//是否已到达
+    public bool isCleared = false;//是否已清理过
 
     //房间宽高，像素值/100
     public static float RoomWidth { get { return 4.68f; } }

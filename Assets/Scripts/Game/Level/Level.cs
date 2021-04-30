@@ -14,7 +14,6 @@ public class Level : MonoBehaviour
     private int roomNum;
     [HideInInspector]
     public Room[,] roomArray = new Room[20, 20];
-    private List<Room> haveBeenToRoomList = new List<Room>();
     [HideInInspector]
     public Room currentRoom;
     #endregion
@@ -43,7 +42,7 @@ public class Level : MonoBehaviour
         player = GameManager.Instance.player;
         CreateRooms();
         UI.miniMap.CreatMiniMap();
-        MoveToNextRoom(Vector2.zero);
+        MoveToStartRoom();
     }
 
     /// <summary>
@@ -207,13 +206,22 @@ public class Level : MonoBehaviour
     }
 
     /// <summary>
+    /// 进入初始房间
+    /// </summary>
+    private void MoveToStartRoom()
+    {
+        StartCoroutine(MoveToDesignativetRoom(Vector2.zero));
+    }
+
+    /// <summary>
     /// 移动到下一个房间
     /// </summary>
     /// <param name="MoveDirection"></param>
     public void MoveToNextRoom(Vector2 MoveDirection)
     {
-        StartCoroutine(MoveToDesignativetRoom(MoveDirection));
+        if (currentRoom.isCleared) { StartCoroutine(MoveToDesignativetRoom(MoveDirection)); }
     }
+
     private IEnumerator MoveToDesignativetRoom(Vector2 MoveDirection)
     {
         Camera mainCamera = GameManager.Instance.myCamera;
@@ -224,11 +232,12 @@ public class Level : MonoBehaviour
         currentRoom = roomArray[x, y];
 
         //如果没去过该房间便生成房间内容
-        if (!haveBeenToRoomList.Contains(currentRoom))
+        if (!currentRoom.isArrived)
         {
             currentRoom.GenerateRoomContent(delaySeconds);
-            haveBeenToRoomList.Add(currentRoom);
+            currentRoom.isArrived = true;
         }
+
         //更新小地图和寻路网格
         UI.miniMap.UpdateMiniMap(MoveDirection);
         UpdateGridGraph();
