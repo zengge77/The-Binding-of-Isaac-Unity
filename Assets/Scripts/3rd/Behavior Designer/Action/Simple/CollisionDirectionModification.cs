@@ -33,9 +33,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Custom
 
         public override void OnCollisionEnter2D(Collision2D collision)
         {
-            Vector3 contactPoint = collision.contacts[0].point;
-            //注意先归一化
-            Vector2 froce = (contactPoint - transform.position).normalized;
+            Vector3 contactPoint = collision.GetContact(0).point;          
+            Vector2 froce = (contactPoint - transform.position).normalized;//注意先归一化
             task.ModificationDirection = froce;
             isCollision = true;
         }
