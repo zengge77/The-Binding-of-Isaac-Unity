@@ -280,4 +280,9 @@ public class Room : MonoBehaviour
         return go;
     }
 
+
+    private void OnDestroy()
+    {
+        gameObject.SetActive(false);
+    }
 }

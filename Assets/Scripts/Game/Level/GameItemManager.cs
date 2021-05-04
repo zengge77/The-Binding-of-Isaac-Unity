@@ -56,6 +56,44 @@ public class GameItemManager : MonoBehaviour
 
         return currentRoom.GenerateGameObjectWithPosition(prefab, position, container);
     }
+    /// <summary>
+    /// 使用具体位置在当前房间生成游戏物体
+    /// </summary>
+    /// <param name="prefab"></param>
+    /// <param name="position"></param>
+    /// <returns></returns>
+    public T GenerateGameObjectInCurrentRoom<T>(T prefab, Vector2 position) where T : MonoBehaviour
+    {
+        //物体生成后所归属的默认节点
+        Transform container = currentRoom.defaultContainer;
+
+        //尝试获取物体类别，不为空便设置到对应节点
+        GameItem gameItem = prefab.GetComponent<GameItem>();
+        if (gameItem != null)
+        {
+            switch (gameItem.gameItemType)
+            {
+                case GameItemType.Prop:
+                    container = currentRoom.propContainer;
+                    break;
+                case GameItemType.Monster:
+                    container = currentRoom.monsterContainer;
+                    break;
+                case GameItemType.Obstacles:
+                    container = currentRoom.obstaclesContainer;
+                    //配合延迟更新形成消息等待机制
+                    if (!isScanningGridGraph && this.gameObject.activeSelf)
+                    {
+                        isScanningGridGraph = true;
+                        StartCoroutine(DeleyScanGridGraph());
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return currentRoom.GenerateGameObjectWithPosition(prefab.gameObject, position, container).GetComponent<T>();
+    }
 
     /// <summary>
     /// 使用具体位置在当前房间生成痕迹
@@ -83,7 +121,7 @@ public class GameItemManager : MonoBehaviour
                 case GameItemType.Monster:
                     if (currentRoom.gameObject.activeSelf)
                     {
-                        //该检测机制本来是为了避免关闭游戏时调用非激活状态的currentRoom，但是实际上该检测无效，目前没找到更好的检测方法。
+                        //配合Room类在OnDestroy()内关闭自身，避免关闭游戏时无效调用
                         currentRoom.CheckOpenDoor();
                     }
                     break;
