@@ -12,10 +12,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Custom
     public abstract class GridGraphMovement : Movement
     {
         protected AIPath ai;
+        protected Seeker seeker;
 
         public override void OnAwake()
         {
             ai = GetComponent<AIPath>();
+            seeker = GetComponent<Seeker>();
         }
 
         protected override void BeginMovement()

@@ -17,7 +17,6 @@ public abstract class Monster : GameItem, IAttackable
     protected AIPath ai;
     protected BehaviorTree behaviorTree;
 
-    //自身字段
     //公开编辑字段，方便编辑
     [SerializeField]
     protected float maxHP;
@@ -33,18 +32,19 @@ public abstract class Monster : GameItem, IAttackable
     protected float knockBackDistance;
     protected float knockBackSeconds;
     //其他字段
-    protected bool isLive = true;
+    [HideInInspector]
+    public bool isLive = true;
 
-    //技能列表，由行为树启动
-    protected List<SkillDelegate> skills = new List<SkillDelegate>();
-
-    //抽象方法，当子类需要更改字段时在InitalizeField方法里修改
+    //抽象方法，当子类需要更改字段时在方法内修改
     protected abstract void InitializeCateGoryField();
     protected abstract void InitializeCustomField();
     protected abstract void InitializeBehaviorTree();
     protected abstract void InitializeSkills();
 
-    //初始化内容
+    //技能列表，由行为树启动
+    protected List<SkillDelegate> skills = new List<SkillDelegate>();
+
+    //字段初始化
     protected override void Awake()
     {
         base.Awake();
@@ -58,19 +58,19 @@ public abstract class Monster : GameItem, IAttackable
 
         InitializeCateGoryField();
         InitializeCustomField();
+    }
+
+    //字段赋值，启动行为树
+    protected virtual void Start()
+    {
         HP = maxHP;
         InitializeSkills();
         InitializeBehaviorTree();
-    }
-
-    //启动行为树
-    protected virtual void Start()
-    {
-        behaviorTree?.DisableBehavior();
         StartCoroutine(EnableBehaviorTree(activateSeconds));
     }
     private IEnumerator EnableBehaviorTree(float seconds)
     {
+        behaviorTree?.DisableBehavior();
         yield return new WaitForSeconds(seconds);
         behaviorTree?.EnableBehavior();
     }
@@ -111,17 +111,32 @@ public abstract class Monster : GameItem, IAttackable
     /// </summary>
     protected virtual IEnumerator Death()
     {
+        OnDeath();
+
         isLive = false;
         if (ai != null) { ai.isStopped = true; }
-        behaviorTree?.DisableBehavior();
         collid.enabled = false;
         rigid.velocity = Vector2.zero;
         animator.Play("Death");
         yield return null;
+        behaviorTree?.DisableBehavior();
         while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { yield return null; }
         Destroy(gameObject);
     }
+    protected virtual void OnDeath() { }
 
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (hasCollisionDamage && collision.gameObject.GetComponent<Player>())
+        {
+            Vector3 contactPoint = collision.contacts[0].point;
+            Vector2 froce = (collision.transform.position - contactPoint).normalized;
+            player.BeAttacked(collisionDamage, froce, collisionFroce);
+        }
+    }
+
+
+    //技能相关
     /// <summary>
     /// 使用技能，由行为树调用
     /// </summary>
@@ -142,13 +157,33 @@ public abstract class Monster : GameItem, IAttackable
         info.isDone = true;
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    /// <summary>
+    /// 播放动画并在行至特定百分比处执行事件
+    /// </summary>
+    /// <param name="AnimationName"></param>
+    /// <param name="normalizedTime"></param>
+    /// <param name="action"></param>
+    /// <returns></returns>
+    protected IEnumerator PlayAnimationAndEvent(string AnimationName, float normalizedTime, Action action)
     {
-        if (hasCollisionDamage && collision.gameObject.GetComponent<Player>())
+        animator.Play(AnimationName);
+        animator.Update(0);
+
+        float time;
+        bool isPlayed = false;
+        while (true)
         {
-            Vector3 contactPoint = collision.contacts[0].point;
-            Vector2 froce = (collision.transform.position - contactPoint).normalized;
-            player.BeAttacked(collisionDamage, froce, collisionFroce);
+            time = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            if (Mathf.Abs(time - normalizedTime) < 0.01f && !isPlayed) { isPlayed = true; action(); }
+            if (time > 1f) { yield break; }
+            yield return null;
         }
+    }
+
+
+    //公开方法
+    public void SetMaxHP(float hp)
+    {
+        maxHP = hp;
     }
 }

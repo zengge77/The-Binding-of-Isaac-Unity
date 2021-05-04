@@ -9,12 +9,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Custom
     public class Track : GridGraphMovement
     {
         public SharedGameObject target;
-        public SharedFloat speed;
+        public SharedFloat movementSpeed;
 
         public override void OnStart()
         {
             BeginMovement();
-            SetSpeed(speed.Value);
+            SetSpeed(movementSpeed.Value);
         }
 
         public override TaskStatus OnUpdate()

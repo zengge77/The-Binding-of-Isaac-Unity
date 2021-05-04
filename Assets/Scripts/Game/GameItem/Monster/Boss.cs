@@ -29,6 +29,10 @@ public abstract class Boss : Monster
     {
         hpSlider.value = Mathf.Lerp(hpSlider.value, HP / maxHP, Time.deltaTime * 3);
     }
+    protected override void OnDeath()
+    {
+        hpSlider.gameObject.SetActive(false);
+    }
 
     //Boss类统一变量，子类视需要可重写
     protected override void InitializeCateGoryField()
@@ -38,20 +42,5 @@ public abstract class Boss : Monster
         collisionFroce = 1f;
         knockBackDistance = 0;
         knockBackSeconds = 0;
-    }
-
-    protected override IEnumerator Death()
-    {
-        hpSlider.gameObject.SetActive(false);
-
-        isLive = false;
-        if (ai != null) { ai.isStopped = true; }
-        behaviorTree?.DisableBehavior();
-        collid.enabled = false;
-        rigid.velocity = Vector2.zero;
-        animator.Play("Death");
-        yield return null;
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f) { yield return null; }
-        Destroy(gameObject);
     }
 }

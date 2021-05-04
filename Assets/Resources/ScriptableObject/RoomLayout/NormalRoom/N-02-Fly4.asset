@@ -17,13 +17,13 @@ MonoBehaviour:
   isGenerateReward: 1
   RewardPosition: {x: 13, y: 7}
   monsterList:
-  - value1: {fileID: 181072, guid: d11107a1f7267b34f8d69ebd15b0aae2, type: 3}
+  - value1: {fileID: 181072, guid: ffab27495f77c454eb7872b11cb8bdf0, type: 3}
     value2: {x: 1, y: 1}
-  - value1: {fileID: 181072, guid: d11107a1f7267b34f8d69ebd15b0aae2, type: 3}
+  - value1: {fileID: 181072, guid: ffab27495f77c454eb7872b11cb8bdf0, type: 3}
     value2: {x: 1, y: 13}
-  - value1: {fileID: 181072, guid: d11107a1f7267b34f8d69ebd15b0aae2, type: 3}
+  - value1: {fileID: 181072, guid: ffab27495f77c454eb7872b11cb8bdf0, type: 3}
     value2: {x: 25, y: 13}
-  - value1: {fileID: 181072, guid: d11107a1f7267b34f8d69ebd15b0aae2, type: 3}
+  - value1: {fileID: 181072, guid: ffab27495f77c454eb7872b11cb8bdf0, type: 3}
     value2: {x: 25, y: 1}
   obstacleList: []
   propList: []
