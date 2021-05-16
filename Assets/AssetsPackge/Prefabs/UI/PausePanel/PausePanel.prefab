@@ -244,7 +244,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u6807\u9898\u9B54\u6CD5\u8611\u83C7"
+  m_Text: "\u9053\u5177\u540D"
 --- !u!1 &3707806659255980916
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,8 +258,8 @@ GameObject:
   - component: {fileID: 3707806659255980927}
   - component: {fileID: 3707806659255980912}
   - component: {fileID: 3707806659255980913}
-  - component: {fileID: 3707806659255980926}
   - component: {fileID: 3707806659255980914}
+  - component: {fileID: 3707806659255980926}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -349,6 +349,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &3707806659255980914
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1183552213, guid: 19e0fdb0e9621ec40a22cbbff28884de,
+    type: 3}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3707806659255980916}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &3707806659255980926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,19 +379,6 @@ MonoBehaviour:
   newRun: {fileID: 3707806660859188933}
   resumeGame: {fileID: 3707806660807741854}
   exitGame: {fileID: 3707806661104260442}
---- !u!225 &3707806659255980914
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1183552213, guid: 19e0fdb0e9621ec40a22cbbff28884de,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3707806659255980916}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &3707806659323069288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausedPanel: {fileID: 3707806659255980926}
   backPack: {fileID: 3707806659323069271}
-  ActiveSceond: 0.3
+  activeSceond: 0.5
 --- !u!1 &3707806661104260445
 GameObject:
   m_ObjectHideFlags: 0

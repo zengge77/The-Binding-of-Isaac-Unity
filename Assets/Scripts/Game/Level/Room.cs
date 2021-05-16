@@ -214,6 +214,7 @@ public class Room : MonoBehaviour
         SpriteRenderer sr = trace.AddComponent<SpriteRenderer>();
         sr.sprite = traceSprite;
         sr.sortingOrder = GameDate.RENDERERORDER_TRACES;
+        sr.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
         trace.transform.SetParent(traceContainer);
         trace.transform.position = position;
         return trace;
