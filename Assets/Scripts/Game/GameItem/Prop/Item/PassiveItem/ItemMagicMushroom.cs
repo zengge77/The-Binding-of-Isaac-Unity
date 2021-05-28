@@ -19,7 +19,7 @@ public class ItemMagicMushroom : PassiveItem
         player.DamageBase += 0.3f;
 
         //多个 克里吉特的头,魔法菇,殉道者之血,彼列之书的组合不叠加
-        if (!player.IsThisItemExist(ID, ItemCricketisHead.ID))
+        if (!player.itemModle.Exist(ID, ItemCricketisHead.ID))
         {
             player.DamageMultiple *= 1.5f;
         }

@@ -11,7 +11,7 @@ public class ItemRoidRage : PassiveItem
     }
     protected override void Effect()
     {
-        if (!player.IsThisItemExist(ID)) { player.Speed += 0.6f; }
+        if (!player.itemModle.Exist(ID)) { player.Speed += 0.6f; }
         player.Range += 5.25f;
         //上抛速度+0.50
     }

@@ -12,7 +12,7 @@ public abstract class PassiveItem : Item
 
     protected override void After()
     {
-        player.AddItemInformation(this);
+        player.itemModle.AddItem(this);
         Destroy(gameObject);
     }
 }

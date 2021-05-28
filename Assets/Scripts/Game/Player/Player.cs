@@ -101,7 +101,7 @@ public class Player : MonoBehaviour, IAttackable
     public int Luck { get; set; }
 
     //身上的道具
-    List<ItemInformation> itemInformationList;
+    public ItemModel itemModle;
     public int CoinNum { get; set; }
     public int KeyNum { get; set; }
     public int BombNum { get; set; }
@@ -151,7 +151,6 @@ public class Player : MonoBehaviour, IAttackable
         wholeAnimation = GetComponent<Animator>();
         headAnimation = head.GetComponent<Animator>();
         bodyAnimation = body.GetComponent<Animator>();
-        itemInformationList = new List<ItemInformation>();
     }
 
     void Start()
@@ -450,6 +449,9 @@ public class Player : MonoBehaviour, IAttackable
         wholeAnimation.SetBool("isLive", true);
         myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
 
+        //初始化背包
+        itemModle = new ItemModel();
+
         //接触后触发眼泪的自我消除，不触发其他方法的：岩石，铁块
         TypeThatDefaultByBullet = new List<Type>() { typeof(Rock), typeof(MetalBlock) };
         //同上，因为没有类所以使用tag来判断：墙壁等
@@ -482,35 +484,6 @@ public class Player : MonoBehaviour, IAttackable
         isControllable = true;
         headAnimation.speed = 1;
         bodyAnimation.speed = 1;
-    }
-
-    /// <summary>
-    /// 添加道具信息到玩家身上
-    /// </summary>
-    /// <param name="item"></param>
-    public void AddItemInformation(Item item)
-    {
-        ItemInformation newItemInfo = item.itemInformation;
-        itemInformationList.Add(newItemInfo);
-        UI.pausePanel.backPack.AddBackpackCell(newItemInfo);
-    }
-
-    /// <summary>
-    /// 查询玩家身上是否已拥有该道具
-    /// </summary>
-    /// <param name="itemIDList"></param>
-    /// <returns></returns>
-    public bool IsThisItemExist(params int[] itemIDList)
-    {
-        for (int i = 0; i < itemIDList.Length; i++)
-        {
-            int num = itemInformationList.FindIndex((ItemInformation go) => { return go.ID == itemIDList[i]; });
-            if (num != -1)
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
     /// <summary>
